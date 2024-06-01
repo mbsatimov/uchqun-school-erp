@@ -1,0 +1,11 @@
+export const STUDENTS_QUERY_KEY = 'students';
+export const GROUPS_QUERY_KEY = 'groups';
+export const TEACHERS_QUERY_KEY = 'teachers';
+export const COURSES_QUERY_KEY = 'courses';
+export const LESSONS_QUERY_KEY = 'lessons';
+export const SEMESTERS_QUERY_KEY = 'semesters';
+export const DAILY_SCHEDULES_QUERY_KEY = 'daily-schedules';
+export const ATTENDANCES_QUERY_KEY = 'attendances';
+export const ADMINS_QUERY_KEY = 'admins';
+export const USERS_QUERY_KEY = 'users';
+export const DASHBOARD_QUERY_KEY = 'dashboard';
