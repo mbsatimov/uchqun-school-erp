@@ -1,11 +1,11 @@
 import { BarChartBig, Settings, ShieldCheck } from 'lucide-react';
 import React from 'react';
 
-import R from '@/lib/config/routes';
 import { GlobalSearch } from '@/components/global-search';
 import { Header } from '@/components/header/header';
 import MobileNavbar from '@/components/mobile-navbar/mobile-navbar';
 import Sidebar from '@/components/sidebar/sidebar';
+import R from '@/lib/config/routes';
 
 const BAR_ITEMS = [
   {
