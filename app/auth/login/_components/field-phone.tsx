@@ -9,7 +9,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { PhoneInput } from '@/components/ui/phone-input';
 import type { ILoginRequest } from '@/types/auth.interface';
 
 interface PhoneFieldProps {
@@ -25,7 +25,7 @@ export const FieldPhone: React.FC<PhoneFieldProps> = ({ form }) => {
         <FormItem>
           <FormLabel>Phone number</FormLabel>
           <FormControl>
-            <Input placeholder="Phone number" type="tel" {...field} />
+            <PhoneInput placeholder="Phone number" type="tel" {...field} />
           </FormControl>
           <FormMessage />
         </FormItem>
