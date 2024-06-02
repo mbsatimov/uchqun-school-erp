@@ -20,41 +20,41 @@ export function middleware(req: NextRequest) {
     req.cookies.get(EnumTokens.REFRESH_TOKEN) &&
     currentUser;
 
-  // if (pathname === '/') {
-  //   return NextResponse.redirect(new URL('/auth/login', req.url));
-  // }
+  if (pathname === '/') {
+    return NextResponse.redirect(new URL('/auth/login', req.url));
+  }
 
-  // if (isAuthenticated) {
-  //   if (isLoginPage) {
-  //     return NextResponse.redirect(
-  //       new URL(roleMap[currentUser.role] + '/profile', req.url)
-  //     );
-  //   } else if (
-  //     pathname === '/admin/management' &&
-  //     currentUser.role == EnumRole.ADMIN
-  //   ) {
-  //     return NextResponse.redirect(
-  //       new URL('/admin/management/groups', req.url)
-  //     );
-  //   } else if (
-  //     pathname === '/teacher/management' &&
-  //     currentUser.role == EnumRole.TEACHER
-  //   ) {
-  //     return NextResponse.redirect(
-  //       new URL('/teacher/management/homeworks', req.url)
-  //     );
-  //   }
-  //   if (pathname.startsWith(roleMap[currentUser.role])) {
-  //     return NextResponse.next();
-  //   } else {
-  //     return NextResponse.redirect(new URL('/404', req.url));
-  //   }
-  // } else {
-  //   if (isLoginPage) {
-  //     return NextResponse.next();
-  //   }
-  //   return NextResponse.redirect(new URL('/auth/login', req.url));
-  // }
+  if (isAuthenticated) {
+    if (isLoginPage) {
+      return NextResponse.redirect(
+        new URL(roleMap[currentUser.role] + '/profile', req.url)
+      );
+    } else if (
+      pathname === '/admin/management' &&
+      currentUser.role == EnumRole.ADMIN
+    ) {
+      return NextResponse.redirect(
+        new URL('/admin/management/groups', req.url)
+      );
+    } else if (
+      pathname === '/teacher/management' &&
+      currentUser.role == EnumRole.TEACHER
+    ) {
+      return NextResponse.redirect(
+        new URL('/teacher/management/homeworks', req.url)
+      );
+    }
+    if (pathname.startsWith(roleMap[currentUser.role])) {
+      return NextResponse.next();
+    } else {
+      return NextResponse.redirect(new URL('/404', req.url));
+    }
+  } else {
+    if (isLoginPage) {
+      return NextResponse.next();
+    }
+    return NextResponse.redirect(new URL('/auth/login', req.url));
+  }
 }
 
 const roleMap = {
