@@ -1,15 +1,10 @@
-import {
-  BarChartBig,
-  CalendarCheck,
-  CheckSquare2,
-  Settings,
-} from 'lucide-react';
+import { BarChartBig, CalendarCheck, Settings } from 'lucide-react';
 import React from 'react';
 
-import R from '@/lib/config/routes';
 import { Header } from '@/components/header/header';
 import MobileNavbar from '@/components/mobile-navbar/mobile-navbar';
 import Sidebar from '@/components/sidebar/sidebar';
+import R from '@/lib/config/routes';
 
 const BAR_ITEMS = [
   {
@@ -21,11 +16,6 @@ const BAR_ITEMS = [
     title: 'Schedule',
     href: R.STUDENT_SCHEDULE,
     icon: <CalendarCheck className="h-4 w-4" />,
-  },
-  {
-    title: 'Quizzes',
-    href: R.STUDENT_QUIZZES,
-    icon: <CheckSquare2 className="h-4 w-4" />,
   },
   {
     title: 'Settings',

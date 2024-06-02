@@ -1,21 +1,13 @@
 'use client';
 import { usePathname } from 'next/navigation';
 
-import R from '@/lib/config/routes';
 import { LinkTabs, LinkTabsTrigger } from '@/components/ui/link-tabs';
+import R from '@/lib/config/routes';
 
 const tabs_data = [
   {
     label: 'Homeworks',
     href: R.TEACHER_HOMEWORKS,
-  },
-  {
-    label: 'Online',
-    href: R.TEACHER_ONLINE_LESSONS,
-  },
-  {
-    label: 'Quizzes',
-    href: R.TEACHER_QUIZZES,
   },
   {
     label: 'Exams',
