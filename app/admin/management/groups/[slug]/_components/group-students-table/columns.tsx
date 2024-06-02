@@ -135,13 +135,6 @@ export const columns: Array<ColumnDef<IStudentWithGroupPreview>> = [
     },
   },
   {
-    accessorKey: 'email',
-    header: ({ column }) => (
-      <GroupStudentsTableColumnHeader column={column} title="Email" />
-    ),
-    cell: ({ row }) => <div className="lowercase">{row.getValue('email')}</div>,
-  },
-  {
     accessorKey: 'phoneNumber',
     header: ({ column }) => (
       <GroupStudentsTableColumnHeader column={column} title="Phone" />
@@ -177,11 +170,6 @@ export const columns: Array<ColumnDef<IStudentWithGroupPreview>> = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(student.email)}
-            >
-              Copy email
-            </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(student.phoneNumber)}
             >

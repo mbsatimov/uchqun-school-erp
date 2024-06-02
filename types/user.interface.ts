@@ -15,7 +15,6 @@ export interface IUser {
   id: number;
   name: string;
   surname: string;
-  email: string;
   phoneNumber: string;
   attachment: Attachment | null;
   role: EnumRole;

@@ -32,7 +32,6 @@ export const CreateUser: React.FC<CreateUserProps> = ({ role }) => {
     defaultValues: {
       name: '',
       surname: '',
-      email: '',
       phoneNumber: '',
       password: '',
       confirmPassword: '',
@@ -72,19 +71,6 @@ export const CreateUser: React.FC<CreateUserProps> = ({ role }) => {
               <FormLabel>Surname</FormLabel>
               <FormControl>
                 <Input placeholder="Surname" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
