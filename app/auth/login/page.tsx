@@ -1,9 +1,9 @@
-import { SelectLoginType } from './select-login-type';
+import { LoginWithPhoneForm } from './_components/login-with-phone-form';
 
 function LoginPage() {
   return (
     <div className="flex h-screen items-center justify-center">
-      <SelectLoginType />
+      <LoginWithPhoneForm />
     </div>
   );
 }

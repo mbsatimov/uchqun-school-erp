@@ -45,7 +45,7 @@ export function GroupStudentsTableToolbar({
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
         <Input
-          placeholder="Search by (name, surname, email, etc)..."
+          placeholder="Search by (name, surname, phone, etc)..."
           value={inputValue}
           onChange={event => setInputValue(event.target.value)}
           className="h-8 w-auto sm:w-[220px]"

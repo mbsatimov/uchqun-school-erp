@@ -1,10 +1,10 @@
 'use client';
 import { useEffect, useState } from 'react';
 
+import { Skeleton } from '@/components/ui/skeleton';
 import { useGetStudentById } from '@/hooks/use-student';
 import { getCurrentUser } from '@/lib/auth.helper';
 import { DefaultError } from '@/lib/exceptions/default-exception';
-import { Skeleton } from '@/components/ui/skeleton';
 
 export const StudentDetails = () => {
   const student = useGetStudentById(getCurrentUser().id);
@@ -37,10 +37,6 @@ export const StudentDetails = () => {
         >
           {student.data?.phoneNumber}
         </a>
-      </li>
-      <li className="flex justify-between gap-2">
-        <b>Email: </b>
-        <span>{student.data?.email}</span>
       </li>
       <li className="flex justify-between gap-2">
         <b className="font-bold">Role: </b>

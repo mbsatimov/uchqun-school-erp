@@ -98,12 +98,6 @@ export const columns: Array<ColumnDef<IUser>> = [
     },
   },
   {
-    accessorKey: 'email',
-    header: ({ column }) => (
-      <UserTableColumnHeader column={column} title="Email" />
-    ),
-  },
-  {
     accessorKey: 'phoneNumber',
     header: ({ column }) => (
       <UserTableColumnHeader column={column} title="Phone" />
@@ -143,11 +137,6 @@ export const columns: Array<ColumnDef<IUser>> = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="min-w-[150px]">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user.email)}
-            >
-              Copy email
-            </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.phoneNumber)}
             >

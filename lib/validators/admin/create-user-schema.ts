@@ -9,9 +9,6 @@ export const CreateUserSchema = z
     surname: z
       .string()
       .refine(name => name.length > 0, { message: 'Name is required.' }),
-    email: z.string().email({
-      message: 'Please enter a valid email address.',
-    }),
     phoneNumber: z.string().regex(uzbekistanPhoneRegex, 'Invalid Number!'),
     password: z.string().min(8, {
       message: 'Password must be at least 8 characters.',

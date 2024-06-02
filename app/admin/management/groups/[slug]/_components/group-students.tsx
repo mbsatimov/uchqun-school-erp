@@ -20,7 +20,7 @@ export const GroupStudents: React.FC<GroupStudentsProps> = ({ groupId }) => {
 
   const { filteredData, inputValue, setInputValue } = useSearch({
     data: students || [],
-    searchBy: ['name', 'surname', 'email', 'phoneNumber'],
+    searchBy: ['name', 'surname', 'phoneNumber'],
   });
 
   if (group.isLoading)

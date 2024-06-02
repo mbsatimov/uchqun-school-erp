@@ -4,10 +4,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { useCreateStudentAndAddToGroup } from '@/hooks/use-student';
-import type { TCreateUserSchema } from '@/lib/validators/admin/create-user-schema';
-import { CreateUserSchema } from '@/lib/validators/admin/create-user-schema';
-import { EnumRole } from '@/types/user.interface';
 import { Button } from '@/components/ui/button';
 import { DialogFooter } from '@/components/ui/dialog';
 import {
@@ -19,6 +15,10 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useCreateStudentAndAddToGroup } from '@/hooks/use-student';
+import type { TCreateUserSchema } from '@/lib/validators/admin/create-user-schema';
+import { CreateUserSchema } from '@/lib/validators/admin/create-user-schema';
+import { EnumRole } from '@/types/user.interface';
 
 interface CreateAndAddStudentProps {
   groupId: number;
@@ -33,7 +33,6 @@ export const CreateAndAddStudent: React.FC<CreateAndAddStudentProps> = ({
     defaultValues: {
       name: '',
       surname: '',
-      email: '',
       phoneNumber: '',
       password: '',
       confirmPassword: '',
@@ -78,19 +77,6 @@ export const CreateAndAddStudent: React.FC<CreateAndAddStudentProps> = ({
               <FormLabel>Surname</FormLabel>
               <FormControl>
                 <Input placeholder="Surname" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

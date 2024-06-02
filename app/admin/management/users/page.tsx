@@ -14,7 +14,7 @@ function UsersPage() {
 
   const { filteredData, inputValue, setInputValue } = useSearch({
     data: users.data || [],
-    searchBy: ['name', 'surname', 'email', 'phoneNumber'],
+    searchBy: ['name', 'surname', 'phoneNumber'],
   });
 
   if (users.isError) throw new DefaultError();

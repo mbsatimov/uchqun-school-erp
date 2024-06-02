@@ -45,7 +45,7 @@ export const StudentSelectionCommandMenu: FC<
 
   const { filteredData, inputValue, setInputValue } = useSearch({
     data,
-    searchBy: ['name', 'surname', 'phoneNumber', 'email'],
+    searchBy: ['name', 'surname', 'phoneNumber'],
   });
 
   const toggleStudent = (student: IStudentPreview) => {
@@ -100,7 +100,7 @@ export const StudentSelectionCommandMenu: FC<
                     {student.name} {student.surname}
                   </div>
                   <div className="hidden text-muted-foreground sm:block">
-                    {student.email}
+                    {student.phoneNumber}
                   </div>
                 </CommandItem>
               );
