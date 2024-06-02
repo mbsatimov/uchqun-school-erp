@@ -7,6 +7,9 @@ const TEACHER_M = `${TEACHER}/management`;
 const STUDENT = '/student';
 
 const ROUTES = {
+  // AUTH
+  LOGIN: '/auth/login',
+
   // HOME
   HOME: '/',
 
@@ -38,10 +41,6 @@ const ROUTES = {
   // TEACHER MANAGEMENT
   TEACHER_MANAGEMENT: TEACHER_M,
 
-  TEACHER_QUIZZES: `${TEACHER_M}/quizzes`,
-  TEACHER_NEW_QUIZ: `${TEACHER_M}/quizzes/new`,
-  TEACHER_QUIZ: (quizId: number | string) => `${TEACHER_M}/quizzes/${quizId}`,
-
   TEACHER_EXAMS: `${TEACHER_M}/exams`,
   TEACHER_NEW_EXAM: `${TEACHER_M}/exams/new`,
   TEACHER_EXAM: (examId: number | string) => `${TEACHER_M}/exams/${examId}`,
@@ -61,10 +60,6 @@ const ROUTES = {
   STUDENT_SCHEDULE: `${STUDENT}/schedule`,
   STUDENT_SETTINGS: `${STUDENT}/settings`,
   STUDENT_PROFILE: `${STUDENT}/profile`,
-  STUDENT_QUIZZES: `${STUDENT}/quizzes`,
-  STUDENT_QUIZ: (quizId: number | string) => `${STUDENT}/quizzes/${quizId}`,
-  STUDENT_QUIZ_RESULTS: (quizId: number | string) =>
-    `${STUDENT}/quizzes/${quizId}/results`,
 };
 
 export default ROUTES;

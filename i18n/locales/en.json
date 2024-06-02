@@ -1,0 +1,30 @@
+{
+  "sidebar": {
+    "links": {
+      "dashboard": "Dashboard",
+      "schedule": "Schedule",
+      "management": "Management",
+      "settings": "Settings"
+    }
+  },
+  "header": {
+    "menu": {
+      "links": {
+        "profile": "Profile",
+        "logout": "Logout"
+      }
+    }
+  },
+  "errors": {
+    "500": {
+      "title": "Opps! Something went wrong",
+      "description": "Sorry, the request could not be processed. If you think something is broken, report a problem.",
+      "report": "Report a problem"
+    },
+    "404": {
+      "title": "Page not found",
+      "description": "Please check the URL address or go back to the home page.",
+      "back": "Back to home"
+    }
+  }
+}

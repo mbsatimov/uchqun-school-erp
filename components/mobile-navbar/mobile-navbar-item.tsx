@@ -1,22 +1,20 @@
 'use client';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { FC } from 'react';
-import React from 'react';
 
 import { cn } from '@/lib/utils';
+import { INavItem } from '@/types/nav';
 
-export type TMobileNavbarItem = {
-  title: string;
-  href: string;
-  icon: React.ReactNode;
-};
+export type TMobileNavbarItem = INavItem;
 
 export const MobileNavbarItem: FC<TMobileNavbarItem> = ({
   title,
   href,
-  icon,
+  icon: Icon,
 }) => {
+  const t = useTranslations();
   const pathname = usePathname();
   return (
     <Link
@@ -29,8 +27,8 @@ export const MobileNavbarItem: FC<TMobileNavbarItem> = ({
         }
       )}
     >
-      {icon}
-      <span className="truncate text-xs">{title}</span>
+      {Icon}
+      <span className="truncate text-xs">{t(title)}</span>
     </Link>
   );
 };

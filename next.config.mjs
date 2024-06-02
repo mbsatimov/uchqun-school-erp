@@ -1,3 +1,7 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -9,17 +13,16 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: 'localhost',
-        port: '8080',
-        pathname: '/api/attachment/get/**',
+        hostname: '**',
+        pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: 'avatars.githubusercontent.com',
+        hostname: '**',
         pathname: '/**',
       },
     ],
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

@@ -1,12 +1,12 @@
 import type { FC } from 'react';
 
 import { cn } from '@/lib/utils';
+import { INavItem } from '@/types/nav';
 
-import type { TMobileNavbarItem } from './mobile-navbar-item';
 import { MobileNavbarItem } from './mobile-navbar-item';
 
 interface MobileNavbarProps extends React.HTMLAttributes<HTMLDivElement> {
-  bottomNavbarItems: Array<TMobileNavbarItem>;
+  bottomNavbarItems: Array<INavItem>;
 }
 
 const MobileNavbar: FC<MobileNavbarProps> = ({

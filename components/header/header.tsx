@@ -1,19 +1,17 @@
 'use client';
+
+import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { ModeToggle } from '@/components/mode-toggle';
+import { INavItem } from '@/types/nav';
 
 import { HeaderMenu } from './header-menu';
 
-type THeaderItem = {
-  title: string;
-  href: string;
-  icon?: React.ReactNode;
-};
 interface HeaderProps {
-  headerItems: Array<THeaderItem>;
-  profileItem: THeaderItem;
+  headerItems: Array<INavItem>;
+  profileItem: INavItem;
   children?: React.ReactNode;
 }
 
@@ -22,6 +20,7 @@ export const Header: React.FC<HeaderProps> = ({
   profileItem,
   children,
 }) => {
+  const t = useTranslations();
   const pathname = usePathname();
 
   const headerTitle = [...headerItems, profileItem].find(item =>
@@ -30,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/30 backdrop-blur">
       <MaxWidthWrapper className="flex h-14 items-center">
-        <h1 className="mr-2 text-2xl font-bold">{headerTitle}</h1>
+        <h1 className="mr-2 text-2xl font-bold">{t(headerTitle)}</h1>
         <div className="flex flex-1 items-center justify-end space-x-2">
           {children}
           <div className="flex items-center space-x-2">

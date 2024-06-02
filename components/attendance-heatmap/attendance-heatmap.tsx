@@ -1,11 +1,11 @@
 // AttendanceHeatmap Component
 import React from 'react';
 
+import Loading from '@/app/[locale]/loading';
 import { useGetStudentHeatmapStatistics } from '@/hooks/use-attendance';
 import { getCurrentUser } from '@/lib/auth.helper';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { getMonths } from '@/lib/helpers';
-import Loading from '@/app/loading';
 
 import type { IAttendanceRecord } from './heatmap.interface';
 import { MonthGrid } from './month-grid';

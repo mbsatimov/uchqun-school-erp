@@ -3,10 +3,10 @@ import { format, isSameMonth } from 'date-fns';
 import type { FC } from 'react';
 import { useMemo } from 'react';
 
+import { EditDailySchedule } from '@/app/[locale]/admin/management/groups/[slug]/timetable/_components/edit-daily-schedule-modal';
 import { LessonStatusColorsMap, getWeeks } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
 import type { IDailySchedule } from '@/types/daily-schedule.interface';
-import { EditDailySchedule } from '@/app/admin/management/groups/[slug]/timetable/_components/edit-daily-schedule-modal';
 
 interface CalendarCellMonthProps extends React.HTMLAttributes<HTMLDivElement> {
   currentDate: Date;

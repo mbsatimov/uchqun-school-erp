@@ -1,19 +1,17 @@
 'use client';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { FC } from 'react';
-import React from 'react';
 
-import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { INavItem } from '@/types/nav';
 
-export type TSidebarItem = {
-  title: string;
-  href: string;
-  icon: React.ReactNode;
-};
+type TSidebarItem = INavItem;
 
 export const SidebarItem: FC<TSidebarItem> = ({ title, href, icon: Icon }) => {
+  const t = useTranslations();
   const pathname = usePathname();
   return (
     <Link
@@ -27,7 +25,7 @@ export const SidebarItem: FC<TSidebarItem> = ({ title, href, icon: Icon }) => {
       )}
     >
       {Icon}
-      <span>{title}</span>
+      <span>{t(title)}</span>
     </Link>
   );
 };

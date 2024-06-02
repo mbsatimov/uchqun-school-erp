@@ -15,6 +15,7 @@ export * from './hover-card';
 export * from './input';
 export * from './label';
 export * from './link-tabs';
+export * from './password-input';
 export * from './phone-input';
 export * from './popover';
 export * from './progress';

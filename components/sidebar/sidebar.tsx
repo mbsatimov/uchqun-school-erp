@@ -5,12 +5,12 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { cn } from '@/lib/utils';
+import { INavItem } from '@/types/nav';
 
-import type { TSidebarItem } from './sidebar-item';
 import { SidebarItem } from './sidebar-item';
 
 interface SidebarProps {
-  sidebarItems: Array<TSidebarItem>;
+  sidebarItems: Array<INavItem>;
 }
 
 const Sidebar: FC<SidebarProps> = ({ sidebarItems }) => {
