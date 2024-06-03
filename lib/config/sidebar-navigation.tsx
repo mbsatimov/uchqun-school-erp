@@ -1,4 +1,10 @@
-import { BarChartBig, Settings, ShieldCheck } from 'lucide-react';
+import {
+  BarChartBig,
+  BookOpenCheck,
+  CalendarCheck,
+  Settings2,
+  ShieldCheck,
+} from 'lucide-react';
 
 import R from '@/lib/config/routes';
 import { INavItem } from '@/types/nav';
@@ -13,51 +19,51 @@ export const sidebarNavigation: Record<string, Array<INavItem>> = {
     {
       title: 'sidebar.links.management',
       href: R.ADMIN_MANAGEMENT,
-      icon: <BarChartBig />,
+      icon: <ShieldCheck />,
     },
     {
       title: 'sidebar.links.settings',
       href: R.ADMIN_SETTINGS,
-      icon: <Settings />,
+      icon: <Settings2 />,
     },
   ],
   teacher: [
     {
       title: 'sidebar.links.lessons',
       href: R.TEACHER_LESSONS,
-      icon: <BarChartBig />,
+      icon: <BookOpenCheck />,
     },
     {
       title: 'sidebar.links.schedule',
       href: R.TEACHER_SCHEDULE,
-      icon: <ShieldCheck />,
+      icon: <CalendarCheck />,
     },
     {
       title: 'sidebar.links.management',
       href: R.TEACHER_MANAGEMENT,
-      icon: <Settings />,
+      icon: <ShieldCheck />,
     },
     {
       title: 'sidebar.links.settings',
       href: R.TEACHER_SETTINGS,
-      icon: <Settings />,
+      icon: <Settings2 />,
     },
   ],
   student: [
     {
       title: 'sidebar.links.lessons',
       href: R.TEACHER_LESSONS,
-      icon: <BarChartBig />,
+      icon: <BookOpenCheck />,
     },
     {
       title: 'sidebar.links.schedule',
       href: R.STUDENT_SCHEDULE,
-      icon: <ShieldCheck />,
+      icon: <CalendarCheck />,
     },
     {
       title: 'sidebar.links.settings',
       href: R.TEACHER_SETTINGS,
-      icon: <Settings />,
+      icon: <Settings2 />,
     },
   ],
 };

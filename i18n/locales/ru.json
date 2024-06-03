@@ -2,6 +2,7 @@
   "sidebar": {
     "links": {
       "dashboard": "Статистика",
+      "lessons": "Уроки",
       "schedule": "Расписание",
       "management": "Панель Управление",
       "settings": "Настройки"

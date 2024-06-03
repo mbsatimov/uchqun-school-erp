@@ -2,6 +2,7 @@
   "sidebar": {
     "links": {
       "dashboard": "Dashboard",
+      "lessons": "Lessons",
       "schedule": "Schedule",
       "management": "Management",
       "settings": "Settings"
