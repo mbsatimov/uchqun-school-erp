@@ -1,8 +1,5 @@
 import type { Row, Table } from '@tanstack/react-table';
 import { X } from 'lucide-react';
-import { IconType } from 'react-icons/lib';
-import { MdOutlineAdminPanelSettings } from 'react-icons/md';
-import { PiStudent, PiStudentFill } from 'react-icons/pi';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,22 +12,18 @@ import { UserTableViewOptions } from './user-table-view-option';
 export const roles: Array<{
   value: Role;
   label: string;
-  icon: IconType;
 }> = [
   {
     value: 'ADMIN',
     label: 'Admin',
-    icon: MdOutlineAdminPanelSettings,
   },
   {
     value: 'STUDENT',
     label: 'Student',
-    icon: PiStudent,
   },
   {
     value: 'TEACHER',
     label: 'Teacher',
-    icon: PiStudentFill,
   },
 ];
 

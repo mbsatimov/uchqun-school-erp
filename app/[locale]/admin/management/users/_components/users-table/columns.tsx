@@ -82,9 +82,6 @@ export const columns: Array<ColumnDef<User>> = [
 
       return (
         <div className="flex w-[100px] items-center">
-          {role.icon && (
-            <role.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          )}
           <span>{role.label}</span>
         </div>
       );
