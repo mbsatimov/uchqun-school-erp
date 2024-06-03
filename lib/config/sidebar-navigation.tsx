@@ -52,7 +52,7 @@ export const sidebarNavigation: Record<string, Array<INavItem>> = {
   student: [
     {
       title: 'sidebar.links.lessons',
-      href: R.TEACHER_LESSONS,
+      href: R.STUDENT_LESSONS,
       icon: <BookOpenCheck />,
     },
     {
@@ -62,7 +62,7 @@ export const sidebarNavigation: Record<string, Array<INavItem>> = {
     },
     {
       title: 'sidebar.links.settings',
-      href: R.TEACHER_SETTINGS,
+      href: R.STUDENT_SETTINGS,
       icon: <Settings2 />,
     },
   ],

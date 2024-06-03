@@ -9,15 +9,15 @@ import { sidebarNavigation } from '@/lib/config/sidebar-navigation';
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex h-screen flex-col md:flex-row">
-      <Sidebar sidebarItems={sidebarNavigation.teacher} />
+      <Sidebar sidebarItems={sidebarNavigation.student} />
       <div className="relative flex flex-1 flex-col overflow-y-auto">
         <Header
-          headerItems={sidebarNavigation.teacher}
-          profileItem={profileNavigationItem.teacher}
+          headerItems={sidebarNavigation.student}
+          profileItem={profileNavigationItem.student}
         />
         <div className="flex-1 py-4 md:py-6">{children}</div>
       </div>
-      <MobileNavbar bottomNavbarItems={sidebarNavigation.teacher} />
+      <MobileNavbar bottomNavbarItems={sidebarNavigation.student} />
     </div>
   );
 }
