@@ -18,7 +18,6 @@ import { Input } from '@/components/ui/input';
 import { useCreateStudentAndAddToGroup } from '@/hooks/use-student';
 import type { TCreateUserSchema } from '@/lib/validators/admin/create-user-schema';
 import { CreateUserSchema } from '@/lib/validators/admin/create-user-schema';
-import { EnumRole } from '@/types/user.interface';
 
 interface CreateAndAddStudentProps {
   groupId: number;
@@ -42,7 +41,7 @@ export const CreateAndAddStudent: React.FC<CreateAndAddStudentProps> = ({
   function onSubmit(studentData: TCreateUserSchema) {
     createStudent.mutate({
       groupId,
-      data: { ...studentData, role: EnumRole.STUDENT },
+      data: { ...studentData, role: 'STUDENT' },
     });
   }
 

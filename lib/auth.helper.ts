@@ -1,7 +1,6 @@
 import Cookies from 'js-cookie';
 
 import { EnumTokens } from '@/services/auth.service';
-import type { IUser } from '@/types/user.interface';
 
 export const checkAuth = () => {
   const accessToken = getAccessToken();
@@ -24,7 +23,7 @@ export const getRefreshToken = () => {
 export const getCurrentUser = () => {
   const currentUserJSON = Cookies.get(EnumTokens.CURRENT_USER);
   const currentUser = JSON.parse(currentUserJSON || '{}');
-  return currentUser as IUser;
+  return currentUser as User;
 };
 
 export const saveAccessTokenToStorage = (accessToken: string) => {
@@ -35,7 +34,7 @@ export const saveAccessTokenToStorage = (accessToken: string) => {
   });
 };
 
-export const saveCurrentUserToStorage = (user: IUser) => {
+export const saveCurrentUserToStorage = (user: User) => {
   Cookies.set('currentUser', JSON.stringify(user), {
     localhost: 'localhost',
     sameSite: 'strict',

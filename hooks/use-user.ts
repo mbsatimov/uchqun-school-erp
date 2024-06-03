@@ -8,7 +8,6 @@ import {
   USERS_QUERY_KEY,
 } from '@/lib/constants/query-keys';
 import { UserService } from '@/services/user.service';
-import { EnumRole } from '@/types/user.interface';
 
 export const useGetAllUsers = () => {
   return useQuery({
@@ -18,7 +17,7 @@ export const useGetAllUsers = () => {
   });
 };
 
-export const useGetUserById = (id: number, role: EnumRole) => {
+export const useGetUserById = (id: number, role: Role) => {
   return useQuery({
     queryKey: [USERS_QUERY_KEY, id],
     queryFn: async () => {
@@ -29,17 +28,17 @@ export const useGetUserById = (id: number, role: EnumRole) => {
   });
 };
 
-export const useCreateUser = (role: EnumRole) => {
+export const useCreateUser = (role: Role) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: UserService.create,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [USERS_QUERY_KEY] });
-      if (role === EnumRole.STUDENT) {
+      if (role === 'STUDENT') {
         queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      } else if (role === EnumRole.TEACHER) {
+      } else if (role === 'TEACHER') {
         queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
-      } else if (role === EnumRole.ADMIN) {
+      } else if (role === 'ADMIN') {
         queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
       }
       toast.success(res.data.message);
@@ -50,17 +49,17 @@ export const useCreateUser = (role: EnumRole) => {
   });
 };
 
-export const useCreateUserByFile = (role: EnumRole) => {
+export const useCreateUserByFile = (role: Role) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: UserService.createByFile,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [USERS_QUERY_KEY] });
-      if (role === EnumRole.STUDENT) {
+      if (role === 'STUDENT') {
         queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      } else if (role === EnumRole.TEACHER) {
+      } else if (role === 'TEACHER') {
         queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
-      } else if (role === EnumRole.ADMIN) {
+      } else if (role === 'ADMIN') {
         queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
       }
       toast.success(res.data.message);

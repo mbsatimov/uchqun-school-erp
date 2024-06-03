@@ -1,9 +1,7 @@
-import type { IUser } from './user.interface';
-
 export interface IAuthResponse {
   accessToken: string;
   refreshToken: string;
-  user: IUser;
+  user: User;
 }
 
 export interface ILoginRequest {

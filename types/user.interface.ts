@@ -5,22 +5,18 @@ export interface Attachment {
   url: string;
 }
 
-export const enum EnumRole {
-  ADMIN = 'ADMIN',
-  TEACHER = 'TEACHER',
-  STUDENT = 'STUDENT',
-}
+export type Role = 'ADMIN' | 'TEACHER' | 'STUDENT';
 
-export interface IUser {
+export interface User {
   id: number;
   name: string;
   surname: string;
   phoneNumber: string;
   attachment: Attachment | null;
-  role: EnumRole;
+  role: Role;
 }
 
-export type TUserRequest = Omit<IUser, 'id' | 'attachment'>;
+export type TUserRequest = Omit<User, 'id' | 'attachment'>;
 
 export interface ICreateUserRequest extends TUserRequest {
   password: string;

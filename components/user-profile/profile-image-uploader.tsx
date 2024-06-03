@@ -5,17 +5,16 @@ import React, { useEffect, useRef } from 'react';
 import type { ReactCropperElement } from 'react-cropper';
 import { Cropper } from 'react-cropper';
 
-import { useUpdateUserProfileImage } from '@/hooks/use-user';
-import { DefaultError } from '@/lib/exceptions/default-exception';
-import type { EnumRole } from '@/types/user.interface';
 import { Button } from '@/components/ui/button';
 import { DialogFooter } from '@/components/ui/dialog';
+import { useUpdateUserProfileImage } from '@/hooks/use-user';
+import { DefaultError } from '@/lib/exceptions/default-exception';
 
 import 'cropperjs/dist/cropper.css';
 
 interface UploadProfileImageProps {
   userId: number;
-  role: EnumRole;
+  role: Role;
   file: File | null;
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setFile: React.Dispatch<React.SetStateAction<File | null>>;

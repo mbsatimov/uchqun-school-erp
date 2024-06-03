@@ -1,13 +1,12 @@
 import type { IAttendance } from './attendance.interface';
 import type { IGroup } from './group.interface';
-import type { IUser } from './user.interface';
 
-export interface IStudent extends IUser {
+export interface IStudent extends User {
   group: IGroup | null;
   attendance: Array<IAttendance>;
 }
 
-export interface IStudentPreview extends IUser {
+export interface IStudentPreview extends User {
   groupId: number | null;
 }
 

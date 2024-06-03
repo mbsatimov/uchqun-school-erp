@@ -2,8 +2,6 @@ import type { ColumnDef } from '@tanstack/react-table';
 import { MoreHorizontal } from 'lucide-react';
 import type { FC } from 'react';
 
-import { useDeleteSomeUsers } from '@/hooks/use-user';
-import type { EnumRole, IUser } from '@/types/user.interface';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -14,14 +12,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useDeleteSomeUsers } from '@/hooks/use-user';
 
 import { UserTableColumnHeader } from './user-table-column-header';
 import { roles } from './user-table-tooltip';
 
-const DeleteUserMenuItem: FC<{ id: number; role: EnumRole }> = ({
-  id,
-  role,
-}) => {
+const DeleteUserMenuItem: FC<{ id: number; role: Role }> = ({ id, role }) => {
   const deleteUserMutation = useDeleteSomeUsers();
 
   const handleDeleteUser = () => {
@@ -35,7 +31,7 @@ const DeleteUserMenuItem: FC<{ id: number; role: EnumRole }> = ({
   );
 };
 
-export const columns: Array<ColumnDef<IUser>> = [
+export const columns: Array<ColumnDef<User>> = [
   {
     id: 'select',
     header: ({ table }) => (

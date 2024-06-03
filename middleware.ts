@@ -5,7 +5,6 @@ import { defaultLocale, localePrefix, locales, pathnames } from '@/i18n/config';
 import R from '@/lib/config/routes';
 
 import { EnumTokens } from './services/auth.service';
-import { EnumRole, IUser } from './types/user.interface';
 
 const handleI18nRouting = createMiddleware({
   defaultLocale,
@@ -21,7 +20,7 @@ export default async function middleware(req: NextRequest) {
   // Parse current user from cookies
   const currentUserJSON = req.cookies.get(EnumTokens.CURRENT_USER)?.value;
   const currentUser = currentUserJSON
-    ? (JSON.parse(currentUserJSON) as IUser)
+    ? (JSON.parse(currentUserJSON) as User)
     : null;
 
   const isAuthenticated =
@@ -58,10 +57,10 @@ export default async function middleware(req: NextRequest) {
   return handleI18nRouting(req);
 }
 
-const roleMap = {
-  [EnumRole.ADMIN]: '/admin',
-  [EnumRole.TEACHER]: '/teacher',
-  [EnumRole.STUDENT]: '/student',
+const roleMap: Record<Role, string> = {
+  ADMIN: '/admin',
+  TEACHER: '/teacher',
+  STUDENT: '/student',
 };
 
 export const config = {

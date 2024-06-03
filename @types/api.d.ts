@@ -3,8 +3,6 @@ interface ApiErrorResponse {
   errors: Array<unknown>;
 }
 
-type ApiRequestConfig = import('axios').AxiosRequestConfig;
-
-type RequestConfig<Params = undefined> = Params extends undefined
-  ? { config?: ApiRequestConfig }
-  : { params: Params; config?: ApiRequestConfig };
+type ApiRequestConfig<Params = undefined> = Params extends undefined
+  ? { config?: import('axios').AxiosRequestConfig }
+  : { params: Params; config?: import('axios').AxiosRequestConfig };

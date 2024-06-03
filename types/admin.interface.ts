@@ -1,8 +1,6 @@
-import type { IUser } from './user.interface';
+export interface IAdmin extends User {}
 
-export interface IAdmin extends IUser {}
-
-export interface IAdminPreview extends IUser {}
+export interface IAdminPreview extends User {}
 
 export type TAdminRequest = Omit<IAdmin, 'id' | 'attachment'>;
 

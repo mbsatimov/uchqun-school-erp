@@ -20,10 +20,9 @@ import {
 import { useCreateUser } from '@/hooks/use-user';
 import type { TCreateUserSchema } from '@/lib/validators';
 import { CreateUserSchema } from '@/lib/validators/admin';
-import type { EnumRole } from '@/types/user.interface';
 
 interface UserFormProps {
-  role: EnumRole;
+  role: Role;
 }
 
 export const UserForm: React.FC<UserFormProps> = ({ role }) => {

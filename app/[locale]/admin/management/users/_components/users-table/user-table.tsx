@@ -1,4 +1,3 @@
-import * as React from 'react';
 import type {
   ColumnDef,
   ColumnFiltersState,
@@ -13,6 +12,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import * as React from 'react';
 
 import {
   Table,
@@ -22,13 +22,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import type { IUser } from '@/types/user.interface';
 
 import { UserTableToolbar } from './user-table-tooltip';
 
 interface UserTableProps {
-  data: Array<IUser>;
-  columns: Array<ColumnDef<IUser>>;
+  data: Array<User>;
+  columns: Array<ColumnDef<User>>;
   searchValue: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
 }

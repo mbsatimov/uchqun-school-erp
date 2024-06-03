@@ -1,13 +1,12 @@
 import type { ICourse } from './course.interface';
 import type { ISemester } from './semester.interface';
-import type { IUser } from './user.interface';
 
-export interface ITeacher extends IUser {
+export interface ITeacher extends User {
   courses: Array<ICourse>;
   semester: Array<ISemester>;
 }
 
-export interface ITeacherPreview extends IUser {}
+export interface ITeacherPreview extends User {}
 
 type TTeacherRequest = Omit<
   ITeacher,

@@ -12,23 +12,22 @@ import {
 } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
-import { EnumRole } from '@/types/user.interface';
 
 import { CreateUserWithExcel } from './create-users-with-excel';
 import { UserForm } from './user-form';
 
-const USERS = [
+const USERS: Array<{ label: string; value: Role }> = [
   {
     label: 'Student',
-    value: EnumRole.STUDENT,
+    value: 'STUDENT',
   },
   {
     label: 'Teacher',
-    value: EnumRole.TEACHER,
+    value: 'TEACHER',
   },
   {
     label: 'Admin',
-    value: EnumRole.ADMIN,
+    value: 'ADMIN',
   },
 ];
 

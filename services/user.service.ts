@@ -1,22 +1,17 @@
 import type { AxiosResponse } from 'axios';
 
 import type { IApiResponse } from '@/types/response/api-response';
-import type {
-  EnumRole,
-  IUser,
-  ICreateUserRequest,
-} from '@/types/user.interface';
 import { $api } from '@/utils/api/interceptor';
 
 const USER_URL = '/user';
 
 export const UserService = {
-  async getAll(): Promise<AxiosResponse<Array<IUser>>> {
-    return $api.get<Array<IUser>>(USER_URL);
+  async getAll(): Promise<AxiosResponse<Array<User>>> {
+    return $api.get<Array<User>>(USER_URL);
   },
 
-  async getById(id: number, role: EnumRole): Promise<AxiosResponse<IUser>> {
-    return $api.get<IUser>(`${USER_URL}/${id}?role=${role}`);
+  async getById(id: number, role: Role): Promise<AxiosResponse<User>> {
+    return $api.get<User>(`${USER_URL}/${id}?role=${role}`);
   },
 
   async create(data: ICreateUserRequest): Promise<AxiosResponse<IApiResponse>> {
@@ -28,7 +23,7 @@ export const UserService = {
     role,
   }: {
     data: FormData;
-    role: EnumRole;
+    role: Role;
   }): Promise<AxiosResponse<IApiResponse>> {
     return $api.post<IApiResponse>(`${USER_URL}/file?role=${role}`, data, {
       headers: {
@@ -44,7 +39,7 @@ export const UserService = {
   }: {
     id: number;
     data: FormData;
-    role: EnumRole;
+    role: Role;
   }): Promise<AxiosResponse<IApiResponse>> {
     return $api.put<IApiResponse>(
       `${USER_URL}/upload-image/${id}?role=${role}`,
@@ -58,7 +53,7 @@ export const UserService = {
   },
 
   async deleteSomeById(
-    data: Array<{ id: number; role: EnumRole }>
+    data: Array<{ id: number; role: Role }>
   ): Promise<AxiosResponse<IApiResponse>> {
     return $api.delete<IApiResponse>(USER_URL, { data: data });
   },
@@ -68,7 +63,7 @@ export const UserService = {
     role,
   }: {
     id: number;
-    role: EnumRole;
+    role: Role;
   }): Promise<AxiosResponse<IApiResponse>> {
     return $api.delete<IApiResponse>(
       `${USER_URL}/delete-image/${id}?role=${role}`

@@ -3,9 +3,6 @@
 import { Edit } from 'lucide-react';
 import React from 'react';
 
-import { useDeleteUserProfileImage } from '@/hooks/use-user';
-import { cn } from '@/lib/utils';
-import type { IUser } from '@/types/user.interface';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { buttonVariants } from '@/components/ui/button';
 import {
@@ -14,9 +11,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useDeleteUserProfileImage } from '@/hooks/use-user';
+import { cn } from '@/lib/utils';
 
 interface UserAvatarProps {
-  user: IUser;
+  user: User;
   filePicker: React.RefObject<HTMLInputElement>;
 }
 

@@ -1,38 +1,41 @@
 import type { Row, Table } from '@tanstack/react-table';
 import { X } from 'lucide-react';
+import { IconType } from 'react-icons/lib';
 import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 import { PiStudent, PiStudentFill } from 'react-icons/pi';
 
-import { useDeleteSomeUsers } from '@/hooks/use-user';
-import { cn } from '@/lib/utils';
-import type { IUser } from '@/types/user.interface';
-import { EnumRole } from '@/types/user.interface';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useDeleteSomeUsers } from '@/hooks/use-user';
+import { cn } from '@/lib/utils';
 
 import { DataTableFacetedFilter } from './user-table-faceted-filter';
 import { UserTableViewOptions } from './user-table-view-option';
 
-export const roles = [
+export const roles: Array<{
+  value: Role;
+  label: string;
+  icon: IconType;
+}> = [
   {
-    value: EnumRole.ADMIN,
+    value: 'ADMIN',
     label: 'Admin',
     icon: MdOutlineAdminPanelSettings,
   },
   {
-    value: EnumRole.STUDENT,
+    value: 'STUDENT',
     label: 'Student',
     icon: PiStudent,
   },
   {
-    value: EnumRole.TEACHER,
+    value: 'TEACHER',
     label: 'Teacher',
     icon: PiStudentFill,
   },
 ];
 
 interface UserTableToolbarProps {
-  table: Table<IUser>;
+  table: Table<User>;
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -46,7 +49,7 @@ export function UserTableToolbar({
   const isFiltered = table.getState().columnFilters.length > 0;
 
   const handleDeleteSelectedData = () => {
-    const data = table.getSelectedRowModel().rows.map((row: Row<IUser>) => ({
+    const data = table.getSelectedRowModel().rows.map((row: Row<User>) => ({
       id: row.original.id,
       role: row.original.role,
     }));

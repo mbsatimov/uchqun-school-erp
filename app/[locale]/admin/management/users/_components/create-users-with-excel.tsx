@@ -2,10 +2,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import { useCreateUserByFile } from '@/hooks/use-user';
-import type { TCreateUserByFileSchema } from '@/lib/validators/admin/create-user-by-file-schema';
-import { CreateUserByFileSchema } from '@/lib/validators/admin/create-user-by-file-schema';
-import type { EnumRole } from '@/types/user.interface';
 import { Button } from '@/components/ui/button';
 import { DialogFooter } from '@/components/ui/dialog';
 import {
@@ -16,9 +12,12 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useCreateUserByFile } from '@/hooks/use-user';
+import type { TCreateUserByFileSchema } from '@/lib/validators/admin/create-user-by-file-schema';
+import { CreateUserByFileSchema } from '@/lib/validators/admin/create-user-by-file-schema';
 
 interface CreateUserWithExcelProps {
-  role: EnumRole;
+  role: Role;
 }
 
 export const CreateUserWithExcel: React.FC<CreateUserWithExcelProps> = ({
