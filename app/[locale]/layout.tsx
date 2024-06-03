@@ -11,7 +11,11 @@ import { cn } from '@/lib/utils';
 import '@/styles/globals.css';
 import '@/styles/themes.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  display: 'fallback',
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: 'Attendance App',

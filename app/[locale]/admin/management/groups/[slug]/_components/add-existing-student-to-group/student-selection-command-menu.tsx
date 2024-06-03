@@ -1,7 +1,10 @@
+import { CommandList } from 'cmdk';
 import { Check } from 'lucide-react';
 import type { FC } from 'react';
 import React from 'react';
 
+import { Command, CommandEmpty, ScrollArea, Skeleton } from '@/components/ui';
+import { CommandItem } from '@/components/ui/command';
 import { useSearch } from '@/hooks/use-search';
 import {
   useGetAllStudents,
@@ -10,14 +13,6 @@ import {
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { cn } from '@/lib/utils';
 import type { IStudentPreview } from '@/types/student.interface';
-import { Skeleton } from '@/components/ui/skeleton';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-} from '@/components/ui/command';
 
 interface StudentSelectionCommandMenuProps {
   selectedValues: Array<IStudentPreview>;
@@ -68,7 +63,7 @@ export const StudentSelectionCommandMenu: FC<
         className="flex h-11 w-full rounded-md bg-transparent p-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
       />
       <ScrollArea className="h-[30vh]">
-        <CommandGroup>
+        <CommandList>
           {students.isLoading ? (
             <>
               {Array.from({ length: 10 }).map((_, idx) => (
@@ -79,6 +74,7 @@ export const StudentSelectionCommandMenu: FC<
             </>
           ) : (
             filteredData.map(student => {
+              console.log(student);
               const isActive = selectedValues.includes(student);
               return (
                 <CommandItem
@@ -94,7 +90,7 @@ export const StudentSelectionCommandMenu: FC<
                   />
                   <div
                     className={cn('flex-1', {
-                      'text-yellow-500': student.groupId,
+                      'text-yellow-500': student?.groupId,
                     })}
                   >
                     {student.name} {student.surname}
@@ -107,7 +103,7 @@ export const StudentSelectionCommandMenu: FC<
             })
           )}
           <CommandEmpty>No results found.</CommandEmpty>
-        </CommandGroup>
+        </CommandList>
       </ScrollArea>
     </Command>
   );
