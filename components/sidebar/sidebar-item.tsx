@@ -25,7 +25,7 @@ export const SidebarItem: FC<TSidebarItem> = ({ title, href, icon: Icon }) => {
       )}
     >
       {Icon}
-      <span>{t(title)}</span>
+      <span className="w-full truncate">{t(title)}</span>
     </Link>
   );
 };

@@ -28,7 +28,7 @@ export const MobileNavbarItem: FC<TMobileNavbarItem> = ({
       )}
     >
       {Icon}
-      <span className="truncate text-xs">{t(title)}</span>
+      <span className="w-full truncate text-center text-xs">{t(title)}</span>
     </Link>
   );
 };
