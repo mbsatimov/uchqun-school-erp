@@ -50,7 +50,7 @@ export const GradeHoverCard: FC<GradeHoverCardProps> = ({
           <p className="font-medium">Rate student</p>
           <Button
             size="sm"
-            variant={'link'}
+            variant={'ghost'}
             onClick={() => handleGradeChange(0)}
           >
             clear

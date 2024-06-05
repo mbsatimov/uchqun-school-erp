@@ -35,4 +35,6 @@ interface CourseAttendanceOverview {
 
 interface StudentTodayAttendanceWithLesson extends ILessonPreview {
   status: AttendanceStatus;
+  grade: number | null;
+  comment: string | null;
 }

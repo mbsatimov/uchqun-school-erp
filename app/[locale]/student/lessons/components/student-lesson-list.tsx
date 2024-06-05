@@ -1,14 +1,23 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { HiOutlineStar, HiStar } from 'react-icons/hi2';
 
+import {
+  Badge,
+  Card,
+  CardFooter,
+  CardHeader,
+  Separator,
+  Skeleton,
+} from '@/components/ui';
 import { useGetStudentTodayLessonsStatistics } from '@/hooks/use-attendance';
 import { getCurrentUser } from '@/lib/auth.helper';
+import { gradeColorMap } from '@/lib/constants';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { AttendanceStatusColorsMap } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
-import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Card } from '@/components/ui/card';
+
+import { CommentDialog } from './comment-dialog';
 
 export const StudentLessonList = () => {
   const user = getCurrentUser();
@@ -59,13 +68,36 @@ export const StudentLessonList = () => {
             >
               {lesson.status}
             </Badge>
-            <div className="flex flex-col items-center gap-1 p-6 text-base sm:flex-row lg:text-lg">
+            <CardHeader className="flex-col items-center gap-1 text-base sm:flex-row lg:text-lg">
               <div className="flex-1">{lesson.courseName}</div>
               <div className="text-sm text-muted-foreground lg:text-base">
                 {lesson.startTime.slice(0, -3)} - {lesson.endTime.slice(0, -3)}
               </div>
               <div className="flex-1 text-end">{lesson.teacherName}</div>
-            </div>
+            </CardHeader>
+            <Separator />
+            <CardFooter className="mt-4 justify-between">
+              {!!lesson.grade && (
+                <div className="flex items-center justify-center gap-4">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <div key={i}>
+                      {lesson.grade && lesson.grade > i && (
+                        <HiStar
+                          className={cn(
+                            'size-7 text-primary',
+                            gradeColorMap[lesson.grade]
+                          )}
+                        />
+                      )}
+                      {lesson.grade && lesson.grade <= i && (
+                        <HiOutlineStar className="size-7 text-primary" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+              {lesson.comment && <CommentDialog comment={lesson.comment} />}
+            </CardFooter>
           </Card>
         ))
       )}
