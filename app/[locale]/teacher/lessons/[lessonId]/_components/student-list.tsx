@@ -21,6 +21,19 @@ interface StudentListProps {
   lessonId: number;
 }
 
+export type Attendances = {
+  status: AttendanceStatus;
+  grade: number;
+  comment: string | null;
+  id: number;
+  groupId: number | null;
+  name: string;
+  surname: string;
+  phoneNumber: string;
+  attachment: Attachment | null;
+  role: Role;
+};
+
 export const StudentList: React.FC<StudentListProps> = ({
   attendances,
   lessonId,
@@ -30,10 +43,12 @@ export const StudentList: React.FC<StudentListProps> = ({
   const [studentsAttendance, setStudentsAttendance] = useState(
     attendances.sort((a, b) => a.student.name.localeCompare(b.student.name))
   );
-  const { filteredData, inputValue, setInputValue } = useSearch({
+  const { filteredData, inputValue, setInputValue } = useSearch<Attendances>({
     data: studentsAttendance.map(attendance => ({
       ...attendance.student,
       status: attendance.status,
+      grade: attendance.grade || 0,
+      comment: attendance.comment,
       id: attendance.student.id,
     })),
     searchBy: ['status', 'name', 'surname'],
@@ -41,26 +56,57 @@ export const StudentList: React.FC<StudentListProps> = ({
 
   const handleSubmit = () => {
     const attendancesRequest: Array<AttendancesRequest> =
-      studentsAttendance.map(attendance => {
-        return {
-          id: attendance.id,
-          studentId: attendance.student.id,
-          status: attendance.status,
-          lessonId: lessonId,
-        };
-      });
+      studentsAttendance.map(attendance => ({
+        id: attendance.id,
+        studentId: attendance.student.id,
+        grade: attendance.grade,
+        comment: attendance.comment?.trim(),
+        status: attendance.status,
+        lessonId: lessonId,
+      }));
 
     updateAttendance.mutate(attendancesRequest);
   };
+
+  const handleMarkAllAsPresent = () => {
+    setStudentsAttendance(attendances => {
+      return attendances.map(attendance => ({
+        ...attendance,
+        status: 'PRESENT',
+      }));
+    });
+  };
+
+  const canSave = () => {
+    for (let i = 0; i < attendances.length; i++) {
+      const attendance = attendances[i];
+      const changedAttendance = studentsAttendance[i];
+      if (
+        (attendance.status !== changedAttendance.status &&
+          attendance.status !== 'UNKNOWN') ||
+        attendance.grade !== changedAttendance.grade ||
+        attendance.comment !== changedAttendance.comment
+      ) {
+        return true;
+      }
+    }
+  };
+
   return (
     <div className="mx-auto max-w-2xl">
       <div className="flex justify-end">
-        <Button onClick={handleSubmit}>Save Attendance</Button>
+        <Button
+          onClick={handleSubmit}
+          isLoading={updateAttendance.isPending}
+          disabled={!canSave()}
+        >
+          Save Attendance
+        </Button>
       </div>
       <div className="flex justify-between gap-2 py-4">
         <div className="w-full max-w-sm">
           <Input
-            placeholder={`Search (e.g. '${filteredData[0]?.name} ${filteredData[0]?.surname}', 'present')`}
+            placeholder={'Search student'}
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
           />
@@ -70,13 +116,7 @@ export const StudentList: React.FC<StudentListProps> = ({
             <Button
               variant={'ghost'}
               size={'icon'}
-              onClick={() => {
-                setStudentsAttendance(attendances => {
-                  return attendances.map(attendance => {
-                    return { ...attendance, status: 'PRESENT' };
-                  });
-                });
-              }}
+              onClick={handleMarkAllAsPresent}
             >
               <CheckCheckIcon />
             </Button>

@@ -4,19 +4,11 @@ import { Card } from '@/components/ui';
 
 import { AttStatusPicker } from './att-status-picker';
 import { CommentDialog } from './comment-dialog';
-import { GradeDialog } from './grade-dialog';
+import { GradeHoverCard } from './grade-hover-card';
+import { Attendances } from './student-list';
 
 interface StudentAttendanceListItemProps {
-  item: {
-    status: AttendanceStatus;
-    id: number;
-    groupId: number | null;
-    name: string;
-    surname: string;
-    phoneNumber: string;
-    attachment: Attachment | null;
-    role: Role;
-  };
+  item: Attendances;
   index: number;
   setStudentsAttendance: React.Dispatch<
     React.SetStateAction<Array<Attendance>>
@@ -39,20 +31,17 @@ export const StudentAttendanceListItem: FC<StudentAttendanceListItemProps> = ({
         </div>
         <div className="flex items-center justify-end gap-2">
           <AttStatusPicker
-            currentStatus={item.status}
-            setCurrentStatus={(newStatus: AttendanceStatus) => {
-              setStudentsAttendance(attendances => {
-                return attendances.map(attendance => {
-                  if (attendance.student.id === item.id) {
-                    return { ...attendance, status: newStatus };
-                  }
-                  return attendance;
-                });
-              });
-            }}
+            item={item}
+            setStudentsAttendance={setStudentsAttendance}
           />
-          <GradeDialog />
-          <CommentDialog />
+          <GradeHoverCard
+            item={item}
+            setStudentsAttendance={setStudentsAttendance}
+          />
+          <CommentDialog
+            item={item}
+            setStudentsAttendance={setStudentsAttendance}
+          />
         </div>
       </Card>
     </div>

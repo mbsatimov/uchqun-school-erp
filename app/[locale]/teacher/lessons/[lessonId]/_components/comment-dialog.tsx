@@ -1,6 +1,6 @@
 import { DialogTrigger } from '@radix-ui/react-dialog';
 import { MessageCircleMore } from 'lucide-react';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
 import {
   Button,
@@ -14,11 +14,33 @@ import {
   Textarea,
 } from '@/components/ui';
 
-export const CommentDialog = () => {
-  const [comment, setComment] = useState<string>('');
+import { Attendances } from './student-list';
+
+interface CommentDialogProps {
+  item: Attendances;
+  setStudentsAttendance: React.Dispatch<
+    React.SetStateAction<Array<Attendance>>
+  >;
+}
+
+export const CommentDialog: FC<CommentDialogProps> = ({
+  item,
+  setStudentsAttendance,
+}) => {
+  const [comment, setComment] = useState(item.comment || '');
+  const handleCommentSave = (newComment: string) => {
+    setStudentsAttendance(attendances =>
+      attendances.map(attendance => {
+        if (attendance.student.id === item.id) {
+          return { ...attendance, comment: newComment };
+        }
+        return attendance;
+      })
+    );
+  };
 
   return (
-    <Dialog>
+    <Dialog onOpenChange={() => setComment(item.comment || '')}>
       <DialogTrigger>
         <Button variant={'default'} className="" size={'icon-sm'}>
           <MessageCircleMore className="size-5" />
@@ -42,7 +64,11 @@ export const CommentDialog = () => {
           <DialogClose asChild>
             <Button variant={'outline'}>Cancel</Button>
           </DialogClose>
-          <Button type="submit">Save</Button>
+          <DialogClose asChild>
+            <Button type="submit" onClick={() => handleCommentSave(comment)}>
+              Save
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

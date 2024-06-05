@@ -15,6 +15,8 @@ interface Attendance {
 interface AttendancesRequest {
   id: number;
   status: AttendanceStatus;
+  grade?: number;
+  comment?: string;
   studentId: number;
   lessonId: number;
 }
