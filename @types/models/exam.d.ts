@@ -1,24 +1,19 @@
-import type { ICoursePreview } from './course.interface';
-import type { IGroupPreview } from './group.interface';
-import type { ISemesterPreview } from './semester.interface';
-import type { ITeacherPreview } from './teacher.interface';
-
 type ExamStatus = 'UPCOMING' | 'PROGRESS' | 'FINISHED' | 'CANCELED';
 
-export interface IExam {
+interface IExam {
   id: number;
   name: string;
   attempt: number;
   startTime: string;
   endTime: string;
   status: ExamStatus;
-  course: ICoursePreview;
+  course: CoursePreview;
   teacher: ITeacherPreview;
   semester: ISemesterPreview;
-  groups: Array<IGroupPreview>;
+  groups: Array<GroupPreview>;
 }
 
-export interface IExamRequest {
+interface IExamRequest {
   name: string;
   attempt: number;
   startTime: string;

@@ -7,7 +7,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import type { IStudentPreview } from '@/types/student.interface';
 
 import { StudentSelectionCommandMenu } from './student-selection-command-menu';
 

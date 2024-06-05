@@ -5,11 +5,6 @@ import { CalendarIcon } from 'lucide-react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { useCreateSemester } from '@/hooks/use-semester';
-import { cn } from '@/lib/utils';
-import type { TCreateSemesterSchema } from '@/lib/validators/admin/create-semester-schema';
-import { CreateSemesterSchema } from '@/lib/validators/admin/create-semester-schema';
-import { EnumPortion } from '@/types/semester.interface';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { DialogFooter } from '@/components/ui/dialog';
@@ -33,6 +28,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useCreateSemester } from '@/hooks/use-semester';
+import { portionMap } from '@/lib/constants/portionMap';
+import { cn } from '@/lib/utils';
+import type { TCreateSemesterSchema } from '@/lib/validators/admin/create-semester-schema';
+import { CreateSemesterSchema } from '@/lib/validators/admin/create-semester-schema';
 
 export const CreateSemesterForm = () => {
   const createSemester = useCreateSemester();
@@ -75,9 +75,9 @@ export const CreateSemesterForm = () => {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {Object.keys(EnumPortion).map(portion => (
+                  {Object.keys(portionMap).map(portion => (
                     <SelectItem key={portion} value={portion}>
-                      {portion}
+                      {portionMap[portion as Portion]}
                     </SelectItem>
                   ))}
                 </SelectContent>

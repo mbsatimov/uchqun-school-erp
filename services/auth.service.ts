@@ -9,7 +9,6 @@ import {
   saveCurrentUserToStorage,
   saveRefreshTokenToStorage,
 } from '@/lib/auth.helper';
-import type { IAuthResponse, ILoginRequest } from '@/types/auth.interface';
 import { $apiAuth } from '@/utils/api/interceptor';
 
 export const enum EnumTokens {
@@ -21,8 +20,8 @@ export const enum EnumTokens {
 const AUTH_URL = '/auth';
 
 export const AuthService = {
-  async login(data: ILoginRequest): Promise<AxiosResponse<IAuthResponse>> {
-    const response = await $apiAuth.post<IAuthResponse>(
+  async login(data: LoginRequest): Promise<AxiosResponse<LoginResponse>> {
+    const response = await $apiAuth.post<LoginResponse>(
       `${AUTH_URL}/authenticate`,
       data
     );
@@ -36,9 +35,9 @@ export const AuthService = {
     return response;
   },
 
-  async getNewTokens(): Promise<AxiosResponse<IAuthResponse>> {
+  async getNewTokens(): Promise<AxiosResponse<LoginResponse>> {
     const refreshToken = getRefreshToken();
-    const response = await $apiAuth.post<IAuthResponse>(
+    const response = await $apiAuth.post<LoginResponse>(
       `${AUTH_URL}/refresh`,
       {},
       {

@@ -1,9 +1,6 @@
 import { Trash } from 'lucide-react';
 import React from 'react';
 
-import { useDeleteCourse } from '@/hooks/use-course';
-import { cn } from '@/lib/utils';
-import type { ICourse } from '@/types/course.interface';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,9 +13,11 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { useDeleteCourse } from '@/hooks/use-course';
+import { cn } from '@/lib/utils';
 
 interface CourseItemProps {
-  course: ICourse;
+  course: Course;
 }
 
 export const CourseItem: React.FC<CourseItemProps> = ({ course }) => {

@@ -7,9 +7,9 @@ import Loading from '@/app/[locale]/loading';
 import ScheduleCalendar from '@/components/schedule-calendar/schedule-calendar';
 import { Button } from '@/components/ui/button';
 import { useGetCurrentSemesterByGroupId } from '@/hooks/use-semester';
+import { portionMap } from '@/lib/constants/portionMap';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { cn } from '@/lib/utils';
-import { EnumPortion } from '@/types/semester.interface';
 
 import { AssignSemesterToGroupForm } from './assign-semester-to-group-form';
 
@@ -54,7 +54,7 @@ export const GroupScheduleCalendar: FC<SemesterPageProps> = ({ groupId }) => {
   return (
     <>
       <div className="flex items-center gap-2">
-        <h2 className="text-xl">{EnumPortion[currentSemester.data.portion]}</h2>
+        <h2 className="text-xl">{portionMap[currentSemester.data.portion]}</h2>
         <div className="text-muted-foreground">
           ({currentSemester.data.startDate} - {currentSemester.data.endDate})
         </div>

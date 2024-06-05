@@ -1,6 +1,5 @@
 import type { AxiosResponse } from 'axios';
 
-import type { IExam } from '@/types/exam.interface';
 import { $api } from '@/utils/api/interceptor';
 
 const EXAM_URL = '/exam';

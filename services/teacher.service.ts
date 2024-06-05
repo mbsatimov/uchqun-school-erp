@@ -1,12 +1,6 @@
 import type { AxiosResponse } from 'axios';
 
 import type { IApiResponse } from '@/types/response/api-response';
-import type {
-  ICreateTeacherRequest,
-  ITeacher,
-  ITeacherPreview,
-  IUpdateTeacherRequest,
-} from '@/types/teacher.interface';
 import { $api } from '@/utils/api/interceptor';
 
 const TEACHER_URL = '/teacher';

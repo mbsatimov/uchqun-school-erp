@@ -18,10 +18,10 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useGetAllGlobalSemesters } from '@/hooks/use-semester';
+import { portionMap } from '@/lib/constants/portionMap';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { cn } from '@/lib/utils';
 import type { TGenerateTimetableSchema } from '@/lib/validators/admin/generate-timetable-schema';
-import { EnumPortion } from '@/types/semester.interface';
 
 interface SelectSemesterProps {
   form: UseFormReturn<TGenerateTimetableSchema>;
@@ -64,7 +64,7 @@ export const SelectSemester: FC<SelectSemesterProps> = ({ form }) => {
                     key={semester.id}
                     value={String(semester.id)}
                   >
-                    {EnumPortion[semester.portion]}
+                    {portionMap[semester.portion]}
                     <span className="ml-2 text-xs text-muted-foreground">
                       ({semester.startDate} - {semester.endDate})
                     </span>

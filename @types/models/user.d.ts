@@ -1,12 +1,3 @@
-interface Attachment {
-  id: number;
-  fileName: string;
-  contentType: string;
-  url: string;
-}
-
-type Role = 'ADMIN' | 'TEACHER' | 'STUDENT';
-
 interface User {
   id: number;
   name: string;
@@ -16,11 +7,15 @@ interface User {
   role: Role;
 }
 
-type TUserRequest = Omit<User, 'id' | 'attachment'>;
+type Role = 'ADMIN' | 'TEACHER' | 'STUDENT';
 
-interface ICreateUserRequest extends TUserRequest {
-  password: string;
+interface Attachment {
+  id: number;
+  url: string;
 }
 
+type UserRequest = Omit<User, 'id' | 'attachment'>;
+
 type UsersResponse = Array<User>;
+
 type UserResponse = User;

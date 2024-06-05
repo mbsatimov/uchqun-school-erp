@@ -6,7 +6,6 @@ import {
   useDeleteStudent,
   useRemoveStudentFromGroup,
 } from '@/hooks/use-student';
-import type { IStudentWithGroupPreview } from '@/types/student.interface';
 import {
   AlertDialog,
   AlertDialogAction,

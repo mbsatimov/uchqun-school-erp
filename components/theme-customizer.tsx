@@ -3,17 +3,20 @@ import { CheckIcon, MoonIcon, Paintbrush, SunIcon, Undo2 } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import * as React from 'react';
 
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Switch } from '@/components/ui/switch';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { useConfig } from '@/hooks/use-config';
 import { cn } from '@/lib/utils';
 import '@/styles/mdx.css';
 import { themes } from '@/styles/themes';
-
-import { Button } from './ui/button';
-import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
-import { Label } from './ui/label';
-import { Skeleton } from './ui/skeleton';
-import { Switch } from './ui/switch';
-import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 export function ThemeCustomizer() {
   const [config, setConfig] = useConfig();

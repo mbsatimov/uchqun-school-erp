@@ -3,10 +3,6 @@
 import { Trash } from 'lucide-react';
 import React from 'react';
 
-import { useDeleteSemester } from '@/hooks/use-semester';
-import { cn } from '@/lib/utils';
-import type { ISemesterPreview } from '@/types/semester.interface';
-import { EnumPortion } from '@/types/semester.interface';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,6 +15,9 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useDeleteSemester } from '@/hooks/use-semester';
+import { portionMap } from '@/lib/constants/portionMap';
+import { cn } from '@/lib/utils';
 
 interface SemesterItemProps {
   semester: ISemesterPreview;
@@ -31,7 +30,7 @@ export const SemesterItem: React.FC<SemesterItemProps> = ({ semester }) => {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="truncate text-xl">
-          {EnumPortion[semester.portion]}
+          {portionMap[semester.portion]}
         </CardTitle>
 
         <AlertDialog>

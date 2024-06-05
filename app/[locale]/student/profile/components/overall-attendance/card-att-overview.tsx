@@ -1,14 +1,13 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import type { IAttendanceOverview } from '@/types/attendance.interface';
 
 import { AttBarChart } from './att-bar-chart';
 import { AttPieChart } from './att-pie-chart';
 
 interface CardAttendanceOverviewProps {
   courseName: string;
-  data: IAttendanceOverview;
+  data: AttendanceOverview;
 }
 
 export const CardAttOverview: React.FC<CardAttendanceOverviewProps> = ({

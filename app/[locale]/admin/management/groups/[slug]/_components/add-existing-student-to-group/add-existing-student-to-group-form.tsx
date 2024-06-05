@@ -7,7 +7,6 @@ import { useGetGroupById } from '@/hooks/use-group';
 import { useUpdateSomeStudentsGroup } from '@/hooks/use-student';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { cn } from '@/lib/utils';
-import type { IStudentPreview } from '@/types/student.interface';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { DialogFooter } from '@/components/ui/dialog';

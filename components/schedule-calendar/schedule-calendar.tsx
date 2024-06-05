@@ -2,8 +2,6 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 
-import type { IDailySchedule } from '@/types/daily-schedule.interface';
-
 import { CalendarCellMonth } from './calendar-cell-month';
 import { CalendarCellWeek } from './calendar-cell-week';
 import { CalendarControl } from './calendar-control';

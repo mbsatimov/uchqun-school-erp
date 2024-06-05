@@ -4,15 +4,13 @@ import Cookies from 'js-cookie';
 import { useLocale } from 'next-intl';
 import type { FC } from 'react';
 
-import { locales } from '@/i18n/config';
-
 import {
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from './ui';
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+} from '@/components/ui';
+import { localeMap, locales } from '@/i18n/config';
 
 export const LangSwitcher: FC = () => {
   const locale = useLocale();
@@ -23,17 +21,17 @@ export const LangSwitcher: FC = () => {
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button variant="outline">{locale}</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
+    <Select value={locale} onValueChange={onLocaleChange}>
+      <SelectTrigger className="w-[200px]">
+        {localeMap[locale as (typeof locales)[number]]}
+      </SelectTrigger>
+      <SelectContent>
         {locales.map(locale => (
-          <DropdownMenuItem key={locale} onClick={() => onLocaleChange(locale)}>
-            {locale}
-          </DropdownMenuItem>
+          <SelectItem key={locale} value={locale}>
+            {localeMap[locale]}
+          </SelectItem>
         ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </SelectContent>
+    </Select>
   );
 };

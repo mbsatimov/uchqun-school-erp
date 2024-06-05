@@ -1,12 +1,6 @@
 import type { AxiosResponse } from 'axios';
 
 import type { IAttendanceRecord } from '@/components/attendance-heatmap/heatmap.interface';
-import type {
-  IAttendanceOverview,
-  ICourseAttendanceOverview,
-  IStudentTodayAttendanceWithLesson,
-  IUpdateAttendancesRequest,
-} from '@/types/attendance.interface';
 import type { IApiResponse } from '@/types/response/api-response';
 import { $api } from '@/utils/api/interceptor';
 
@@ -15,22 +9,22 @@ const ATTENDANCE_URL = '/attendance';
 export const AttendanceService = {
   async getStudentSemesterAttendanceStatistics(
     studentId: number
-  ): Promise<AxiosResponse<IAttendanceOverview>> {
-    return $api.get<IAttendanceOverview>(
+  ): Promise<AxiosResponse<AttendanceOverview>> {
+    return $api.get<AttendanceOverview>(
       `${ATTENDANCE_URL}/student/${studentId}/semester-statistics`
     );
   },
 
   async getStudentTodayLessonsStatistics(
     studentId: number
-  ): Promise<AxiosResponse<Array<IStudentTodayAttendanceWithLesson>>> {
-    return $api.get<Array<IStudentTodayAttendanceWithLesson>>(
+  ): Promise<AxiosResponse<Array<StudentTodayAttendanceWithLesson>>> {
+    return $api.get<Array<StudentTodayAttendanceWithLesson>>(
       `${ATTENDANCE_URL}/student/${studentId}/daily-statistics`
     );
   },
 
   async update(
-    data: Array<IUpdateAttendancesRequest>
+    data: Array<AttendancesRequest>
   ): Promise<AxiosResponse<IApiResponse>> {
     return $api.put<IApiResponse>(`${ATTENDANCE_URL}`, data);
   },
@@ -41,8 +35,8 @@ export const AttendanceService = {
   }: {
     studentId: number;
     semesterId?: number;
-  }): Promise<AxiosResponse<ICourseAttendanceOverview>> {
-    return $api.get<ICourseAttendanceOverview>(
+  }): Promise<AxiosResponse<CourseAttendanceOverview>> {
+    return $api.get<CourseAttendanceOverview>(
       `${ATTENDANCE_URL}/student/${studentId}/semester-statistics-from-each-subject`,
       { params: { semesterId } }
     );

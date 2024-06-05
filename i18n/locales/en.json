@@ -16,6 +16,16 @@
       }
     }
   },
+  "settings": {
+    "theme": {
+      "title": "Theme customization",
+      "description": "Change the color theme of the site"
+    },
+    "language": {
+      "title": "Language",
+      "description": "Select your preferred language"
+    }
+  },
   "errors": {
     "500": {
       "title": "Opps! Something went wrong",

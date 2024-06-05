@@ -14,7 +14,7 @@ export const UserService = {
     return $api.get<User>(`${USER_URL}/${id}?role=${role}`);
   },
 
-  async create(data: ICreateUserRequest): Promise<AxiosResponse<IApiResponse>> {
+  async create(data: UserRequest): Promise<AxiosResponse<IApiResponse>> {
     return $api.post<IApiResponse>(USER_URL, data);
   },
 

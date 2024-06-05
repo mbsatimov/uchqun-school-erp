@@ -1,4 +1,5 @@
 'use client';
+
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
@@ -7,7 +8,6 @@ import {
   STUDENTS_QUERY_KEY,
 } from '@/lib/constants/query-keys';
 import { StudentService } from '@/services/student.service';
-import type { IUpdateStudentRequest } from '@/types/student.interface';
 
 const useGetAllStudents = () => {
   return useQuery({

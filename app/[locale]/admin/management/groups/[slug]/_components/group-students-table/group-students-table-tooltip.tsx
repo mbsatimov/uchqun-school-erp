@@ -4,7 +4,6 @@ import type { Table } from '@tanstack/react-table';
 
 import { useRemoveSomeStudentsFromGroup } from '@/hooks/use-student';
 import { cn } from '@/lib/utils';
-import type { IStudentWithGroupPreview } from '@/types/student.interface';
 import { buttonVariants } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {

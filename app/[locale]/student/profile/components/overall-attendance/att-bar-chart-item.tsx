@@ -3,7 +3,6 @@ import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 
 import { Progress } from '@/components/ui/progress';
-import type { AttendanceStatus } from '@/types/attendance.interface';
 interface AttBarChartItemProps {
   status: AttendanceStatus;
   value: number;

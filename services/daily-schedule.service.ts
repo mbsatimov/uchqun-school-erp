@@ -1,6 +1,5 @@
 import type { AxiosResponse } from 'axios';
 
-import type { IDailySchedule } from '@/types/daily-schedule.interface';
 import { $api } from '@/utils/api/interceptor';
 
 const DAILY_SCHEDULE_URL = '/daily-schedule';

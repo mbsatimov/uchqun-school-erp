@@ -4,7 +4,6 @@ import type { FC } from 'react';
 
 import { AttendanceStatusColorsMap } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
-import type { AttendanceStatus } from '@/types/attendance.interface';
 import { Button } from '@/components/ui/button';
 
 interface IAttStatusPickerProps {

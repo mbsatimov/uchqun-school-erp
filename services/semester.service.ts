@@ -1,13 +1,6 @@
 import type { AxiosResponse } from 'axios';
 
 import type { IApiResponse } from '@/types/response/api-response';
-import type {
-  ISemester,
-  ISemesterPreview,
-  ICreateSemesterRequest,
-  IGenerateTimeTableRequest,
-  IUpdateSemesterRequest,
-} from '@/types/semester.interface';
 import { $api } from '@/utils/api/interceptor';
 
 const SEMESTER_URL = '/semester';

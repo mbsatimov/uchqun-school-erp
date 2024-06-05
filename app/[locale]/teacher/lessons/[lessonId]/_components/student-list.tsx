@@ -3,27 +3,21 @@
 import { CheckCheckIcon } from 'lucide-react';
 import React, { useState } from 'react';
 
-import { useUpdateAttendance } from '@/hooks/use-attendance';
-import { useSearch } from '@/hooks/use-search';
-import { getCurrentUser } from '@/lib/auth.helper';
-import type {
-  AttendanceStatus,
-  IAttendance,
-  IUpdateAttendancesRequest,
-} from '@/types/attendance.interface';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { useUpdateAttendance } from '@/hooks/use-attendance';
+import { useSearch } from '@/hooks/use-search';
+import { getCurrentUser } from '@/lib/auth.helper';
 
-import { AttStatusPicker } from './att-status-picker';
+import { StudentAttendanceListItem } from './student-list-item';
 
 interface StudentListProps {
-  attendances: Array<IAttendance>;
+  attendances: Array<Attendance>;
   lessonId: number;
 }
 
@@ -46,7 +40,7 @@ export const StudentList: React.FC<StudentListProps> = ({
   });
 
   const handleSubmit = () => {
-    const attendancesRequest: Array<IUpdateAttendancesRequest> =
+    const attendancesRequest: Array<AttendancesRequest> =
       studentsAttendance.map(attendance => {
         return {
           id: attendance.id,
@@ -92,29 +86,12 @@ export const StudentList: React.FC<StudentListProps> = ({
       </div>
       <div className="space-y-4">
         {filteredData.map((item, index) => (
-          <Card key={item.id} className="flex items-center justify-between p-3">
-            <div className="flex text-sm sm:text-base">
-              <div className="ml-2 mr-6">{index + 1}.</div>
-              <div>
-                {item.name} {item.surname}
-              </div>
-            </div>
-            <div>
-              <AttStatusPicker
-                currentStatus={item.status}
-                setCurrentStatus={(newStatus: AttendanceStatus) => {
-                  setStudentsAttendance(attendances => {
-                    return attendances.map(attendance => {
-                      if (attendance.student.id === item.id) {
-                        return { ...attendance, status: newStatus };
-                      }
-                      return attendance;
-                    });
-                  });
-                }}
-              />
-            </div>
-          </Card>
+          <StudentAttendanceListItem
+            key={item.id}
+            item={item}
+            index={index}
+            setStudentsAttendance={setStudentsAttendance}
+          />
         ))}
       </div>
     </div>

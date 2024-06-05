@@ -7,9 +7,6 @@ import {
   startOfYear,
 } from 'date-fns';
 
-import type { AttendanceStatus } from '@/types/attendance.interface';
-import type { LessonStatus } from '@/types/lesson.interface';
-
 // Helper functions for date manipulation
 export const getStartOfWeek = (date: Date) => {
   return startOfWeek(date, { weekStartsOn: 1 });

@@ -1,28 +1,20 @@
 import type { AxiosResponse } from 'axios';
 
-import type {
-  TGroupRequest as ICreateGroupRequest,
-  IGroup,
-  IGroupPreview,
-  IUpdateGroupRequest,
-} from '@/types/group.interface';
 import type { IApiResponse } from '@/types/response/api-response';
 import { $api } from '@/utils/api/interceptor';
 
 const GROUP_URL = '/groups';
 
 export const GroupService = {
-  async getAll(): Promise<AxiosResponse<Array<IGroupPreview>>> {
-    return $api.get<Array<IGroupPreview>>(GROUP_URL);
+  async getAll(): Promise<AxiosResponse<Array<GroupPreview>>> {
+    return $api.get<Array<GroupPreview>>(GROUP_URL);
   },
 
-  async getById(id: number): Promise<AxiosResponse<IGroup>> {
-    return $api.get<IGroup>(`${GROUP_URL}/${id}`);
+  async getById(id: number): Promise<AxiosResponse<Group>> {
+    return $api.get<Group>(`${GROUP_URL}/${id}`);
   },
 
-  async create(
-    data: ICreateGroupRequest
-  ): Promise<AxiosResponse<IApiResponse>> {
+  async create(data: GroupRequest): Promise<AxiosResponse<IApiResponse>> {
     return $api.post<IApiResponse>(GROUP_URL, data);
   },
 

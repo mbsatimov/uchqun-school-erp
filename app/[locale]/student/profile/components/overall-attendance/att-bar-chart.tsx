@@ -1,11 +1,9 @@
 import React from 'react';
 
-import type { IAttendanceOverview } from '@/types/attendance.interface';
-
 import { AttBarChartItem } from './att-bar-chart-item';
 
 interface AttBarChartProps {
-  data: IAttendanceOverview;
+  data: AttendanceOverview;
 }
 
 export const AttBarChart: React.FC<AttBarChartProps> = ({ data }) => {

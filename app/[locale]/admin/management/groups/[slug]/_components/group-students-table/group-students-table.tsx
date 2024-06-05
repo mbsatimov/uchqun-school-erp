@@ -1,6 +1,5 @@
 'use client';
 
-import * as React from 'react';
 import type { ColumnFiltersState, SortingState } from '@tanstack/react-table';
 import {
   flexRender,
@@ -11,6 +10,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import * as React from 'react';
 
 import {
   Table,
@@ -19,8 +19,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import type { IStudentWithGroupPreview } from '@/types/student.interface';
+} from '@/components/ui';
 
 import { columns } from './columns';
 import { GroupStudentsTableToolbar } from './group-students-table-tooltip';

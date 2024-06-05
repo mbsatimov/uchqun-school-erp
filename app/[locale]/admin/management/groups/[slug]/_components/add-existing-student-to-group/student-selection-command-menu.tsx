@@ -12,7 +12,6 @@ import {
 } from '@/hooks/use-student';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { cn } from '@/lib/utils';
-import type { IStudentPreview } from '@/types/student.interface';
 
 interface StudentSelectionCommandMenuProps {
   selectedValues: Array<IStudentPreview>;

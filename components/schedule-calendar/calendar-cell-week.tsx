@@ -6,8 +6,6 @@ import { useMemo } from 'react';
 import { EditDailySchedule } from '@/app/[locale]/admin/management/groups/[slug]/timetable/_components/edit-daily-schedule-modal';
 import { LessonStatusColorsMap, getStartOfWeek } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
-import type { IDailySchedule } from '@/types/daily-schedule.interface';
-import type { ILessonPreview } from '@/types/lesson.interface';
 
 interface CalendarCellProps extends React.HTMLAttributes<HTMLDivElement> {
   currentDate: Date;

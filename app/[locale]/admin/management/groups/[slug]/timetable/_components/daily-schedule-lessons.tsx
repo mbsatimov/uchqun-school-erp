@@ -3,7 +3,6 @@ import { Trash } from 'lucide-react';
 import React from 'react';
 
 import { useDeleteLesson } from '@/hooks/use-lesson';
-import type { IDailySchedule } from '@/types/daily-schedule.interface';
 import {
   AlertDialog,
   AlertDialogAction,

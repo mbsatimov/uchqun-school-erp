@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 
-import { LangSwitcher } from '@/components/lang-switcher';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
-import { ThemeCustomizer } from '@/components/theme-customizer';
+import { LangSwitcherItem, ThemeCustomizerItem } from '@/components/settings';
 
 export const metadata: Metadata = {
   title: 'Settings',
@@ -12,8 +11,10 @@ export const metadata: Metadata = {
 export default function Settings() {
   return (
     <MaxWidthWrapper>
-      <ThemeCustomizer />
-      <LangSwitcher />
+      <div className="space-y-8">
+        <ThemeCustomizerItem />
+        <LangSwitcherItem />
+      </div>
     </MaxWidthWrapper>
   );
 }

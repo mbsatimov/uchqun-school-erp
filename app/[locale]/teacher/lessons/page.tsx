@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 
-import { LessonList } from './components/teacher-lesson-list';
+import { TeacherLessonList } from './components/teacher-lesson-list';
 
 export const metadata: Metadata = {
   title: 'Lessons',
@@ -18,7 +18,7 @@ export default function Lessons() {
           <h2 className="text-2xl">Today’s lessons</h2>
           <div>{format(new Date(), 'dd MMM yyyy')}</div>
         </div>
-        <LessonList />
+        <TeacherLessonList />
       </div>
     </MaxWidthWrapper>
   );

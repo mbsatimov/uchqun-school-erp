@@ -1,19 +1,18 @@
 'use client';
 
+import { Skeleton } from '@/components/ui/skeleton';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   useGetStudentSemesterAttendanceStatistics,
   useGetStudentSemesterAttendanceStatisticsForEachCourse,
 } from '@/hooks/use-attendance';
 import { getCurrentUser } from '@/lib/auth.helper';
 import { DefaultError } from '@/lib/exceptions/default-exception';
-import type { ICourseAttendanceOverview } from '@/types/attendance.interface';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Skeleton } from '@/components/ui/skeleton';
 
 import { CardDailyAttendance } from './daily-attendance/card-daily-attendance';
 import { CardAttOverview } from './overall-attendance/card-att-overview';
 
-const defaultData: ICourseAttendanceOverview = {
+const defaultData: CourseAttendanceOverview = {
   Overall: {
     present: 0,
     absent: 0,

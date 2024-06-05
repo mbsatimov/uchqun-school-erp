@@ -1,5 +1,3 @@
-import type { IGroup } from '@/types/group.interface';
-
 export interface IOverallAttendance {
   date: string;
   total: number;
@@ -7,6 +5,6 @@ export interface IOverallAttendance {
 }
 
 export interface IGroupStatistics {
-  group: IGroup | null;
+  group: Group | null;
   percentage: number;
 }

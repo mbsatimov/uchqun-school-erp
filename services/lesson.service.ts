@@ -1,10 +1,5 @@
 import type { AxiosResponse } from 'axios';
 
-import type {
-  ILesson,
-  ILessonPreview,
-  ILessonCreate,
-} from '@/types/lesson.interface';
 import type { IApiResponse } from '@/types/response/api-response';
 import { $api } from '@/utils/api/interceptor';
 

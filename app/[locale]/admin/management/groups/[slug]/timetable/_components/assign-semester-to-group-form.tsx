@@ -3,13 +3,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { Button } from '@/components/ui/button';
+import { Form, FormDescription } from '@/components/ui/form';
 import { useGenerateTimeTable } from '@/hooks/use-semester';
+import { dayMap } from '@/lib/constants/dayMap';
 import type { TGenerateTimetableSchema } from '@/lib/validators/admin/generate-timetable-schema';
 import { GenerateTimetableSchema } from '@/lib/validators/admin/generate-timetable-schema';
-import type { IDailyScheduleCreate } from '@/types/daily-schedule.interface';
-import { EnumDay } from '@/types/daily-schedule.interface';
-import { Form, FormDescription } from '@/components/ui/form';
-import { Button } from '@/components/ui/button';
 
 import { SelectSemester } from './select-semester';
 import { Timetable } from './timetable';
@@ -19,8 +18,8 @@ interface AddSemesterToGroupProps {
   setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const initialDailySchedules = Object.values(EnumDay).map(day => ({
-  dayOfWeek: day,
+export const initialDailySchedules = Object.keys(dayMap).map(day => ({
+  dayOfWeek: day as Day,
   lessons: [],
 }));
 

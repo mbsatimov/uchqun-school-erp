@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
-import { ThemeCustomizer } from '@/components/theme-customizer';
+import { ThemeCustomizerItem } from '@/components/settings';
 
 export const metadata: Metadata = {
   title: 'Settings',
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Settings() {
   return (
     <MaxWidthWrapper>
-      <ThemeCustomizer />
+      <ThemeCustomizerItem />
     </MaxWidthWrapper>
   );
 }

@@ -1,10 +1,8 @@
 'use client';
 import { Cell, Pie, PieChart } from 'recharts';
 
-import type { IAttendanceOverview } from '@/types/attendance.interface';
-
 interface AttPieChartProps {
-  data: IAttendanceOverview;
+  data: AttendanceOverview;
 }
 
 export const AttPieChart: React.FC<AttPieChartProps> = ({ data }) => {

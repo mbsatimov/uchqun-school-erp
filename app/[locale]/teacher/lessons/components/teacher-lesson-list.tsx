@@ -3,17 +3,15 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+import { Badge, Card, Skeleton } from '@/components/ui';
 import { useGetTeacherTodayLessons } from '@/hooks/use-lesson';
 import { getCurrentUser } from '@/lib/auth.helper';
 import R from '@/lib/config/routes';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { LessonStatusColorsMap } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
-import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Card } from '@/components/ui/card';
 
-export const LessonList = () => {
+export const TeacherLessonList = () => {
   const user = getCurrentUser();
   const lessons = useGetTeacherTodayLessons(user.id);
   const [mounted, setMounted] = useState(false);

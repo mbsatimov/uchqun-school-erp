@@ -1,0 +1,41 @@
+{
+  "sidebar": {
+    "links": {
+      "dashboard": "Statistika",
+      "lessons": "Darslar",
+      "schedule": "Jadval",
+      "management": "Boshqaruv paneli",
+      "settings": "Sozlamalar"
+    }
+  },
+  "header": {
+    "menu": {
+      "links": {
+        "profile": "Profil",
+        "logout": "Chiqish"
+      }
+    }
+  },
+  "settings": {
+    "theme": {
+      "title": "Korinishni o'zgartirish",
+      "description": "Dasturni ozingizga yoqgan ko'rinishini tanlang"
+    },
+    "language": {
+      "title": "Til",
+      "description": "O'zingizga maqul bo'lgan tilni tanlang"
+    }
+  },
+  "errors": {
+    "500": {
+      "title": "Ой, что-то пошло не так",
+      "description": "К сожалению, запрос не может быть обработан. Если вы считаете, что произошла ошибка, сообщите об этом.",
+      "report": "Сообщить об ошибке"
+    },
+    "404": {
+      "title": "Страница не найдена",
+      "description": "Пожалуйста, проверьте URL-адрес или вернитесь назад.",
+      "back": "Вернуться назад"
+    }
+  }
+}

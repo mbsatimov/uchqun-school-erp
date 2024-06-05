@@ -1,17 +1,6 @@
 import type { AxiosResponse } from 'axios';
 
-import type { IAttendanceOverview } from '@/types/attendance.interface';
 import type { IApiResponse } from '@/types/response/api-response';
-import type {
-  ICreateStudentAndAddToGroupByFileRequest,
-  ICreateStudentAndAddToGroupRequest,
-  ICreateStudentRequest,
-  IStudent,
-  IStudentPreview,
-  IStudentWithGroupPreview,
-  IUpdateStudentGroupRequest,
-  IUpdateStudentRequest,
-} from '@/types/student.interface';
 import { $api } from '@/utils/api/interceptor';
 
 const STUDENT_URL = '/student';
@@ -27,8 +16,8 @@ export const StudentService = {
 
   async getAttendanceOverview(
     id: number
-  ): Promise<AxiosResponse<IAttendanceOverview>> {
-    return $api.get<IAttendanceOverview>(`${STUDENT_URL}/${id}/attendance`);
+  ): Promise<AxiosResponse<AttendanceOverview>> {
+    return $api.get<AttendanceOverview>(`${STUDENT_URL}/${id}/attendance`);
   },
 
   async getAllByGroupId(

@@ -4,13 +4,14 @@ import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 import Loading from '@/app/[locale]/loading';
-import { StudentList } from '@/app/[locale]/teacher/lessons/components/student-list';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { buttonVariants } from '@/components/ui/button';
 import { useGetLessonById } from '@/hooks/use-lesson';
 import R from '@/lib/config/routes';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { cn } from '@/lib/utils';
+
+import { StudentList } from './_components/student-list';
 
 function GroupAttendancePage({
   params: { lessonId },

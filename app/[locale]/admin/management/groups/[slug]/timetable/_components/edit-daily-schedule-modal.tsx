@@ -9,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import type { IDailySchedule } from '@/types/daily-schedule.interface';
 
 import { AddLesson } from './add-lesson';
 import { DailyScheduleLessons } from './daily-schedule-lessons';
