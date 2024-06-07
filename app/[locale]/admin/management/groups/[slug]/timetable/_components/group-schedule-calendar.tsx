@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import React from 'react';
 
 import Loading from '@/app/[locale]/loading';
-import ScheduleCalendar from '@/components/schedule-calendar/schedule-calendar';
+import { ScheduleCalendar } from '@/components/schedule-calendar';
 import { Button } from '@/components/ui/button';
 import { useGetCurrentSemesterByGroupId } from '@/hooks/use-semester';
 import { portionMap } from '@/lib/constants/portionMap';

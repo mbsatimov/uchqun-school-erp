@@ -13,7 +13,7 @@ interface ScheduleCalendarProps {
   editable?: boolean;
 }
 
-const ScheduleCalendar: FC<ScheduleCalendarProps> = ({
+export const ScheduleCalendar: FC<ScheduleCalendarProps> = ({
   defaultViewMode = 'week',
   dailySchedules,
   editable = false,
@@ -50,5 +50,3 @@ const ScheduleCalendar: FC<ScheduleCalendarProps> = ({
     </div>
   );
 };
-
-export default ScheduleCalendar;

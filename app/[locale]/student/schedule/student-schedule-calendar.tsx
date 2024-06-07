@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import Loading from '@/app/[locale]/loading';
-import ScheduleCalendar from '@/components/schedule-calendar/schedule-calendar';
+import { ScheduleCalendar } from '@/components/schedule-calendar';
 import { useGetStudentCurrentSemester } from '@/hooks/use-semester';
 import { getCurrentUser } from '@/lib/auth.helper';
 import { DefaultError } from '@/lib/exceptions/default-exception';
