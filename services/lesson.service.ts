@@ -6,22 +6,22 @@ import { $api } from '@/utils/api/interceptor';
 const LESSON_URL = '/lesson';
 
 export const LessonService = {
-  async getById(id: number): Promise<AxiosResponse<ILesson>> {
-    return $api.get<ILesson>(`${LESSON_URL}/${id}`);
+  async getById(id: number): Promise<AxiosResponse<Lesson>> {
+    return $api.get<Lesson>(`${LESSON_URL}/${id}`);
   },
 
   async getTeacherTodayLessons(
     teacherId: number
-  ): Promise<AxiosResponse<Array<ILessonPreview>>> {
-    return $api.get<Array<ILessonPreview>>(
+  ): Promise<AxiosResponse<Array<LessonPreview>>> {
+    return $api.get<Array<LessonPreview>>(
       `${LESSON_URL}/teacher-today-lessons/${teacherId}`
     );
   },
 
   async getLessonsByDailyScheduleId(
     dailyScheduleId: number
-  ): Promise<AxiosResponse<Array<ILesson>>> {
-    return $api.get<Array<ILesson>>(
+  ): Promise<AxiosResponse<Array<Lesson>>> {
+    return $api.get<Array<Lesson>>(
       `${LESSON_URL}/${dailyScheduleId}/daily-schedule`
     );
   },
@@ -33,7 +33,7 @@ export const LessonService = {
   }: {
     dailyScheduleId: number;
     allWeeks: boolean;
-    data: ILessonCreate;
+    data: LessonRequest;
   }): Promise<AxiosResponse<IApiResponse>> {
     return $api.post<IApiResponse>(
       `${LESSON_URL}/${dailyScheduleId}?isItForSemester=${allWeeks}`,

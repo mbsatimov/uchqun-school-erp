@@ -1,7 +1,7 @@
 'use client';
-import { SetStateAction } from 'jotai';
 import { Edit, Trash } from 'lucide-react';
-import React, { Dispatch } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 
 import {
   AlertDialog,
@@ -19,7 +19,7 @@ import { Switch } from '@/components/ui/switch';
 import { useDeleteLesson } from '@/hooks/use-lesson';
 
 interface IDailyScheduleLessonsListProps {
-  dailySchedule: IDailySchedule;
+  dailySchedule: DailySchedule;
   setLesson: Dispatch<SetStateAction<LessonPreview | undefined>>;
 }
 
@@ -56,7 +56,7 @@ export const DailyScheduleLessonsList: React.FC<
             <span className="truncate text-lg" title={lesson.courseName}>
               {lesson.courseName}
             </span>
-            <div>
+            <div className="space-x-2">
               <button onClick={() => handleUpdate(lesson)}>
                 <Edit className="h-5 w-5 justify-end text-yellow-500" />
               </button>

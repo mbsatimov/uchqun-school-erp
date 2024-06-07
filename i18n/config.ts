@@ -8,7 +8,7 @@ export const pathnames = {} satisfies Pathnames<typeof locales>;
 
 export const localePrefix = 'never';
 
-export const localeMap: Record<typeof locales[number], string> = {
+export const localeMap: Record<(typeof locales)[number], string> = {
   en: 'English',
   ru: 'Русский',
   uz: "O'zbek tili",

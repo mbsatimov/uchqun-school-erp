@@ -1,6 +1,7 @@
 import { DialogTrigger } from '@radix-ui/react-dialog';
 import { MessageCircleMore } from 'lucide-react';
-import { FC, useState } from 'react';
+import type { FC } from 'react';
+import { useState } from 'react';
 
 import {
   Button,
@@ -14,7 +15,7 @@ import {
   Textarea,
 } from '@/components/ui';
 
-import { Attendances } from './student-list';
+import type { Attendances } from './student-list';
 
 interface CommentDialogProps {
   item: Attendances;
@@ -32,7 +33,7 @@ export const CommentDialog: FC<CommentDialogProps> = ({
     setStudentsAttendance(attendances =>
       attendances.map(attendance => {
         if (attendance.student.id === item.id) {
-          return { ...attendance, comment: newComment };
+          return { ...attendance, comment: newComment ? newComment : null };
         }
         return attendance;
       })

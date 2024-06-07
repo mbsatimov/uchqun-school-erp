@@ -7,16 +7,16 @@ interface Attendance {
   date: Date;
   group: Group;
   course: Course;
-  grade: number;
-  comment: string;
+  grade: number | null;
+  comment: string | null;
   absentReason: string;
 }
 
 interface AttendancesRequest {
   id: number;
   status: AttendanceStatus;
-  grade?: number;
-  comment?: string;
+  grade?: number | null;
+  comment?: string | null;
   studentId: number;
   lessonId: number;
 }
@@ -33,7 +33,7 @@ interface CourseAttendanceOverview {
   [courseName: string]: AttendanceOverview;
 }
 
-interface StudentTodayAttendanceWithLesson extends ILessonPreview {
+interface StudentTodayAttendanceWithLesson extends LessonPreview {
   status: AttendanceStatus;
   grade: number | null;
   comment: string | null;

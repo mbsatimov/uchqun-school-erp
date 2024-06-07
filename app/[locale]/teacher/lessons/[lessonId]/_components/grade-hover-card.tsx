@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { HiOutlineStar, HiStar } from 'react-icons/hi2';
 
 import {
@@ -10,7 +10,7 @@ import {
 import { gradeColorMap } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
-import { Attendances } from './student-list';
+import type { Attendances } from './student-list';
 
 interface GradeHoverCardProps {
   item: Attendances;
@@ -23,7 +23,7 @@ export const GradeHoverCard: FC<GradeHoverCardProps> = ({
   item,
   setStudentsAttendance,
 }) => {
-  const handleGradeChange = (grade: number) => {
+  const handleGradeChange = (grade: number | null) => {
     setStudentsAttendance(attendances =>
       attendances.map(attendance => {
         if (attendance.student.id === item.id) {
@@ -51,7 +51,7 @@ export const GradeHoverCard: FC<GradeHoverCardProps> = ({
           <Button
             size="sm"
             variant={'ghost'}
-            onClick={() => handleGradeChange(0)}
+            onClick={() => handleGradeChange(null)}
           >
             clear
           </Button>

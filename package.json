@@ -63,8 +63,6 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@siberiacancode/eslint": "^1.1.0",
-    "@siberiacancode/prettier": "^1.1.0",
     "@tanstack/eslint-plugin-query": "^5.35.6",
     "@types/js-cookie": "^3.0.6",
     "@types/negotiator": "^0.6.3",

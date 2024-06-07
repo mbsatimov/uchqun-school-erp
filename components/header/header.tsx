@@ -28,10 +28,8 @@ export const Header: React.FC<HeaderProps> = ({
   )?.title;
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/30 backdrop-blur">
-      <MaxWidthWrapper className="flex justify-between h-14 items-center">
-        <h1 className="mr-2 truncate text-2xl font-bold">
-          {t(headerTitle)}
-        </h1>
+      <MaxWidthWrapper className="flex h-14 items-center justify-between">
+        <h1 className="mr-2 truncate text-2xl font-bold">{t(headerTitle)}</h1>
         <div className="flex flex-shrink-0 items-center justify-end space-x-2">
           {children}
           <div className="flex items-center space-x-2">

@@ -22,8 +22,10 @@ interface MutationSettings<Params = void, Func = unknown> {
 }
 
 interface ApiErrorResponse {
-  message: string;
-  httpStatus: number;
+  data: {
+    message: string;
+    httpStatus: number;
+  };
 }
 
 type ApiRequestConfig = import('axios').AxiosRequestConfig;

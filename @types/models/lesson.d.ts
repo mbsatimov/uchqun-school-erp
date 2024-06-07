@@ -1,6 +1,6 @@
 type LessonStatus = 'COMPLETED' | 'SKIPPED' | 'UPCOMING';
 
-interface ILessonPreview {
+interface LessonPreview {
   id: number;
   teacherName: string;
   courseName: string;
@@ -10,7 +10,7 @@ interface ILessonPreview {
   lessonStatus: LessonStatus;
 }
 
-interface ILesson {
+interface Lesson {
   id: number;
   course: CoursePreview;
   teacher: ITeacherPreview;
@@ -20,7 +20,9 @@ interface ILesson {
   lessonStatus: LessonStatus;
 }
 
-interface ILessonCreate extends Pick<ILesson, 'startTime' | 'endTime'> {
+interface LessonRequest {
   courseId: number;
   teacherId: number;
+  startTime: string;
+  endTime: string;
 }

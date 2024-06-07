@@ -2,7 +2,6 @@
 import { Trash } from 'lucide-react';
 import React from 'react';
 
-import { useDeleteLesson } from '@/hooks/use-lesson';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,9 +15,10 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
+import { useDeleteLesson } from '@/hooks/use-lesson';
 
 interface IDailyScheduleLessonsProps {
-  dailySchedule: IDailySchedule;
+  dailySchedule: DailySchedule;
 }
 
 export const DailyScheduleLessons: React.FC<IDailyScheduleLessonsProps> = ({

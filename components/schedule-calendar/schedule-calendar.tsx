@@ -9,14 +9,16 @@ import { CalendarHeader } from './calendar-header';
 
 interface ScheduleCalendarProps {
   defaultViewMode?: 'week' | 'month';
-  dailySchedules: Array<IDailySchedule>;
+  dailySchedules: Array<DailySchedule>;
   editable?: boolean;
+  onLessonClick?: (lesson: LessonPreview) => void;
 }
 
 export const ScheduleCalendar: FC<ScheduleCalendarProps> = ({
   defaultViewMode = 'week',
   dailySchedules,
   editable = false,
+  onLessonClick,
 }) => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [viewMode, setViewMode] = useState<'week' | 'month'>(defaultViewMode);
@@ -37,12 +39,14 @@ export const ScheduleCalendar: FC<ScheduleCalendarProps> = ({
               currentDate={currentDate}
               dailySchedules={dailySchedules}
               editable={editable}
+              onLessonClick={onLessonClick}
             />
           ) : (
             <CalendarCellWeek
               currentDate={currentDate}
               dailySchedules={dailySchedules}
               editable={editable}
+              onLessonClick={onLessonClick}
             />
           )}
         </div>

@@ -1,17 +1,20 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import Loading from '@/app/[locale]/loading';
 import { ScheduleCalendar } from '@/components/schedule-calendar';
 import { useGetTeacherDailySchedules } from '@/hooks/use-daily-schedule';
 import { getCurrentUser } from '@/lib/auth.helper';
+import R from '@/lib/config/routes';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 
 export const TeacherScheduleCalendar = () => {
   const user = getCurrentUser();
   const teacherCurrentSemester = useGetTeacherDailySchedules(user.id);
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
@@ -32,6 +35,7 @@ export const TeacherScheduleCalendar = () => {
       <ScheduleCalendar
         dailySchedules={teacherCurrentSemester.data}
         defaultViewMode="month"
+        onLessonClick={lesson => router.push(R.TEACHER_LESSON(lesson.id))}
       />
     </div>
   );

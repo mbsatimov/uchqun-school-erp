@@ -7,16 +7,16 @@ type Day =
   | 'SATURDAY'
   | 'SUNDAY';
 
-interface IDailySchedule {
+interface DailySchedule {
   id: number;
   courseDate: string;
-  lessons: Array<ILessonPreview>;
+  lessons: Array<LessonPreview>;
   semester: ISemester;
   dayOfWeek: Day;
 }
 
 interface IDailyScheduleCreate {
-  lessons: Array<ILessonCreate>;
+  lessons: Array<LessonRequest>;
   dayOfWeek: string;
 }
 

@@ -83,7 +83,7 @@ export const StudentList: React.FC<StudentListProps> = ({
       const changedAttendance = studentsAttendance[i];
       if (
         (attendance.status !== changedAttendance.status &&
-          attendance.status !== 'UNKNOWN') ||
+          changedAttendance.status !== 'UNKNOWN') ||
         attendance.grade !== changedAttendance.grade ||
         attendance.comment !== changedAttendance.comment
       ) {

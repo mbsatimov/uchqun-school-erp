@@ -14,7 +14,7 @@ interface ISemester {
   startDate: string;
   endDate: string;
   academicYear: number;
-  dailySchedules: Array<IDailySchedule>;
+  dailySchedules: Array<DailySchedule>;
   isPresent: boolean;
   portion: Portion;
 }

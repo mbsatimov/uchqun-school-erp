@@ -14,7 +14,7 @@ import { AddLesson } from './add-lesson';
 import { DailyScheduleLessons } from './daily-schedule-lessons';
 
 interface EditDailyScheduleProps {
-  dailySchedule: IDailySchedule;
+  dailySchedule: DailySchedule;
 }
 
 export const EditDailySchedule: React.FC<EditDailyScheduleProps> = ({

@@ -3,20 +3,23 @@ import { format, isSameMonth } from 'date-fns';
 import type { FC } from 'react';
 import { useMemo } from 'react';
 
-import { EditDailySchedule } from '@/app/[locale]/admin/management/groups/[slug]/timetable/_components/edit-daily-schedule-modal';
-import { LessonStatusColorsMap, getWeeks } from '@/lib/helpers';
+import { getWeeks } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
+
+import { CalendarCell } from './calendar-cell';
 
 interface CalendarCellMonthProps extends React.HTMLAttributes<HTMLDivElement> {
   currentDate: Date;
-  dailySchedules: Array<IDailySchedule>;
+  dailySchedules: Array<DailySchedule>;
   editable: boolean;
+  onLessonClick?: (lesson: LessonPreview) => void;
 }
 
 export const CalendarCellMonth: FC<CalendarCellMonthProps> = ({
   currentDate,
   dailySchedules,
   editable,
+  onLessonClick,
 }) => {
   const weeks = useMemo(() => getWeeks(currentDate), [currentDate]);
 
@@ -34,43 +37,13 @@ export const CalendarCellMonth: FC<CalendarCellMonthProps> = ({
               schedule => schedule.courseDate === format(day, 'yyyy-MM-dd')
             )
             .map(dailySchedule => (
-              <div key={dailySchedule.id}>
-                <div className="mb-1 flex items-center justify-between">
-                  <div className="flex items-center justify-center">
-                    {day.getDate()}
-                  </div>
-                  <div className="invisible group-hover:visible">
-                    {editable ? (
-                      <EditDailySchedule dailySchedule={dailySchedule} />
-                    ) : null}
-                  </div>
-                </div>
-                <div className="space-y-1.5">
-                  {dailySchedule.lessons.map(lesson => (
-                    <div
-                      key={lesson.id}
-                      className="flex justify-between rounded-md bg-green-500/20 p-2"
-                    >
-                      <div>
-                        <h4 className="truncate" title={lesson.courseName}>
-                          {lesson.courseName}
-                        </h4>
-                        <div className="truncate text-xs text-muted-foreground">
-                          at {lesson.startTime.slice(0, -3)} -{' '}
-                          {lesson.endTime.slice(0, -3)}
-                        </div>
-                      </div>
-                      <div
-                        className={cn(
-                          'w-1 cursor-pointer rounded-e-md',
-                          LessonStatusColorsMap[lesson.lessonStatus]
-                        )}
-                        title={lesson.lessonStatus}
-                      ></div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <CalendarCell
+                key={dailySchedule.id}
+                editable={editable}
+                day={day}
+                dailySchedule={dailySchedule}
+                onLessonClick={onLessonClick}
+              />
             ))}
         </div>
       ))}

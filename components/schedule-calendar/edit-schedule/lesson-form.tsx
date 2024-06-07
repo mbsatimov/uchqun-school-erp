@@ -163,7 +163,7 @@ export const LessonForm: React.FC<LessonFormProps> = ({
             disabled={createLesson.isPending}
             isLoading={createLesson.isPending || updateLesson.isPending}
           >
-            Save
+            {lesson ? 'Update' : 'Create'}
           </Button>
         </div>
       </form>
