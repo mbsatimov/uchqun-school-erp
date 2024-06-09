@@ -30,7 +30,7 @@ const useCreateTeacher = () => {
     mutationFn: TeacherService.create,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -44,7 +44,7 @@ const useUpdateTeacher = () => {
     mutationFn: TeacherService.update,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -58,7 +58,7 @@ const useDeleteTeacher = () => {
     mutationFn: TeacherService.deleteById,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -72,7 +72,7 @@ const useDeleteSomeTeachers = () => {
     mutationFn: TeacherService.deleteSomeById,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);

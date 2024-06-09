@@ -9,12 +9,8 @@ export const LessonService = {
     return $api.get<Lesson>(`${LESSON_URL}/${id}`);
   },
 
-  async getTeacherTodayLessons(
-    teacherId: number
-  ): Promise<AxiosResponse<Array<LessonPreview>>> {
-    return $api.get<Array<LessonPreview>>(
-      `${LESSON_URL}/teacher-today-lessons/${teacherId}`
-    );
+  async getTeacherTodayLessons(): Promise<AxiosResponse<Array<LessonPreview>>> {
+    return $api.get<Array<LessonPreview>>(`${LESSON_URL}/teacher`);
   },
 
   async getLessonsByDailyScheduleId(

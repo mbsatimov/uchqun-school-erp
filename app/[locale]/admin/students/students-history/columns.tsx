@@ -14,8 +14,6 @@ import {
 } from '@/components/ui';
 import { attendanceStatusColorsMap } from '@/lib/constants/attendanceStatusColorMap';
 
-import { UserTableColumnHeader } from './header-table';
-
 export const columns: Array<ColumnDef<StudentAttendance>> = [
   {
     id: 'select',
@@ -43,18 +41,14 @@ export const columns: Array<ColumnDef<StudentAttendance>> = [
   },
   {
     accessorKey: 'date',
-    header: ({ column }) => (
-      <UserTableColumnHeader column={column} title="Date" />
-    ),
+    header: 'Date',
     cell: ({ row }) => {
       return <div>{format(row.original.date, 'dd MMM yyyy')}</div>;
     },
   },
   {
     accessorKey: 'name',
-    header: ({ column }) => (
-      <UserTableColumnHeader column={column} title="Full name" />
-    ),
+    header: 'Full name',
     cell: ({ row }) => {
       const { name, surname } = row.original;
       const fullName = `${name} ${surname}`;
@@ -64,9 +58,7 @@ export const columns: Array<ColumnDef<StudentAttendance>> = [
   },
   {
     accessorKey: 'phoneNumber',
-    header: ({ column }) => (
-      <UserTableColumnHeader column={column} title="Phone" />
-    ),
+    header: 'Phone',
     cell: ({ row }) => {
       const phoneNumber: string = row.getValue('phoneNumber');
 
@@ -88,9 +80,7 @@ export const columns: Array<ColumnDef<StudentAttendance>> = [
   },
   {
     accessorKey: 'status',
-    header: ({ column }) => (
-      <UserTableColumnHeader column={column} title="Status" />
-    ),
+    header: 'Status',
     cell: ({ row }) => {
       return (
         <Badge className={attendanceStatusColorsMap[row.original.status]}>
@@ -101,9 +91,7 @@ export const columns: Array<ColumnDef<StudentAttendance>> = [
   },
   {
     accessorKey: 'grade',
-    header: ({ column }) => (
-      <UserTableColumnHeader column={column} title="Grade" />
-    ),
+    header: 'Grade',
     cell: ({ row }) => {
       return <div>{row.original.grade}</div>;
     },

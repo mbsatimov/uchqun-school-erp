@@ -19,14 +19,13 @@ export const useGetLessonById = (id: number) => {
   });
 };
 
-export const useGetTeacherTodayLessons = (teacherId: number) => {
+export const useGetTeacherTodayLessons = () => {
   return useQuery({
-    queryKey: [LESSONS_QUERY_KEY, { teacherId }],
+    queryKey: [LESSONS_QUERY_KEY, { teacherId: 'today' }],
     queryFn: async () => {
-      const res = await LessonService.getTeacherTodayLessons(teacherId);
+      const res = await LessonService.getTeacherTodayLessons();
       return res.data;
     },
-    enabled: !!teacherId,
   });
 };
 
@@ -51,7 +50,7 @@ export const useCreateLesson = (dailyScheduleId: number) => {
         queryKey: [LESSONS_QUERY_KEY, { dailyScheduleId }],
       });
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -68,7 +67,7 @@ export const useDeleteLesson = (dailyScheduleId: number) => {
         queryKey: [LESSONS_QUERY_KEY, { dailyScheduleId }],
       });
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);

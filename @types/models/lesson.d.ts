@@ -20,6 +20,9 @@ interface Lesson {
   lessonStatus: LessonStatus;
 }
 
+type LessonsResponse = Array<LessonPreview>;
+type LessonResponse = Lesson;
+
 interface LessonRequest {
   courseId: number;
   teacherId: number;

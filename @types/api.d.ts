@@ -27,8 +27,7 @@ interface ApiErrorResponse {
   };
 }
 
-interface ApiConfig<Params = undefined>
-  extends import('axios').AxiosRequestConfig {
+interface ApiConfig<Params = any> extends import('axios').AxiosRequestConfig {
   params: Params['params'];
 }
 

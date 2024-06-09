@@ -1,26 +1,23 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import { Badge, Card, Skeleton } from '@/components/ui';
-import { useGetTeacherTodayLessons } from '@/hooks/use-lesson';
-import { getCurrentUser } from '@/lib/auth.helper';
 import R from '@/lib/config/routes';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { LessonStatusColorsMap } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
+import { useGetTeacherLessonsQuery } from '@/utils/api/hooks/lessons/teacher';
 
 export const TeacherLessonList = () => {
-  const user = getCurrentUser();
-  const lessons = useGetTeacherTodayLessons(user.id);
-  const [mounted, setMounted] = useState(false);
+  const config = useSearchParams();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const lessons = useGetTeacherLessonsQuery({
+    request: { config: { params: { date: config.get('date') || undefined } } },
+  });
 
-  if (!mounted || lessons.isLoading)
+  if (lessons.isLoading)
     return (
       <>
         {Array.from({ length: 3 }).map((_, i) => (
@@ -36,7 +33,7 @@ export const TeacherLessonList = () => {
       </>
     );
 
-  if (lessons.isSuccess && lessons.data?.length === 0)
+  if (lessons.isSuccess && lessons.data?.data.length === 0)
     return (
       <p className="flex h-14 items-center justify-center text-2xl font-medium">
         Today no lessons
@@ -47,10 +44,10 @@ export const TeacherLessonList = () => {
 
   return (
     <>
-      {lessons.data?.length === 0 ? (
+      {lessons.data?.data.length === 0 ? (
         <p>Today no lessons</p>
       ) : (
-        lessons.data?.map(lesson => (
+        lessons.data?.data.map(lesson => (
           <Link key={lesson.id} href={R.TEACHER_LESSON(lesson.id)}>
             <Card className="relative hover:bg-accent/50">
               <Badge

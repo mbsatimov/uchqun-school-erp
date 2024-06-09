@@ -11,5 +11,5 @@ type GetAttendancesParams = {
 
 export type GetAttendancesRequest = ApiRequest<GetAttendancesParams>;
 
-export const getAttendances = ({ config }: GetAttendancesRequest) =>
-  $api.get('attendance', config);
+export const getAttendances = (request?: GetAttendancesRequest) =>
+  $api.get('attendance', request?.config);

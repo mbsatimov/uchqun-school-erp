@@ -11,5 +11,5 @@ export const usePutLessonsIdMutation = (
   useMutation({
     mutationKey: [PUT_LESSONS_ID_MUTATION_KEY],
     mutationFn: putLessonsId,
-    ...settings?.options,
+    ...settings.options,
   });

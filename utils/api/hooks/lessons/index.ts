@@ -11,6 +11,7 @@ export const useGetLessonsQuery = (
   useQuery({
     queryKey: [GET_LESSONS_QUERY_KEY],
     queryFn: () => getLessons(settings?.request),
+    select: ({ data }) => data,
     ...settings?.options,
   });
 
