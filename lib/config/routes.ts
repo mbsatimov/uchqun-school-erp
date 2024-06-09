@@ -15,6 +15,8 @@ const ROUTES = {
 
   // ADMIN
   ADMIN_DASHBOARD: `${ADMIN}/dashboard`,
+  ADMIN_STUDENTS: `${ADMIN}/students`,
+  ADMIN_FINANCES: `${ADMIN}/finances`,
   ADMIN_PROFILE: `${ADMIN}/profile`,
   ADMIN_SETTINGS: `${ADMIN}/settings`,
 
@@ -25,8 +27,6 @@ const ROUTES = {
   ADMIN_GROUP_TIMETABLE: (groupId: number | string) =>
     `${ADMIN_M}/groups/${groupId}/timetable`,
   ADMIN_COURSES: `${ADMIN_M}/courses`,
-  ADMIN_TEACHERS: `${ADMIN_M}/teachers`,
-  ADMIN_STUDENTS: `${ADMIN_M}/students`,
   ADMIN_SEMESTERS: `${ADMIN_M}/semesters`,
   ADMIN_USERS: `${ADMIN_M}/users`,
 

@@ -2,6 +2,8 @@
   "sidebar": {
     "links": {
       "dashboard": "Dashboard",
+      "students": "Students",
+      "finances": "Finances",
       "lessons": "Lessons",
       "schedule": "Schedule",
       "management": "Management",

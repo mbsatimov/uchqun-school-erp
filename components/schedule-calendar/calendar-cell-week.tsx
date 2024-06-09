@@ -1,7 +1,7 @@
 'use client';
 import { addDays, format } from 'date-fns';
 import type { FC } from 'react';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { getStartOfWeek } from '@/lib/helpers';
 
@@ -12,6 +12,8 @@ interface CalendarCellProps extends React.HTMLAttributes<HTMLDivElement> {
   dailySchedules: Array<DailySchedule>;
   editable: boolean;
   onLessonClick?: (lesson: LessonPreview) => void;
+  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
+  setLimit: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const CalendarCellWeek: FC<CalendarCellProps> = ({
@@ -19,8 +21,16 @@ export const CalendarCellWeek: FC<CalendarCellProps> = ({
   dailySchedules,
   editable,
   onLessonClick,
+  setStartDate,
+  setLimit,
 }) => {
   const startOfWeek = useMemo(() => getStartOfWeek(currentDate), [currentDate]);
+
+  useEffect(() => {
+    setStartDate(startOfWeek);
+    setLimit(7);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [startOfWeek]);
 
   return (
     <div className="grid min-h-[250px] grid-cols-7">

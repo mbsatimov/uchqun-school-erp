@@ -1,17 +1,16 @@
 import type { AxiosResponse } from 'axios';
 
-import type { IApiResponse } from '@/types/response/api-response';
 import { $api } from '@/utils/api/interceptor';
 
 const STUDENT_URL = '/student';
 
 export const StudentService = {
-  async getAll(): Promise<AxiosResponse<Array<IStudentPreview>>> {
-    return $api.get<Array<IStudentPreview>>(STUDENT_URL);
+  async getAll(): Promise<AxiosResponse<Array<StudentPreview>>> {
+    return $api.get<Array<StudentPreview>>(STUDENT_URL);
   },
 
-  async getById(id: number): Promise<AxiosResponse<IStudent>> {
-    return $api.get<IStudent>(`${STUDENT_URL}/${id}`);
+  async getById(id: number): Promise<AxiosResponse<Student>> {
+    return $api.get<Student>(`${STUDENT_URL}/${id}`);
   },
 
   async getAttendanceOverview(
@@ -22,27 +21,29 @@ export const StudentService = {
 
   async getAllByGroupId(
     id: number
-  ): Promise<AxiosResponse<Array<IStudentWithGroupPreview>>> {
-    return $api.get<Array<IStudentWithGroupPreview>>(
+  ): Promise<AxiosResponse<Array<StudentWithGroupPreview>>> {
+    return $api.get<Array<StudentWithGroupPreview>>(
       `${STUDENT_URL}/${id}/group`
     );
   },
 
   async create(
     data: ICreateStudentRequest
-  ): Promise<AxiosResponse<IApiResponse>> {
-    return $api.post<IApiResponse>(STUDENT_URL, data);
+  ): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.post<ApiErrorResponse>(STUDENT_URL, data);
   },
 
   async createAndAddToGroup({
     groupId,
     data,
-  }: ICreateStudentAndAddToGroupRequest): Promise<AxiosResponse<IApiResponse>> {
-    return $api.post<IApiResponse>(`${STUDENT_URL}/${groupId}/group`, data);
+  }: ICreateStudentAndAddToGroupRequest): Promise<
+    AxiosResponse<ApiErrorResponse>
+  > {
+    return $api.post<ApiErrorResponse>(`${STUDENT_URL}/${groupId}/group`, data);
   },
 
-  async createByFile(data: FormData): Promise<AxiosResponse<IApiResponse>> {
-    return $api.post<IApiResponse>(`${STUDENT_URL}/save-by-file`, data, {
+  async createByFile(data: FormData): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.post<ApiErrorResponse>(`${STUDENT_URL}/save-by-file`, data, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -53,9 +54,9 @@ export const StudentService = {
     groupId,
     data,
   }: ICreateStudentAndAddToGroupByFileRequest): Promise<
-    AxiosResponse<IApiResponse>
+    AxiosResponse<ApiErrorResponse>
   > {
-    return $api.post<IApiResponse>(
+    return $api.post<ApiErrorResponse>(
       `${STUDENT_URL}/${groupId}/save-by-file`,
       data,
       {
@@ -69,15 +70,15 @@ export const StudentService = {
   async update(
     id: number,
     data: IUpdateStudentRequest
-  ): Promise<AxiosResponse<IApiResponse>> {
-    return $api.put<IApiResponse>(`${STUDENT_URL}/${id}`, data);
+  ): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.put<ApiErrorResponse>(`${STUDENT_URL}/${id}`, data);
   },
 
   async updateGroup({
     studentId,
     groupId,
-  }: IUpdateStudentGroupRequest): Promise<AxiosResponse<IApiResponse>> {
-    return $api.put<IApiResponse>(
+  }: IUpdateStudentGroupRequest): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.put<ApiErrorResponse>(
       `${STUDENT_URL}/update-group?studentId=${studentId}&groupId=${groupId}`
     );
   },
@@ -88,8 +89,8 @@ export const StudentService = {
   }: {
     ids: Array<number>;
     groupId: number;
-  }): Promise<AxiosResponse<IApiResponse>> {
-    return $api.put<IApiResponse>(
+  }): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.put<ApiErrorResponse>(
       `${STUDENT_URL}/update-some-group/${groupId}`,
       ids
     );
@@ -101,32 +102,34 @@ export const StudentService = {
   }: {
     id: number;
     data: FormData;
-  }): Promise<AxiosResponse<IApiResponse>> {
-    return $api.put<IApiResponse>(`${STUDENT_URL}/image/${id}`, data, {
+  }): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.put<ApiErrorResponse>(`${STUDENT_URL}/image/${id}`, data, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
   },
 
-  async deleteById(id: number): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(`${STUDENT_URL}/${id}`);
+  async deleteById(id: number): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(`${STUDENT_URL}/${id}`);
   },
 
   async deleteSomeById(
     ids: Array<number>
-  ): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(`${STUDENT_URL}`, { data: ids });
+  ): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(`${STUDENT_URL}`, { data: ids });
   },
 
-  async removeFromGroup(id: number): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(`${STUDENT_URL}/delete-from-group/${id}`);
+  async removeFromGroup(id: number): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(
+      `${STUDENT_URL}/delete-from-group/${id}`
+    );
   },
 
   async removeSomeFromGroup(
     ids: Array<number>
-  ): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(`${STUDENT_URL}/delete-from-group`, {
+  ): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(`${STUDENT_URL}/delete-from-group`, {
       data: ids,
     });
   },

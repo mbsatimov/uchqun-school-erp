@@ -1,18 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { GetUserParams, getUsersId } from '@/utils/api';
+import { GetUserConfig, getUsersId } from '@/utils/api';
 
-type UseGetUserIdQueryParams = {
-  params: GetUserParams;
-  settings?: QuerySettings<typeof getUsersId>;
-};
+export const GET_USERS_ID_QUERY_KEY = 'getUsersId';
 
-export const useGetUsersIdQuery = ({
-  params,
-  settings,
-}: UseGetUserIdQueryParams) =>
+export const useGetUsersIdQuery = (
+  settings: QuerySettings<GetUserConfig, typeof getUsersId>
+) =>
   useQuery({
-    queryKey: ['getUserId'],
-    queryFn: () => getUsersId({ params }),
-    ...settings?.options,
+    queryKey: [GET_USERS_ID_QUERY_KEY],
+    queryFn: () => getUsersId(settings.request),
+    ...settings.options,
   });

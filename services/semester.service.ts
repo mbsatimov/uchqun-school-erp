@@ -1,6 +1,5 @@
 import type { AxiosResponse } from 'axios';
 
-import type { IApiResponse } from '@/types/response/api-response';
 import { $api } from '@/utils/api/interceptor';
 
 const SEMESTER_URL = '/semester';
@@ -38,16 +37,16 @@ export const SemesterService = {
 
   async create(
     data: ICreateSemesterRequest
-  ): Promise<AxiosResponse<IApiResponse>> {
-    return $api.post<IApiResponse>(SEMESTER_URL, data);
+  ): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.post<ApiErrorResponse>(SEMESTER_URL, data);
   },
 
   async generateTimeTable({
     groupId,
     semesterId,
     dailySchedules,
-  }: IGenerateTimeTableRequest): Promise<AxiosResponse<IApiResponse>> {
-    return $api.post<IApiResponse>(
+  }: IGenerateTimeTableRequest): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.post<ApiErrorResponse>(
       `${SEMESTER_URL}/generate/${semesterId}?groupId=${groupId}`,
       dailySchedules
     );
@@ -56,11 +55,11 @@ export const SemesterService = {
   async update({
     id,
     data,
-  }: IUpdateSemesterRequest): Promise<AxiosResponse<IApiResponse>> {
-    return $api.put<IApiResponse>(`${SEMESTER_URL}/${id}`, data);
+  }: IUpdateSemesterRequest): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.put<ApiErrorResponse>(`${SEMESTER_URL}/${id}`, data);
   },
 
-  async delete(id: number): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(`${SEMESTER_URL}/${id}`);
+  async delete(id: number): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(`${SEMESTER_URL}/${id}`);
   },
 };

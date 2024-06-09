@@ -1,6 +1,5 @@
 import type { AxiosResponse } from 'axios';
 
-import type { IApiResponse } from '@/types/response/api-response';
 import { $api } from '@/utils/api/interceptor';
 
 const ADMIN_URL = '/admin';
@@ -14,17 +13,17 @@ export const AdminService = {
     return $api.get<Admin>(`${ADMIN_URL}/${id}`);
   },
 
-  async create(data: AdminRequest): Promise<AxiosResponse<IApiResponse>> {
-    return $api.post<IApiResponse>(ADMIN_URL, data);
+  async create(data: AdminRequest): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.post<ApiErrorResponse>(ADMIN_URL, data);
   },
 
-  async deleteById(id: number): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(`${ADMIN_URL}/${id}`);
+  async deleteById(id: number): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(`${ADMIN_URL}/${id}`);
   },
 
   async deleteSomeById(
     ids: Array<number>
-  ): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(ADMIN_URL, { data: ids });
+  ): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(ADMIN_URL, { data: ids });
   },
 };

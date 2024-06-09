@@ -12,6 +12,8 @@ interface ScheduleCalendarProps {
   dailySchedules: Array<DailySchedule>;
   editable?: boolean;
   onLessonClick?: (lesson: LessonPreview) => void;
+  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
+  setLimit: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const ScheduleCalendar: FC<ScheduleCalendarProps> = ({
@@ -19,8 +21,10 @@ export const ScheduleCalendar: FC<ScheduleCalendarProps> = ({
   dailySchedules,
   editable = false,
   onLessonClick,
+  setStartDate,
+  setLimit,
 }) => {
-  const [currentDate, setCurrentDate] = useState<Date>(new Date());
+  const [currentDate, setCurrentDate] = useState<Date>(new Date('2024-06-08'));
   const [viewMode, setViewMode] = useState<'week' | 'month'>(defaultViewMode);
 
   return (
@@ -40,6 +44,8 @@ export const ScheduleCalendar: FC<ScheduleCalendarProps> = ({
               dailySchedules={dailySchedules}
               editable={editable}
               onLessonClick={onLessonClick}
+              setStartDate={setStartDate}
+              setLimit={setLimit}
             />
           ) : (
             <CalendarCellWeek
@@ -47,6 +53,8 @@ export const ScheduleCalendar: FC<ScheduleCalendarProps> = ({
               dailySchedules={dailySchedules}
               editable={editable}
               onLessonClick={onLessonClick}
+              setStartDate={setStartDate}
+              setLimit={setLimit}
             />
           )}
         </div>

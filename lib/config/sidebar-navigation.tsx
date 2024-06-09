@@ -2,8 +2,10 @@ import {
   BarChartBig,
   BookOpenCheck,
   CalendarCheck,
+  CircleDollarSign,
   Settings2,
   ShieldCheck,
+  Users,
 } from 'lucide-react';
 
 import R from '@/lib/config/routes';
@@ -15,6 +17,16 @@ export const sidebarNavigation: Record<string, Array<INavItem>> = {
       title: 'sidebar.links.dashboard',
       href: R.ADMIN_DASHBOARD,
       icon: <BarChartBig />,
+    },
+    {
+      title: 'sidebar.links.students',
+      href: R.ADMIN_STUDENTS,
+      icon: <Users />,
+    },
+    {
+      title: 'sidebar.links.finances',
+      href: R.ADMIN_FINANCES,
+      icon: <CircleDollarSign />,
     },
     {
       title: 'sidebar.links.management',

@@ -2,10 +2,6 @@
 
 import type { Table } from '@tanstack/react-table';
 
-import { useRemoveSomeStudentsFromGroup } from '@/hooks/use-student';
-import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,12 +13,16 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { buttonVariants } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { useRemoveSomeStudentsFromGroup } from '@/hooks/use-student';
+import { cn } from '@/lib/utils';
 
 import { GroupStudentsTableViewOptions } from './group-students-table-view-option';
 
 interface GroupStudentsTableToolbarProps {
   groupId: number;
-  table: Table<IStudentWithGroupPreview>;
+  table: Table<StudentWithGroupPreview>;
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
 }

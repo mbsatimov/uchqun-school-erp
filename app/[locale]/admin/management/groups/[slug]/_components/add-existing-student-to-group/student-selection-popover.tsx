@@ -11,9 +11,9 @@ import {
 import { StudentSelectionCommandMenu } from './student-selection-command-menu';
 
 interface StudentSelectionPopoverProps {
-  selectedStudents: Array<IStudentPreview>;
+  selectedStudents: Array<StudentPreview>;
   setSelectedStudents: React.Dispatch<
-    React.SetStateAction<Array<IStudentPreview>>
+    React.SetStateAction<Array<StudentPreview>>
   >;
   groupId: number;
 }

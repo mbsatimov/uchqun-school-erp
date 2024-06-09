@@ -3,14 +3,14 @@
 import { X } from 'lucide-react';
 import React from 'react';
 
-import { useGetGroupById } from '@/hooks/use-group';
-import { useUpdateSomeStudentsGroup } from '@/hooks/use-student';
-import { DefaultError } from '@/lib/exceptions/default-exception';
-import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { DialogFooter } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
+import { useGetGroupById } from '@/hooks/use-group';
+import { useUpdateSomeStudentsGroup } from '@/hooks/use-student';
+import { DefaultError } from '@/lib/exceptions/default-exception';
+import { cn } from '@/lib/utils';
 
 import { StudentSelectionPopover } from './student-selection-popover';
 
@@ -25,7 +25,7 @@ export const AddExistingStudentToGroupForm: React.FC<AddExistingProps> = ({
   const addStudentToGroup = useUpdateSomeStudentsGroup(groupId);
 
   const [selectedStudents, setSelectedSTudents] = React.useState<
-    Array<IStudentPreview>
+    Array<StudentPreview>
   >([]);
 
   const handleSubmit = () => {

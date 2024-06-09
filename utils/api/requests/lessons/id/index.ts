@@ -3,9 +3,10 @@ import { $api } from '@/utils/api';
 type PutLessonParams = {
   id: number;
   data: LessonRequest;
+  params: { isItForSemester: boolean };
 };
 
-export type PutLessonConfig = RequestConfig<PutLessonParams>;
+export type PutLessonRequest = ApiRequest<PutLessonParams>;
 
-export const putLesson = ({ params, config }: PutLessonConfig) =>
-  $api.put(`lesson/${params.id}`, params.data, config);
+export const putLessonsId = ({ id, data, config }: PutLessonRequest) =>
+  $api.put(`lesson/${id}`, data, config);

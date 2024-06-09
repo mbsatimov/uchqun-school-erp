@@ -1,7 +1,6 @@
 import type { AxiosResponse } from 'axios';
 
 import type { IAttendanceRecord } from '@/components/attendance-heatmap/heatmap.interface';
-import type { IApiResponse } from '@/types/response/api-response';
 import { $api } from '@/utils/api/interceptor';
 
 const ATTENDANCE_URL = '/attendance';
@@ -25,8 +24,8 @@ export const AttendanceService = {
 
   async update(
     data: Array<AttendancesRequest>
-  ): Promise<AxiosResponse<IApiResponse>> {
-    return $api.put<IApiResponse>(`${ATTENDANCE_URL}`, data);
+  ): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.put<ApiErrorResponse>(`${ATTENDANCE_URL}`, data);
   },
 
   async getStudentSemesterAttendanceForEachSubject({

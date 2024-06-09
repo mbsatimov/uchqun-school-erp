@@ -1,6 +1,5 @@
 import type { AxiosResponse } from 'axios';
 
-import type { IApiResponse } from '@/types/response/api-response';
 import { $api } from '@/utils/api/interceptor';
 
 const USER_URL = '/user';
@@ -14,8 +13,8 @@ export const UserService = {
     return $api.get<User>(`${USER_URL}/${id}?role=${role}`);
   },
 
-  async create(data: UserRequest): Promise<AxiosResponse<IApiResponse>> {
-    return $api.post<IApiResponse>(USER_URL, data);
+  async create(data: UserRequest): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.post<ApiErrorResponse>(USER_URL, data);
   },
 
   async createByFile({
@@ -24,8 +23,8 @@ export const UserService = {
   }: {
     data: FormData;
     role: Role;
-  }): Promise<AxiosResponse<IApiResponse>> {
-    return $api.post<IApiResponse>(`${USER_URL}/file?role=${role}`, data, {
+  }): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.post<ApiErrorResponse>(`${USER_URL}/file?role=${role}`, data, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -40,8 +39,8 @@ export const UserService = {
     id: number;
     data: FormData;
     role: Role;
-  }): Promise<AxiosResponse<IApiResponse>> {
-    return $api.put<IApiResponse>(
+  }): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.put<ApiErrorResponse>(
       `${USER_URL}/upload-image/${id}?role=${role}`,
       data,
       {
@@ -54,8 +53,8 @@ export const UserService = {
 
   async deleteSomeById(
     data: Array<{ id: number; role: Role }>
-  ): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(USER_URL, { data: data });
+  ): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(USER_URL, { data: data });
   },
 
   async deleteProfileImage({
@@ -64,8 +63,8 @@ export const UserService = {
   }: {
     id: number;
     role: Role;
-  }): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(
+  }): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(
       `${USER_URL}/delete-image/${id}?role=${role}`
     );
   },

@@ -2,6 +2,8 @@
   "sidebar": {
     "links": {
       "dashboard": "Statistika",
+      "students": "O'quvchilar",
+      "finances": "Xarajatlar",
       "lessons": "Darslar",
       "schedule": "Jadval",
       "management": "Boshqaruv paneli",

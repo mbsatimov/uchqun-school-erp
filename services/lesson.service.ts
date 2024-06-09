@@ -1,6 +1,5 @@
 import type { AxiosResponse } from 'axios';
 
-import type { IApiResponse } from '@/types/response/api-response';
 import { $api } from '@/utils/api/interceptor';
 
 const LESSON_URL = '/lesson';
@@ -34,8 +33,8 @@ export const LessonService = {
     dailyScheduleId: number;
     allWeeks: boolean;
     data: LessonRequest;
-  }): Promise<AxiosResponse<IApiResponse>> {
-    return $api.post<IApiResponse>(
+  }): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.post<ApiErrorResponse>(
       `${LESSON_URL}/${dailyScheduleId}?isItForSemester=${allWeeks}`,
       data
     );
@@ -47,8 +46,8 @@ export const LessonService = {
   }: {
     lessonId: number;
     allWeeks: boolean;
-  }): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(
+  }): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(
       `${LESSON_URL}/${lessonId}?isItForSemester=${allWeeks}`
     );
   },

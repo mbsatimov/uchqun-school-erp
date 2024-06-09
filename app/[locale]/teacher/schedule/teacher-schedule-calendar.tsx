@@ -15,6 +15,10 @@ export const TeacherScheduleCalendar = () => {
   const teacherCurrentSemester = useGetTeacherDailySchedules(user.id);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [limit, setLimit] = useState(40);
+
+  console.log(startDate, limit);
 
   useEffect(() => {
     setMounted(true);
@@ -36,6 +40,8 @@ export const TeacherScheduleCalendar = () => {
         dailySchedules={teacherCurrentSemester.data}
         defaultViewMode="month"
         onLessonClick={lesson => router.push(R.TEACHER_LESSON(lesson.id))}
+        setStartDate={setStartDate}
+        setLimit={setLimit}
       />
     </div>
   );

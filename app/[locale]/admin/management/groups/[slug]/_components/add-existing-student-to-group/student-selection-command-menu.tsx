@@ -14,9 +14,9 @@ import { DefaultError } from '@/lib/exceptions/default-exception';
 import { cn } from '@/lib/utils';
 
 interface StudentSelectionCommandMenuProps {
-  selectedValues: Array<IStudentPreview>;
+  selectedValues: Array<StudentPreview>;
   setSelectedValues: React.Dispatch<
-    React.SetStateAction<Array<IStudentPreview>>
+    React.SetStateAction<Array<StudentPreview>>
   >;
   inputRef: React.RefObject<HTMLInputElement>;
   groupId: number;
@@ -42,7 +42,7 @@ export const StudentSelectionCommandMenu: FC<
     searchBy: ['name', 'surname', 'phoneNumber'],
   });
 
-  const toggleStudent = (student: IStudentPreview) => {
+  const toggleStudent = (student: StudentPreview) => {
     setSelectedValues(currentStudents =>
       !currentStudents.includes(student)
         ? [...currentStudents, student]

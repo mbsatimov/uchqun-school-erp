@@ -3,7 +3,7 @@ interface Group {
   name: string;
   establishedDate: string;
   isActive: boolean;
-  students: Array<IStudentWithGroupPreview>;
+  students: Array<StudentWithGroupPreview>;
 }
 
 interface GroupPreview {

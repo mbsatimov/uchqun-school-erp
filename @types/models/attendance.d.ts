@@ -3,13 +3,26 @@ type AttendanceStatus = 'PRESENT' | 'LATE' | 'ABSENT' | 'EXCUSED' | 'UNKNOWN';
 interface Attendance {
   id: number;
   status: AttendanceStatus;
-  student: IStudentPreview;
+  student: StudentPreview;
   date: Date;
   group: Group;
   course: Course;
   grade: number | null;
   comment: string | null;
-  absentReason: string;
+}
+
+interface StudentAttendance {
+  id: number;
+  name: string;
+  surname: string;
+  phoneNumber: string;
+  status: AttendanceStatus;
+  date: string;
+  grade: number | null;
+  comment: string | null;
+  absentId: number | null;
+  absentStatus: 'CHECKED' | 'UNCHECKED';
+  absentComment: string | null;
 }
 
 interface AttendancesRequest {

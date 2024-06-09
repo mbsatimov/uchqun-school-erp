@@ -1,7 +1,7 @@
 'use client';
 import { format, isSameMonth } from 'date-fns';
 import type { FC } from 'react';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { getWeeks } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
@@ -13,6 +13,8 @@ interface CalendarCellMonthProps extends React.HTMLAttributes<HTMLDivElement> {
   dailySchedules: Array<DailySchedule>;
   editable: boolean;
   onLessonClick?: (lesson: LessonPreview) => void;
+  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
+  setLimit: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const CalendarCellMonth: FC<CalendarCellMonthProps> = ({
@@ -20,8 +22,16 @@ export const CalendarCellMonth: FC<CalendarCellMonthProps> = ({
   dailySchedules,
   editable,
   onLessonClick,
+  setStartDate,
+  setLimit,
 }) => {
   const weeks = useMemo(() => getWeeks(currentDate), [currentDate]);
+
+  useEffect(() => {
+    setStartDate(weeks[0][0]);
+    setLimit(weeks.reduce((acc, week) => acc + week.length, 0));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [weeks[0][0]]);
 
   return weeks.map((week, index) => (
     <div className="grid min-h-[100px] grid-cols-7" key={index}>

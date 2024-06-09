@@ -1,9 +1,7 @@
 import { $api } from '@/utils/api/interceptor';
 
-export type GetUserParams = {
-  id: number;
-};
-export type GetUserConfig = RequestConfig<GetUserParams>;
+type GetUserParams = { id: number };
+export type GetUserConfig = ApiRequest<GetUserParams>;
 
-export const getUsersId = ({ params, config }: GetUserConfig) =>
-  $api.get<UserResponse>(`user/${params.id}`, config);
+export const getUsersId = ({ id, config }: GetUserConfig) =>
+  $api.get<UserResponse>(`user/${id}`, config);

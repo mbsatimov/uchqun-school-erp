@@ -1,5 +1,5 @@
-interface QuerySettings<Func = unknown> {
-  config?: ApiRequestConfig;
+interface QuerySettings<Params = undefined, Func = unknown> {
+  request: ApiRequest<Params>;
   options?: Omit<
     import('@tanstack/react-query').UseQueryOptions<
       Awaited<ReturnType<Func>>,
@@ -12,7 +12,6 @@ interface QuerySettings<Func = unknown> {
 }
 
 interface MutationSettings<Params = void, Func = unknown> {
-  config?: ApiRequestConfig;
   options?: import('@tanstack/react-query').UseMutationOptions<
     Awaited<ReturnType<Func>>,
     ApiErrorResponse,
@@ -28,8 +27,11 @@ interface ApiErrorResponse {
   };
 }
 
-type ApiRequestConfig = import('axios').AxiosRequestConfig;
+interface ApiConfig<Params = undefined>
+  extends import('axios').AxiosRequestConfig {
+  params: Params['params'];
+}
 
-type RequestConfig<Params = undefined> = Params extends undefined
-  ? { config?: import('axios').AxiosRequestConfig }
-  : { params: Params; config?: import('axios').AxiosRequestConfig };
+type ApiRequest<Params = undefined> = Params extends undefined
+  ? { config?: ApiConfig<Params> }
+  : Omit<Params, 'params'> & { config?: ApiConfig<Params> };

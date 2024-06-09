@@ -1,12 +1,12 @@
 import { $api } from '@/utils/api';
 
-type GetUsersConfig = RequestConfig;
+export type GetUsersConfig = ApiRequest;
 
 export const getUsers = (requestConfig?: GetUsersConfig) =>
   $api.get<UsersResponse>('users', requestConfig?.config);
 
-type PostUserParams = Omit<User, 'id'>;
-export type PostUserConfig = RequestConfig<PostUserParams>;
+type PostUserParams = { data: Omit<User, 'id'> };
+export type PostUserConfig = ApiRequest<PostUserParams>;
 
-export const postUsers = ({ params, config }: PostUserConfig) =>
-  $api.post('users', params, config);
+export const postUsers = ({ data, config }: PostUserConfig) =>
+  $api.post('users', data, config);

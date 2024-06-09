@@ -20,6 +20,10 @@ interface SemesterPageProps {
 export const GroupScheduleCalendar: FC<SemesterPageProps> = ({ groupId }) => {
   const currentSemester = useGetCurrentSemesterByGroupId(groupId);
   const [showForm, setShowForm] = React.useState(false);
+  const [startDate, setStartDate] = React.useState<Date>(new Date());
+  const [limit, setLimit] = React.useState(40);
+
+  console.log(startDate, limit);
 
   if (currentSemester.isLoading) return <Loading />;
 
@@ -63,6 +67,8 @@ export const GroupScheduleCalendar: FC<SemesterPageProps> = ({ groupId }) => {
         dailySchedules={currentSemester.data.dailySchedules}
         editable
         defaultViewMode="month"
+        setStartDate={setStartDate}
+        setLimit={setLimit}
       />
     </>
   );

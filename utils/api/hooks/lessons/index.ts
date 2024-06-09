@@ -1,21 +1,26 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 
-import { PostLessonConfig, getLessons, postLessons } from '@/utils/api';
+import type { GetLessonsConfig, PostLessonRequest } from '@/utils/api';
+import { getLessons, postLessons } from '@/utils/api';
+
+export const GET_LESSONS_QUERY_KEY = 'getLessons';
 
 export const useGetLessonsQuery = (
-  settings?: QuerySettings<typeof getLessons>
+  settings?: QuerySettings<GetLessonsConfig, typeof getLessons>
 ) =>
   useQuery({
-    queryKey: ['getLessons'],
-    queryFn: () => getLessons({ config: settings?.config }),
+    queryKey: [GET_LESSONS_QUERY_KEY],
+    queryFn: () => getLessons(settings?.request),
     ...settings?.options,
   });
 
+export const POST_LESSONS_MUTATION_KEY = 'postLessons';
+
 export const usePostLessonsMutation = (
-  settings?: MutationSettings<PostLessonConfig, typeof postLessons>
+  settings?: MutationSettings<PostLessonRequest, typeof postLessons>
 ) =>
   useMutation({
-    mutationKey: ['postLessons'],
+    mutationKey: [POST_LESSONS_MUTATION_KEY],
     mutationFn: postLessons,
     ...settings?.options,
   });

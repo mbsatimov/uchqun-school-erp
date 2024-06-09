@@ -12,6 +12,10 @@ export const StudentScheduleCalendar = () => {
   const user = getCurrentUser();
   const currentSemester = useGetStudentCurrentSemester(user.id);
   const [mounted, setMounted] = useState(false);
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [limit, setLimit] = useState(40);
+
+  console.log(startDate, limit);
 
   useEffect(() => {
     setMounted(true);
@@ -32,6 +36,8 @@ export const StudentScheduleCalendar = () => {
       <ScheduleCalendar
         dailySchedules={currentSemester.data.dailySchedules}
         defaultViewMode="month"
+        setStartDate={setStartDate}
+        setLimit={setLimit}
       />
     </div>
   );

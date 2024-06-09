@@ -6,11 +6,11 @@ import { toast } from 'sonner';
 
 import { useGetAllCourses } from '@/hooks/use-course';
 import { useGetAllTeachers } from '@/hooks/use-teacher';
+import { SEMESTERS_QUERY_KEY } from '@/lib/constants';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import type { TCreateLessonSchema } from '@/lib/validators/admin/create-lesson-schema';
 import { CreateLessonSchema } from '@/lib/validators/admin/create-lesson-schema';
-import { usePostLessonsMutation, usePutLessonMutation } from '@/utils/api';
-import { SEMESTERS_QUERY_KEY } from '@/lib/constants';
+import { usePostLessonsMutation, usePutLessonsIdMutation } from '@/utils/api';
 
 type UseLessonFormProps = {
   dailyScheduleId: number;
@@ -63,7 +63,7 @@ export const useLessonForm = ({
     },
   });
 
-  const putLesson = usePutLessonMutation({
+  const putLesson = usePutLessonsIdMutation({
     options: {
       onSuccess: res => {
         form.reset();
@@ -90,11 +90,13 @@ export const useLessonForm = ({
 
     lesson
       ? putLesson.mutateAsync({
-          params: { id: lesson.id, data: convertedData },
+          id: lesson.id,
+          data: convertedData,
           config: { params: { isItForSemester: allWeeks } },
         })
       : postLesson.mutateAsync({
-          params: { dailyScheduleId, data: convertedData },
+          dailyScheduleId,
+          data: convertedData,
           config: { params: { isItForSemester: allWeeks } },
         });
   };

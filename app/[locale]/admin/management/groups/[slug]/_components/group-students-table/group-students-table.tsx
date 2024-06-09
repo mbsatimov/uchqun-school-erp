@@ -25,7 +25,7 @@ import { columns } from './columns';
 import { GroupStudentsTableToolbar } from './group-students-table-tooltip';
 
 interface GroupStudentsTableProps {
-  data: Array<IStudentWithGroupPreview>;
+  data: Array<StudentWithGroupPreview>;
   searchValue: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
 }

@@ -1,6 +1,5 @@
 import type { AxiosResponse } from 'axios';
 
-import type { IApiResponse } from '@/types/response/api-response';
 import { $api } from '@/utils/api/interceptor';
 
 const TEACHER_URL = '/teacher';
@@ -16,24 +15,24 @@ export const TeacherService = {
 
   async create(
     data: ICreateTeacherRequest
-  ): Promise<AxiosResponse<IApiResponse>> {
-    return $api.post<IApiResponse>(TEACHER_URL, data);
+  ): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.post<ApiErrorResponse>(TEACHER_URL, data);
   },
 
   async update({
     id,
     data,
-  }: IUpdateTeacherRequest): Promise<AxiosResponse<IApiResponse>> {
-    return $api.put<IApiResponse>(`${TEACHER_URL}/${id}`, data);
+  }: IUpdateTeacherRequest): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.put<ApiErrorResponse>(`${TEACHER_URL}/${id}`, data);
   },
 
-  async deleteById(id: number): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(`${TEACHER_URL}/${id}`);
+  async deleteById(id: number): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(`${TEACHER_URL}/${id}`);
   },
 
   async deleteSomeById(
     ids: Array<number>
-  ): Promise<AxiosResponse<IApiResponse>> {
-    return $api.delete<IApiResponse>(TEACHER_URL, { data: ids });
+  ): Promise<AxiosResponse<ApiErrorResponse>> {
+    return $api.delete<ApiErrorResponse>(TEACHER_URL, { data: ids });
   },
 };

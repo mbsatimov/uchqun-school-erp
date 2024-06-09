@@ -3,10 +3,13 @@ import { CalendarIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
 
-import { getStartOfWeek } from '@/lib/helpers';
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import {
   Select,
   SelectContent,
@@ -15,11 +18,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { getStartOfWeek } from '@/lib/helpers';
+import { cn } from '@/lib/utils';
 interface ICalendarControlProps {
   viewMode: 'month' | 'week';
   setViewMode: React.Dispatch<React.SetStateAction<'month' | 'week'>>;

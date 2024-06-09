@@ -3,10 +3,6 @@ import { MoreHorizontal } from 'lucide-react';
 import type { FC } from 'react';
 
 import {
-  useDeleteStudent,
-  useRemoveStudentFromGroup,
-} from '@/hooks/use-student';
-import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -27,6 +23,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  useDeleteStudent,
+  useRemoveStudentFromGroup,
+} from '@/hooks/use-student';
 
 import { GroupStudentsTableColumnHeader } from './group-students-table-column-header';
 
@@ -98,7 +98,7 @@ const RemoveStudentFromGroupMenuItem: FC<{
   );
 };
 
-export const columns: Array<ColumnDef<IStudentWithGroupPreview>> = [
+export const columns: Array<ColumnDef<StudentWithGroupPreview>> = [
   {
     id: 'select',
     header: ({ table }) => (

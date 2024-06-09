@@ -1,22 +1,22 @@
-interface IStudent extends User {
+interface Student extends User {
   group: Group | null;
   attendance: Array<Attendance>;
 }
 
-interface IStudentPreview extends User {
+interface StudentPreview extends User {
   groupId: number | null;
 }
 
-interface IStudentWithGroup extends IStudent {
+interface IStudentWithGroup extends Student {
   group: Group;
 }
 
-interface IStudentWithGroupPreview extends IStudentPreview {
+interface StudentWithGroupPreview extends StudentPreview {
   groupId: number;
 }
 
 type TStudentRequest = Omit<
-  IStudent,
+  Student,
   'id' | 'group' | 'attendance' | 'attachment'
 >;
 

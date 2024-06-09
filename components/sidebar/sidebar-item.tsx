@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { FC } from 'react';
 
-import { buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import { INavItem } from '@/types/nav';
 
@@ -13,6 +13,7 @@ type TSidebarItem = INavItem;
 export const SidebarItem: FC<TSidebarItem> = ({ title, href, icon: Icon }) => {
   const t = useTranslations();
   const pathname = usePathname();
+
   return (
     <Link
       href={href}
