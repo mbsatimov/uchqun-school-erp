@@ -84,3 +84,11 @@ export const AttendanceStatusColorsMap: Record<AttendanceStatus, string> = {
     'bg-unknown/30 hover:bg-unknown/50 border border-gray-500 text-foreground',
   LATE: 'bg-late/30 hover:bg-late/50 border border-yellow-500 text-foreground',
 };
+
+export const phoneFormat = (phoneNumber: string) => {
+  if (!phoneNumber) return;
+  return phoneNumber.replace(
+    /(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/,
+    '$1 ($2) $3-$4-$5'
+  );
+};

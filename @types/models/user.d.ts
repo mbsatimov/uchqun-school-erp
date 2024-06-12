@@ -17,5 +17,4 @@ interface Attachment {
 type UserRequest = Omit<User, 'id' | 'attachment'>;
 
 type UsersResponse = Array<User>;
-
 type UserResponse = User;

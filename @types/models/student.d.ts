@@ -7,7 +7,7 @@ interface StudentPreview extends User {
   groupId: number | null;
 }
 
-interface IStudentWithGroup extends Student {
+interface StudentWithGroup extends Student {
   group: Group;
 }
 

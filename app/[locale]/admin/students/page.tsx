@@ -3,9 +3,9 @@
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { useSearch } from '@/hooks/use-search';
 
-import { columns } from './students-history/columns';
-import { StudentsHistoryTable } from './students-history/table';
-import { data } from './data';
+import { columns } from './_components/students-table/columns';
+import { data } from './_components/students-table/data';
+import { StudentsTable } from './_components/students-table/table';
 
 function StudentsDashboardPage() {
   const { filteredData, inputValue, setInputValue } = useSearch({
@@ -16,7 +16,7 @@ function StudentsDashboardPage() {
   return (
     <MaxWidthWrapper>
       <div>
-        <StudentsHistoryTable
+        <StudentsTable
           data={filteredData}
           columns={columns}
           searchValue={inputValue}

@@ -13,6 +13,9 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui';
 import { attendanceStatusColorsMap } from '@/lib/constants/attendanceStatusColorMap';
+import { phoneFormat } from '@/lib/helpers';
+
+import { statuses } from './data';
 
 export const columns: Array<ColumnDef<StudentAttendance>> = [
   {
@@ -43,7 +46,11 @@ export const columns: Array<ColumnDef<StudentAttendance>> = [
     accessorKey: 'date',
     header: 'Date',
     cell: ({ row }) => {
-      return <div>{format(row.original.date, 'dd MMM yyyy')}</div>;
+      return (
+        <div className="whitespace-nowrap">
+          {format(row.original.date, 'dd MMM yyyy')}
+        </div>
+      );
     },
   },
   {
@@ -53,7 +60,7 @@ export const columns: Array<ColumnDef<StudentAttendance>> = [
       const { name, surname } = row.original;
       const fullName = `${name} ${surname}`;
 
-      return <div>{fullName}</div>;
+      return <div className="whitespace-nowrap">{fullName}</div>;
     },
   },
   {
@@ -63,13 +70,7 @@ export const columns: Array<ColumnDef<StudentAttendance>> = [
       const phoneNumber: string = row.getValue('phoneNumber');
 
       // Format the phone as a phone number
-      const formatted = `${phoneNumber.substring(
-        0,
-        4
-      )} (${phoneNumber.substring(4, 6)}) ${phoneNumber.substring(
-        6,
-        9
-      )}-${phoneNumber.substring(9, 11)}-${phoneNumber.substring(11, 13)}`;
+      const formatted = phoneFormat(phoneNumber);
 
       return (
         <div className="whitespace-nowrap font-mono font-medium">
@@ -82,9 +83,17 @@ export const columns: Array<ColumnDef<StudentAttendance>> = [
     accessorKey: 'status',
     header: 'Status',
     cell: ({ row }) => {
+      const status = statuses.find(
+        status => status.value === row.original.status
+      );
+
+      if (!status) {
+        return null;
+      }
+
       return (
-        <Badge className={attendanceStatusColorsMap[row.original.status]}>
-          {row.original.status}
+        <Badge className={attendanceStatusColorsMap[status.value]}>
+          {status.label}
         </Badge>
       );
     },

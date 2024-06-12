@@ -17,7 +17,7 @@ export const useGetUsersQuery = (
 export const POST_USERS_MUTATION_KEY = 'postUsers';
 
 export const usePostUsersMutation = (
-  settings: MutationSettings<PostUserConfig, typeof postUsers>
+  settings?: MutationSettings<PostUserConfig, typeof postUsers>
 ) =>
   useMutation({
     mutationKey: [POST_USERS_MUTATION_KEY],

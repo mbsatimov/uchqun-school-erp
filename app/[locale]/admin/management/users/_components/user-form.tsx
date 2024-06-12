@@ -1,7 +1,6 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import {
@@ -17,35 +16,48 @@ import {
   PasswordInput,
   PhoneInput,
 } from '@/components/ui';
-import { useCreateUser } from '@/hooks/use-user';
 import type { TCreateUserSchema } from '@/lib/validators';
 import { CreateUserSchema } from '@/lib/validators/admin';
+import { usePostUsersMutation, usePutUsersIdMutation } from '@/utils/api';
 
 interface UserFormProps {
   role: Role;
+  user?: User;
 }
 
-export const UserForm: React.FC<UserFormProps> = ({ role }) => {
-  const createUser = useCreateUser(role);
-
+export const UserForm: React.FC<UserFormProps> = ({ role, user }) => {
   const form = useForm<TCreateUserSchema>({
     resolver: zodResolver(CreateUserSchema),
-    defaultValues: {
-      name: '',
-      surname: '',
-      phoneNumber: '',
-      password: '',
-    },
+    defaultValues: user
+      ? {
+          name: user.name,
+          surname: user.surname,
+          phoneNumber: user.phoneNumber,
+        }
+      : {
+          name: '',
+          surname: '',
+          phoneNumber: '',
+          password: '',
+        },
     mode: 'onTouched',
   });
 
-  function onSubmit(studentData: TCreateUserSchema) {
-    createUser.mutate({ ...studentData, role });
-  }
+  const postUsersMutation = usePostUsersMutation();
+  const putUserMutation = usePutUsersIdMutation();
 
-  useEffect(() => {
-    form.reset();
-  }, [createUser.isSuccess, form]);
+  function onSubmit(studentData: TCreateUserSchema) {
+    user
+      ? putUserMutation
+          .mutateAsync({
+            id: user.id,
+            data: { ...studentData, role },
+          })
+          .then(() => form.reset())
+      : postUsersMutation
+          .mutateAsync({ data: { ...studentData, role } })
+          .then(() => form.reset());
+  }
 
   return (
     <Form {...form}>
@@ -105,8 +117,8 @@ export const UserForm: React.FC<UserFormProps> = ({ role }) => {
         <DialogFooter>
           <Button
             type="submit"
-            disabled={createUser.isPending}
-            isLoading={createUser.isPending}
+            disabled={postUsersMutation.isPending || putUserMutation.isPending}
+            isLoading={postUsersMutation.isPending || putUserMutation.isPending}
           >
             Save
           </Button>

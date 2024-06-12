@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/tooltip';
 import { useUpdateAttendance } from '@/hooks/use-attendance';
 import { useSearch } from '@/hooks/use-search';
-import { getCurrentUser } from '@/lib/auth.helper';
 
 import { StudentAttendanceListItem } from './student-list-item';
 
@@ -38,7 +37,7 @@ export const StudentList: React.FC<StudentListProps> = ({
   attendances,
   lessonId,
 }) => {
-  const updateAttendance = useUpdateAttendance(lessonId, getCurrentUser().id);
+  const updateAttendance = useUpdateAttendance(lessonId);
 
   const [studentsAttendance, setStudentsAttendance] = useState(
     attendances.sort((a, b) => a.student.name.localeCompare(b.student.name))

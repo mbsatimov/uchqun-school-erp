@@ -1,3 +1,22 @@
+export const statuses: Array<{ value: AttendanceStatus; label: string }> = [
+  {
+    value: 'ABSENT',
+    label: 'Absent',
+  },
+  {
+    value: 'EXCUSED',
+    label: 'Excused',
+  },
+  {
+    value: 'LATE',
+    label: 'Late',
+  },
+  {
+    value: 'PRESENT',
+    label: 'Present',
+  },
+];
+
 export const data: Array<StudentAttendance> = [
   {
     id: 1,

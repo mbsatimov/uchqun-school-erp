@@ -23,6 +23,15 @@ interface MutationSettings<Params = void, Func = unknown> {
 interface ApiErrorResponse {
   data: {
     message: string;
+    success: false;
+    httpStatus: number;
+  };
+}
+
+interface ApiSuccessResponse {
+  data: {
+    message: string;
+    success: true;
     httpStatus: number;
   };
 }

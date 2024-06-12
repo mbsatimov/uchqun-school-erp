@@ -20,6 +20,11 @@ const ROUTES = {
   ADMIN_PROFILE: `${ADMIN}/profile`,
   ADMIN_SETTINGS: `${ADMIN}/settings`,
 
+  // ADMIN FINANCES
+  ADMIN_FINANCES_PAYMENTS: `${ADMIN}/finances/payments`,
+  ADMIN_MONTHLY_PAYMENTS: `${ADMIN}/finances/monthly-payments`,
+  ADMIN_PAYMENT_HISTORY: `${ADMIN}/finances/payment-history`,
+  
   // ADMIN MANAGEMENT
   ADMIN_MANAGEMENT: ADMIN_M,
   ADMIN_GROUPS: `${ADMIN_M}/groups`,

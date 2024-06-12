@@ -67,7 +67,7 @@ export const useGetStudentHeatmapStatistics = (
   });
 };
 
-export const useUpdateAttendance = (lessonId: number, teacherId: number) => {
+export const useUpdateAttendance = (lessonId: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: AttendanceService.update,
@@ -75,13 +75,9 @@ export const useUpdateAttendance = (lessonId: number, teacherId: number) => {
       queryClient.invalidateQueries({
         queryKey: [LESSONS_QUERY_KEY, lessonId],
       });
-      queryClient.invalidateQueries({
-        queryKey: [LESSONS_QUERY_KEY, { teacherId }],
-      });
-      queryClient.invalidateQueries({
-        queryKey: [ATTENDANCES_QUERY_KEY, { teacherId }],
-      });
-      toast.success(res.data.message);
+      queryClient.invalidateQueries({ queryKey: [LESSONS_QUERY_KEY] });
+      queryClient.invalidateQueries({ queryKey: [ATTENDANCES_QUERY_KEY] });
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);

@@ -11,6 +11,7 @@ import {
   getFacetedRowModel,
   getFacetedUniqueValues,
   getFilteredRowModel,
+  getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
@@ -27,16 +28,16 @@ import {
 } from '@/components/ui';
 
 import { DataTablePagination } from './table-pagination';
-import { StudentAttendanceTableToolbar } from './table-tooltip';
+import { TableToolbar } from './table-tooltip';
 
-type StudentHistoryTableProps = {
+type StudentsTableProps = {
   data: Array<StudentAttendance>;
   columns: Array<ColumnDef<StudentAttendance>>;
   searchValue: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export const StudentsHistoryTable: FC<StudentHistoryTableProps> = ({
+export const StudentsTable: FC<StudentsTableProps> = ({
   data,
   columns,
   searchValue,
@@ -65,6 +66,7 @@ export const StudentsHistoryTable: FC<StudentHistoryTableProps> = ({
     onColumnVisibilityChange: setColumnVisibility,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
@@ -72,12 +74,12 @@ export const StudentsHistoryTable: FC<StudentHistoryTableProps> = ({
 
   return (
     <div className="w-full space-y-4">
-      <StudentAttendanceTableToolbar
+      <TableToolbar
         table={table}
         inputValue={searchValue}
         setInputValue={setSearchValue}
       />
-      <div className="rounded-md border">
+      <div className="overflow-auto rounded-md border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map(headerGroup => (
