@@ -1,4 +1,3 @@
-import { Table } from '@tanstack/react-table';
 import { ListFilter } from 'lucide-react';
 
 import {
@@ -12,13 +11,7 @@ import {
 } from '@/components/ui';
 import { useURLSearchParams } from '@/hooks/use-url-search-params';
 
-interface TableFilterMobileProps<TData> {
-  table: Table<TData>;
-}
-
-export function TableFilterMobile<TData>({
-  table,
-}: TableFilterMobileProps<TData>) {
+export function TableFilterMobile() {
   const { clearParams } = useURLSearchParams();
 
   return (

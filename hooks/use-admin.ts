@@ -29,7 +29,7 @@ export const useCreateAdmin = () => {
     mutationFn: AdminService.create,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -43,7 +43,7 @@ export const useDeleteAdmin = () => {
     mutationFn: AdminService.deleteById,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -57,7 +57,7 @@ export const useDeleteSomeAdmins = () => {
     mutationFn: AdminService.deleteSomeById,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);

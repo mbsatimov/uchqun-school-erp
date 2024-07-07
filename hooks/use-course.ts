@@ -30,7 +30,7 @@ export const useCreateCourse = () => {
     mutationFn: CourseService.create,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [COURSES_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -44,7 +44,7 @@ export const useUpdateCourse = () => {
     mutationFn: CourseService.update,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [COURSES_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -58,7 +58,7 @@ export const useDeleteCourse = () => {
     mutationFn: CourseService.deleteById,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [COURSES_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -72,7 +72,7 @@ export const useDeleteSomeCourses = () => {
     mutationFn: CourseService.deleteSomeById,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [COURSES_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);

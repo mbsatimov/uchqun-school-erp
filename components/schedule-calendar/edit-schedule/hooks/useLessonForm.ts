@@ -55,7 +55,7 @@ export const useLessonForm = ({
           queryKey: ['getLessons', { dailyScheduleId }],
         });
         queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-        toast.success(res.data.message);
+        toast.success(res.data.data.message);
       },
       onError: err => {
         toast.error(err.data.message);
@@ -72,7 +72,7 @@ export const useLessonForm = ({
           queryKey: ['getLessons', { dailyScheduleId }],
         });
         queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-        toast.success(res.data.message);
+        toast.success(res.data.data.message);
       },
       onError: err => {
         toast.error(err.data.message);

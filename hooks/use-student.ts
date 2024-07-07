@@ -57,7 +57,7 @@ const useCreateStudent = () => {
     mutationFn: StudentService.create,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -71,7 +71,7 @@ const useCreateStudentAndAddToGroup = () => {
     mutationFn: StudentService.createAndAddToGroup,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -85,7 +85,7 @@ const useCreateStudentByFile = () => {
     mutationFn: StudentService.createByFile,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.dismiss();
@@ -102,7 +102,7 @@ const useCreateStudentAndAddToGroupByFile = () => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY] });
       toast.dismiss();
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.dismiss();
@@ -122,7 +122,7 @@ const useUpdateStudent = (id: number, student: IUpdateStudentRequest) => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       toast.dismiss();
-      toast.success(res.message);
+      toast.success(res.data.message);
     },
     onError: err => {
       toast.dismiss();
@@ -140,7 +140,7 @@ const useUpdateStudentGroup = (groupId: number) => {
         queryKey: [STUDENTS_QUERY_KEY, { groupId }],
       });
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -169,7 +169,7 @@ const useUpdateStudentProfileImage = (id: number) => {
     mutationFn: StudentService.updateImage,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY, id] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -185,7 +185,7 @@ const useDeleteStudent = (groupId: number) => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY, groupId] });
       toast.dismiss();
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.dismiss();
@@ -200,7 +200,7 @@ const useDeleteSomeStudents = () => {
     mutationFn: StudentService.deleteSomeById,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -215,7 +215,7 @@ const useRemoveStudentFromGroup = (groupId: number) => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY, groupId] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -230,7 +230,7 @@ export const useRemoveSomeStudentsFromGroup = (groupId: number) => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY, groupId] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);

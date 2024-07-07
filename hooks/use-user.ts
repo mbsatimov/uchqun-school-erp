@@ -41,7 +41,7 @@ export const useCreateUser = (role: Role) => {
       } else if (role === 'ADMIN') {
         queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
       }
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -62,7 +62,7 @@ export const useCreateUserByFile = (role: Role) => {
       } else if (role === 'ADMIN') {
         queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
       }
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.dismiss();
@@ -77,7 +77,7 @@ export const useUpdateUserProfileImage = (id: number) => {
     mutationFn: UserService.updateProfileImage,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [USERS_QUERY_KEY, id] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -94,7 +94,7 @@ export const useDeleteSomeUsers = () => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -108,7 +108,7 @@ export const useDeleteUserProfileImage = (id: number) => {
     mutationFn: UserService.deleteProfileImage,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [USERS_QUERY_KEY, id] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);

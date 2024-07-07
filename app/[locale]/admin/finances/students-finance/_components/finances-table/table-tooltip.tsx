@@ -22,7 +22,7 @@ export function TableToolbar<TData>({
           className="h-8 w-auto flex-1 sm:w-[220px]"
         />
         <div className="lg:hidden">
-          <TableFilterMobile table={table} />
+          <TableFilterMobile />
         </div>
         <div className="hidden lg:block">
           {/* {table.getColumn('status') && (

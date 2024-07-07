@@ -77,7 +77,7 @@ export const useCreateSemester = () => {
     mutationFn: SemesterService.create,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -91,7 +91,7 @@ export const useGenerateTimeTable = () => {
     mutationFn: SemesterService.generateTimeTable,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -105,7 +105,7 @@ export const useUpdateSemester = () => {
     mutationFn: SemesterService.update,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
@@ -119,7 +119,7 @@ export const useDeleteSemester = () => {
     mutationFn: SemesterService.delete,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.message);
+      toast.success(res.data.data.message);
     },
     onError: err => {
       toast.error(err.message);
