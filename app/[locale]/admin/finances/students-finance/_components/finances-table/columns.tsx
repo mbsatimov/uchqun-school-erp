@@ -10,8 +10,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui';
+import { phoneFormat } from '@/lib/helpers';
 
-export const columns: Array<ColumnDef<Finance>> = [
+export const columns: Array<ColumnDef<StudentFinance>> = [
   {
     id: 'select',
     header: ({ table }) => (
@@ -37,12 +38,27 @@ export const columns: Array<ColumnDef<Finance>> = [
     enableHiding: false,
   },
   {
-    accessorKey: 'firstName',
+    accessorKey: 'fullName',
     header: 'Full name',
     cell: ({ row }) => {
       const fullName =
         row.original.student.name + ' ' + row.original.student.surname;
       return <div className="whitespace-nowrap">{fullName}</div>;
+    },
+  },
+  {
+    accessorKey: 'phoneNumber',
+    header: 'Phone',
+    cell: ({ row }) => {
+      const phone = row.original.student.phoneNumber;
+      return phoneFormat(phone);
+    },
+  },
+  {
+    accessorKey: 'contractId',
+    header: 'Contract Id',
+    cell: ({ row }) => {
+      return row.original.contractId;
     },
   },
   {
@@ -74,6 +90,13 @@ export const columns: Array<ColumnDef<Finance>> = [
           {row.original.paymentPlan.name}
         </Badge>
       );
+    },
+  },
+  {
+    accessorKey: 'academicYearCode',
+    header: 'Academic year code',
+    cell: ({ row }) => {
+      return row.original.academicYear.code;
     },
   },
   {

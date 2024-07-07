@@ -1,14 +1,24 @@
 type ContractStatus = 'ACTIVE' | 'CLOSED';
 
-interface Finance {
+interface StudentFinance {
   id: number;
   student: StudentPreview;
-  studentParent: Parent;
+  parent: Parent;
   contractStatus: ContractStatus;
   contractId: number;
   academicYear: AcademicYear;
-  paymentPlan: PaymentPlan | null;
+  paymentPlan: PaymentPlan;
 }
+
+type StudentFinanceRequest = {
+  studentId: number;
+  paymentPlanId: number;
+  academicYearId: number;
+  contractId: number;
+  studentJoinedDate: string;
+};
+
+type StudentFinancesResponse = Array<StudentFinance>;
 
 interface PaymentHistory {
   id: number;
@@ -17,7 +27,7 @@ interface PaymentHistory {
   payedFrom: string;
   comment: string;
   createdAt: string;
-  studentFinance: Finance;
+  studentFinance: StudentFinance;
 }
 
 interface MonthlyPayment {

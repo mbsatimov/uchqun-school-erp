@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 
 import type {
   GetPaymentPlansRequest,
-  PostPaymentPlanRequest,
+  PostPaymentPlansRequest,
 } from '@/utils/api';
 import { getPaymentPlans, postPaymentPlans } from '@/utils/api';
 
@@ -20,7 +20,7 @@ export const useGetPaymentPlansQuery = (
 export const POST_PAYMENT_PLANS_MUTATION_KEY = 'postPaymentPlans';
 
 export const usePostPaymentPlansMutation = (
-  settings?: MutationSettings<PostPaymentPlanRequest, typeof postPaymentPlans>
+  settings?: MutationSettings<PostPaymentPlansRequest, typeof postPaymentPlans>
 ) =>
   useMutation({
     mutationKey: [POST_PAYMENT_PLANS_MUTATION_KEY],

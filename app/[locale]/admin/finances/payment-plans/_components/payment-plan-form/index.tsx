@@ -17,7 +17,7 @@ import { Input } from '@/components/ui/input';
 import {
   GET_PAYMENT_PLANS_QUERY_KEY,
   usePostPaymentPlansMutation,
-} from '@/utils/api/hooks/payment-plan';
+} from '@/utils/api/hooks/payment-plans';
 
 import {
   paymentPlanSchema,

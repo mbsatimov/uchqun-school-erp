@@ -2,7 +2,7 @@
 
 import { Skeleton } from '@/components/ui';
 import { DefaultError } from '@/lib/exceptions/default-exception';
-import { useGetPaymentPlansQuery } from '@/utils/api/hooks/payment-plan';
+import { useGetPaymentPlansQuery } from '@/utils/api/hooks/payment-plans';
 
 import { PaymentPlanItem } from './payment-plan-item';
 

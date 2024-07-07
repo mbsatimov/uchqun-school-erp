@@ -2,12 +2,6 @@
 
 import { useCallback, useDeferredValue, useMemo, useState } from 'react';
 
-type TUseSearch<T> = {
-  filteredData: Array<T>;
-  inputValue: string;
-  setInputValue: React.Dispatch<React.SetStateAction<string>>;
-};
-
 type PrimitiveType = string | number | number | null | undefined;
 
 interface SearchProps<T> {
@@ -19,7 +13,7 @@ interface SearchProps<T> {
   >;
 }
 
-const useSearch = <T>({ data, searchBy }: SearchProps<T>): TUseSearch<T> => {
+const useSearch = <T>({ data, searchBy }: SearchProps<T>) => {
   const [inputValue, setInputValue] = useState('');
   // Debounced input value for delayed search triggering
   const debouncedInputValue = useDeferredValue(inputValue);
@@ -59,7 +53,16 @@ const useSearch = <T>({ data, searchBy }: SearchProps<T>): TUseSearch<T> => {
     [data, debouncedInputValue, searchBy, filterData]
   );
 
-  return { filteredData, inputValue, setInputValue };
+  const onInputValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  return {
+    filteredData,
+    inputValue,
+    setInputValue,
+    onInputValueChange,
+  };
 };
 
 export { useSearch };

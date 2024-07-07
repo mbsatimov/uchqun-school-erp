@@ -31,8 +31,8 @@ import { DataTablePagination } from './table-pagination';
 import { TableToolbar } from './table-tooltip';
 
 type FinancesTableProps = {
-  data: Array<Finance>;
-  columns: Array<ColumnDef<Finance>>;
+  data: Array<StudentFinance>;
+  columns: Array<ColumnDef<StudentFinance>>;
 };
 
 export const FinancesTable: FC<FinancesTableProps> = ({ data, columns }) => {

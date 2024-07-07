@@ -8,6 +8,7 @@ interface Student extends User {
 
 interface StudentPreview extends User {
   groupId: number | null;
+  status: StudentStatus;
 }
 
 interface StudentWithGroup extends Student {

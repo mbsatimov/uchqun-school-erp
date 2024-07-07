@@ -51,57 +51,12 @@ export const useGetStudentAttendanceOverview = (id: number) => {
   });
 };
 
-const useCreateStudent = () => {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: StudentService.create,
-    onSuccess: res => {
-      queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
-    },
-  });
-};
-
-const useCreateStudentAndAddToGroup = () => {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: StudentService.createAndAddToGroup,
-    onSuccess: res => {
-      queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
-    },
-  });
-};
-
 const useCreateStudentByFile = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: StudentService.createByFile,
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.dismiss();
-      toast.error(err.message);
-    },
-  });
-};
-
-const useCreateStudentAndAddToGroupByFile = () => {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: StudentService.createAndAddToGroupByFile,
-    onSuccess: res => {
-      queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY] });
-      toast.dismiss();
       toast.success(res.data.data.message);
     },
     onError: err => {
@@ -239,9 +194,6 @@ export const useRemoveSomeStudentsFromGroup = (groupId: number) => {
 };
 
 export {
-  useCreateStudent,
-  useCreateStudentAndAddToGroup,
-  useCreateStudentAndAddToGroupByFile,
   useCreateStudentByFile,
   useDeleteSomeStudents,
   useDeleteStudent,

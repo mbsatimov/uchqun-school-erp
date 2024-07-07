@@ -6,3 +6,11 @@ interface AcademicYear {
   createdAt: string;
   code: string;
 }
+
+type AcademicYearsRequest = {
+  name: string;
+  startDate: string;
+  endDate: string;
+  code: string;
+};
+type AcademicYearsResponse = Array<AcademicYear>;
