@@ -21,10 +21,11 @@ const ROUTES = {
   ADMIN_SETTINGS: `${ADMIN}/settings`,
 
   // ADMIN FINANCES
-  ADMIN_FINANCES_PAYMENTS: `${ADMIN}/finances/payments`,
+  ADMIN_STUDENTS_FINANCE: `${ADMIN}/finances/students-finance`,
+  ADMIN_PAYMENT_PLANS: `${ADMIN}/finances/payment-plans`,
   ADMIN_MONTHLY_PAYMENTS: `${ADMIN}/finances/monthly-payments`,
-  ADMIN_PAYMENT_HISTORY: `${ADMIN}/finances/payment-history`,
-  
+  ADMIN_PAYMENTS_HISTORY: `${ADMIN}/finances/payments-history`,
+
   // ADMIN MANAGEMENT
   ADMIN_MANAGEMENT: ADMIN_M,
   ADMIN_GROUPS: `${ADMIN_M}/groups`,

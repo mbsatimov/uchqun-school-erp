@@ -1,5 +1,6 @@
 'use client';
 
+import { format } from 'date-fns';
 import React from 'react';
 
 import Loading from '@/app/[locale]/loading';
@@ -9,8 +10,6 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-  Input,
   Select,
   SelectContent,
   SelectItem,
@@ -19,6 +18,7 @@ import {
   Switch,
 } from '@/components/ui';
 import { Button } from '@/components/ui/button';
+import { TimePicker } from '@/components/ui/time-picker/time-picker';
 
 import { useLessonForm } from './hooks/useLessonForm';
 
@@ -73,7 +73,6 @@ export const LessonForm: React.FC<LessonFormProps> = ({
                   )}
                 </SelectContent>
               </Select>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -104,7 +103,6 @@ export const LessonForm: React.FC<LessonFormProps> = ({
                   )}
                 </SelectContent>
               </Select>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -116,14 +114,11 @@ export const LessonForm: React.FC<LessonFormProps> = ({
               <FormItem>
                 <FormLabel>Start time</FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="HH:mm"
-                    autoComplete="off"
-                    className="text-center"
+                  <TimePicker
+                    date={new Date('1212-12-12 ' + field.value)}
+                    setDate={date => field.onChange(format(date, 'HH:mm'))}
                   />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -134,14 +129,11 @@ export const LessonForm: React.FC<LessonFormProps> = ({
               <FormItem>
                 <FormLabel>End time</FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="HH:mm"
-                    autoComplete="off"
-                    className="text-center"
+                  <TimePicker
+                    date={new Date('1212-12-12 ' + field.value)}
+                    setDate={date => field.onChange(format(date, 'HH:mm'))}
                   />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />

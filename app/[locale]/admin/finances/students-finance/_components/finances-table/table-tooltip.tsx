@@ -2,7 +2,6 @@ import type { Table } from '@tanstack/react-table';
 
 import { Input } from '@/components/ui';
 
-import { TableCalendar } from './table-calendar';
 import { TableFilterMobile } from './table-filter-mobile';
 import { StudentAttendanceTableViewOptions } from './table-view-option';
 
@@ -10,7 +9,9 @@ interface StudentAttendanceTableToolbarProps<TData> {
   table: Table<TData>;
 }
 
-export function TableToolbar<TData>({ table }: StudentAttendanceTableToolbarProps<TData>) {
+export function TableToolbar<TData>({
+  table,
+}: StudentAttendanceTableToolbarProps<TData>) {
   return (
     <div className="flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex items-center justify-between space-x-2">
@@ -32,9 +33,6 @@ export function TableToolbar<TData>({ table }: StudentAttendanceTableToolbarProp
               options={statuses}
             />
           )} */}
-        </div>
-        <div className="hidden lg:block">
-          {table.getColumn('date') && <TableCalendar />}
         </div>
       </div>
       <div className="flex items-center">

@@ -12,8 +12,6 @@ import {
 } from '@/components/ui';
 import { useURLSearchParams } from '@/hooks/use-url-search-params';
 
-import { TableCalendar } from './table-calendar';
-
 interface TableFilterMobileProps<TData> {
   table: Table<TData>;
 }
@@ -44,10 +42,6 @@ export function TableFilterMobile<TData>({
               options={statuses}
               title="Status"
             /> */}
-          </div>
-          <div className="flex items-center justify-between">
-            <p>Date</p>
-            <TableCalendar />
           </div>
         </div>
         <DialogFooter>

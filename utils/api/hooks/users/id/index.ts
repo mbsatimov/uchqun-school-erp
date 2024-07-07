@@ -1,8 +1,8 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 import {
-  GetUserConfig,
-  PutUserConfig,
+  GetUserIdConfig,
+  PutUserIdConfig,
   getUsersId,
   putUsersId,
 } from '@/utils/api';
@@ -10,7 +10,7 @@ import {
 export const GET_USERS_ID_QUERY_KEY = 'getUsersId';
 
 export const useGetUsersIdQuery = (
-  settings: QuerySettings<GetUserConfig, typeof getUsersId>
+  settings: QuerySettings<GetUserIdConfig, typeof getUsersId>
 ) =>
   useQuery({
     queryKey: [GET_USERS_ID_QUERY_KEY],
@@ -21,7 +21,7 @@ export const useGetUsersIdQuery = (
 export const PUT_USERS_ID_MUTATION_KEY = 'putUsersId';
 
 export const usePutUsersIdMutation = (
-  settings?: MutationSettings<PutUserConfig, typeof putUsersId>
+  settings?: MutationSettings<PutUserIdConfig, typeof putUsersId>
 ) =>
   useMutation({
     mutationKey: [PUT_USERS_ID_MUTATION_KEY],

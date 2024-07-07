@@ -47,6 +47,8 @@ export default async function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL(R.ADMIN_GROUPS, req.url));
     } else if (pathname === R.TEACHER_MANAGEMENT) {
       return NextResponse.redirect(new URL(R.TEACHER_HOMEWORKS, req.url));
+    } else if (pathname === R.ADMIN_FINANCES) {
+      return NextResponse.redirect(new URL(R.ADMIN_STUDENTS_FINANCE, req.url));
     }
   } else {
     if (!isLoginPage) {

@@ -14,7 +14,12 @@ interface Attachment {
   url: string;
 }
 
-type UserRequest = Omit<User, 'id' | 'attachment'>;
+type UserRequest = {
+  name: string;
+  surname: string;
+  phoneNumber: string;
+  role: Role;
+};
 
 type UsersResponse = Array<User>;
 type UserResponse = User;

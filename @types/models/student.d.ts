@@ -1,6 +1,9 @@
+type StudentStatus = 'ACTIVE' | 'INACTIVE';
+
 interface Student extends User {
   group: Group | null;
   attendance: Array<Attendance>;
+  status?: StudentStatus;
 }
 
 interface StudentPreview extends User {
@@ -15,12 +18,9 @@ interface StudentWithGroupPreview extends StudentPreview {
   groupId: number;
 }
 
-type TStudentRequest = Omit<
-  Student,
-  'id' | 'group' | 'attendance' | 'attachment'
->;
+type StudentRequest = UserRequest;
 
-interface ICreateStudentRequest extends TStudentRequest {
+interface ICreateStudentRequest extends StudentRequest {
   password: string;
 }
 
@@ -34,7 +34,7 @@ interface ICreateStudentAndAddToGroupByFileRequest {
   data: FormData;
 }
 
-interface IUpdateStudentRequest extends TStudentRequest {
+interface IUpdateStudentRequest extends StudentRequest {
   oldPassword: string | null;
   newPassword: string | null;
 }

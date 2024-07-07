@@ -1,20 +1,13 @@
-interface Finance {
-  id: number;
-  firstName: string;
-  lastName: string;
-  studentParentId: number;
-  studentStatus: 'ACTIVE' | 'INACTIVE';
-  contractId: number;
-  academicYearId: number;
-  paymentPlanId: number;
-}
-
 type ContractStatus = 'ACTIVE' | 'CLOSED';
 
-interface PaymentPlan {
+interface Finance {
   id: number;
-  name: string;
-  price: number;
+  student: StudentPreview;
+  studentParent: Parent;
+  contractStatus: ContractStatus;
+  contractId: number;
+  academicYear: AcademicYear;
+  paymentPlan: PaymentPlan | null;
 }
 
 interface PaymentHistory {
