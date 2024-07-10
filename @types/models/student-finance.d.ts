@@ -20,16 +20,6 @@ type StudentFinanceRequest = {
 
 type StudentFinancesResponse = Array<StudentFinance>;
 
-interface PaymentHistory {
-  id: number;
-  date: string;
-  amount: number;
-  payedFrom: string;
-  comment: string;
-  createdAt: string;
-  studentFinance: StudentFinance;
-}
-
 interface MonthlyPayment {
   id: number;
   paymentMonth: string;

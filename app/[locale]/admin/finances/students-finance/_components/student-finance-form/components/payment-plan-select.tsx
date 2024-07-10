@@ -10,14 +10,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui';
-import { useGetAcademicYearsQuery } from '@/utils/api';
+import { useGetPaymentPlansQuery } from '@/utils/api';
 
 type Props = {
-  field: ControllerRenderProps<StudentFinancesSchema, 'academicYearId'>;
+  field: ControllerRenderProps<StudentFinancesSchema, 'paymentPlanId'>;
 };
 
-export const AcademicYearSelect: FC<Props> = ({ field }) => {
-  const academicYears = useGetAcademicYearsQuery();
+export const PaymentPlanSelect: FC<Props> = ({ field }) => {
+  const paymentPlans = useGetPaymentPlansQuery();
 
   return (
     <Select onValueChange={field.onChange} value={field.value}>
@@ -27,12 +27,12 @@ export const AcademicYearSelect: FC<Props> = ({ field }) => {
         </SelectTrigger>
       </FormControl>
       <SelectContent>
-        {academicYears.isLoading ? (
+        {paymentPlans.isLoading ? (
           <div>Loading...</div>
         ) : (
-          academicYears.data?.data.map(academicYear => (
-            <SelectItem key={academicYear.id} value={String(academicYear.id)}>
-              {academicYear.academicYearCode}
+          paymentPlans.data?.data.map(paymentPlan => (
+            <SelectItem key={paymentPlan.id} value={String(paymentPlan.id)}>
+              {paymentPlan.name}
             </SelectItem>
           ))
         )}

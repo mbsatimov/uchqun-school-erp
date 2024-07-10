@@ -15,14 +15,3 @@ export const postStudentFinances = ({
   config,
 }: PostStudentFinancesRequest) =>
   $api.post<ApiSuccessResponse>('student-finances', data, config);
-
-type PutStudentFinancesParams = {
-  data: StudentFinanceRequest;
-};
-export type PutStudentFinancesRequest = ApiRequest<PutStudentFinancesParams>;
-
-export const putStudentFinances = ({
-  data,
-  config,
-}: PutStudentFinancesRequest) =>
-  $api.put<ApiSuccessResponse>('student-finances', data, config);

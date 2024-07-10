@@ -13,7 +13,7 @@ import {
 import { useGetAcademicYearsQuery } from '@/utils/api';
 
 type Props = {
-  field: ControllerRenderProps<StudentFinancesSchema, 'academicYearId'>;
+  field: ControllerRenderProps<StudentFinancesSchema, 'studentId'>;
 };
 
 export const AcademicYearSelect: FC<Props> = ({ field }) => {

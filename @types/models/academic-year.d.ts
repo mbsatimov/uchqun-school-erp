@@ -4,13 +4,13 @@ interface AcademicYear {
   statDate: string;
   endDate: string;
   createdAt: string;
-  code: string;
+  academicYearCode: string;
 }
 
 type AcademicYearsRequest = {
   name: string;
   startDate: string;
   endDate: string;
-  code: string;
+  academicYearCode: string;
 };
 type AcademicYearsResponse = Array<AcademicYear>;

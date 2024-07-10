@@ -1,24 +1,11 @@
 'use client';
 
-import type {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-} from '@tanstack/react-table';
-import {
-  flexRender,
-  getCoreRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from '@tanstack/react-table';
-import type { FC } from 'react';
-import React from 'react';
+import { Edit } from 'lucide-react';
 
+import { StudentFinanceDialog } from '@/app/[locale]/admin/finances/students-finance/_components/student-finance-dialog';
+import Loading from '@/app/[locale]/loading';
 import {
+  Button,
   Table,
   TableBody,
   TableCell,
@@ -26,91 +13,70 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui';
+import { DefaultError } from '@/lib/exceptions/default-exception';
+import { useGetStudentFinancesQuery } from '@/utils/api';
 
-import { DataTablePagination } from './table-pagination';
 import { TableToolbar } from './table-tooltip';
 
-type FinancesTableProps = {
-  data: Array<StudentFinance>;
-  columns: Array<ColumnDef<StudentFinance>>;
-};
+export const FinancesTable = () => {
+  const studentFinance = useGetStudentFinancesQuery();
 
-export const FinancesTable: FC<FinancesTableProps> = ({ data, columns }) => {
-  const [rowSelection, setRowSelection] = React.useState({});
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnVisibility, setColumnVisibility] = React.useState({});
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
+  if (studentFinance.isLoading)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
 
-  const table = useReactTable({
-    data,
-    columns,
-    state: {
-      sorting,
-      columnVisibility,
-      rowSelection,
-      columnFilters,
-    },
-    enableRowSelection: true,
-    onRowSelectionChange: setRowSelection,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    onColumnVisibilityChange: setColumnVisibility,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
-  });
+  if (!studentFinance.isSuccess) throw new DefaultError();
+
+  const data = studentFinance.data.data;
 
   return (
     <div className="w-full space-y-4">
-      <TableToolbar table={table} />
+      <TableToolbar />
       <div className="overflow-auto rounded-md border">
         <Table>
           <TableHeader>
-            {table.getHeaderGroups().map(headerGroup => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map(header => {
-                  return (
-                    <TableHead key={header.id} colSpan={header.colSpan}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
+            <TableRow>
+              <TableHead>ID</TableHead>
+              <TableHead>Full Name</TableHead>
+              <TableHead>Phone</TableHead>
+              <TableHead>Contract Id</TableHead>
+              <TableHead>Student Status</TableHead>
+              <TableHead>Contract Status</TableHead>
+              <TableHead>Payment Plan</TableHead>
+              <TableHead>Academic Year</TableHead>
+              <TableHead>Actions</TableHead>
+            </TableRow>
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map(row => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && 'selected'}
-                >
-                  {row.getVisibleCells().map(cell => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
+            {data.length ? (
+              data.map(row => (
+                <TableRow key={row.id}>
+                  <TableCell>{row.id}</TableCell>
+                  <TableCell>
+                    {row.student.name + ' ' + row.student.surname}
+                  </TableCell>
+                  <TableCell>{row.student.phoneNumber}</TableCell>
+                  <TableCell>{row.contractId}</TableCell>
+                  <TableCell>{row.student.status}</TableCell>
+                  <TableCell>{row.contractStatus}</TableCell>
+                  <TableCell>{row.paymentPlan.name}</TableCell>
+                  <TableCell>{row.academicYear.academicYearCode}</TableCell>
+                  <TableCell>
+                    <StudentFinanceDialog defaultData={row}>
+                      <Button variant="outline" className="h-8 w-8 p-0">
+                        <span className="sr-only">Open menu</span>
+                        <Edit className="h-4 w-4" />
+                      </Button>
+                    </StudentFinanceDialog>
+                  </TableCell>
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
+                <TableCell colSpan={9} className="h-24 text-center">
                   No results.
                 </TableCell>
               </TableRow>
@@ -118,7 +84,7 @@ export const FinancesTable: FC<FinancesTableProps> = ({ data, columns }) => {
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} />
+      {/* <DataTablePagination table={table} /> */}
     </div>
   );
 };
