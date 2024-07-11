@@ -4,15 +4,15 @@ import { Edit } from 'lucide-react';
 
 import { StudentFinanceDialog } from '@/app/[locale]/admin/finances/students-finance/_components/student-finance-dialog';
 import Loading from '@/app/[locale]/loading';
+import { Button } from '@/components/ui/button';
 import {
-  Button,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui';
+} from '@/components/ui/table';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { useGetStudentFinancesQuery } from '@/utils/api';
 

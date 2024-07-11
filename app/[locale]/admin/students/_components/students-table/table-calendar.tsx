@@ -1,13 +1,13 @@
 import { format } from 'date-fns';
 import { CalendarIcon } from 'lucide-react';
 
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
-  Button,
-  Calendar,
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui';
+} from '@/components/ui/popover';
 import { useURLSearchParams } from '@/hooks/use-url-search-params';
 import { cn } from '@/lib/utils';
 

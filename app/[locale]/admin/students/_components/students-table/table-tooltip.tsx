@@ -1,6 +1,6 @@
 import type { Table } from '@tanstack/react-table';
 
-import { Input } from '@/components/ui';
+import { Input } from '@/components/ui/input';
 
 import { statuses } from './data';
 import { TableCalendar } from './table-calendar';

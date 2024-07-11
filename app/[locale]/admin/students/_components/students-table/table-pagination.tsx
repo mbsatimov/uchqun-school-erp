@@ -7,14 +7,14 @@ import {
 } from 'lucide-react';
 import { useEffect } from 'react';
 
+import { Button } from '@/components/ui/button';
 import {
-  Button,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui';
+} from '@/components/ui/select';
 import { useURLSearchParams } from '@/hooks/use-url-search-params';
 
 interface DataTablePaginationProps<TData> {

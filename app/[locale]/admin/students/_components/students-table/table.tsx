@@ -25,7 +25,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui';
+} from '@/components/ui/table';
 
 import { DataTablePagination } from './table-pagination';
 import { TableToolbar } from './table-tooltip';

@@ -2,14 +2,14 @@ import { format } from 'date-fns';
 import { Expand } from 'lucide-react';
 import type { FC } from 'react';
 
+import { Button } from '@/components/ui/button';
 import {
-  Button,
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui';
+} from '@/components/ui/sheet';
 import { LessonStatusColorsMap } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
 

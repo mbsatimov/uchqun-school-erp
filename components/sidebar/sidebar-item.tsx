@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { FC } from 'react';
 
-import { buttonVariants } from '@/components/ui';
+import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { INavItem } from '@/types/nav';
 

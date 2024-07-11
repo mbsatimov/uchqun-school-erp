@@ -3,7 +3,9 @@
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
-import { Badge, Card, Skeleton } from '@/components/ui';
+import { Badge } from '@/components/ui/badge';
+import { Card } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
 import R from '@/lib/config/routes';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { LessonStatusColorsMap } from '@/lib/helpers';

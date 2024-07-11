@@ -4,14 +4,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
 
-import {
-  Button,
-  DialogFooter,
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui';
+import { Button } from '@/components/ui/button';
+import { DialogFooter } from '@/components/ui/dialog';
+import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { usePostStudentFinancesMutation } from '@/utils/api';
 
 import { AcademicYearSelect } from './components/academic-year-select';

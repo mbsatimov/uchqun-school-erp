@@ -2,7 +2,8 @@
 import { Loader2, Plus } from 'lucide-react';
 import { useState } from 'react';
 
-import { Button, Card } from '@/components/ui';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { useSearch } from '@/hooks/use-search';
 import { useGetAllUsers } from '@/hooks/use-user';
 import { DefaultError } from '@/lib/exceptions/default-exception';

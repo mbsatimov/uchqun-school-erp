@@ -2,14 +2,14 @@ import { FC } from 'react';
 import { ControllerRenderProps } from 'react-hook-form';
 
 import { StudentFinancesSchema } from '@/app/[locale]/admin/finances/students-finance/_components/student-finance-form/utils/validation-schema';
+import { FormControl } from '@/components/ui/form';
 import {
-  FormControl,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui';
+} from '@/components/ui/select';
 import { useGetAcademicYearsQuery } from '@/utils/api';
 
 type Props = {

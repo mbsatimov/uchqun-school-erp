@@ -1,15 +1,15 @@
 import type { Column } from '@tanstack/react-table';
 import { PlusCircle } from 'lucide-react';
 
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
-  Badge,
-  Button,
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-  Separator,
-} from '@/components/ui';
+} from '@/components/ui/dropdown-menu';
+import { Separator } from '@/components/ui/separator';
 
 interface DataTableFacetedFilterProps<TData, TValue> {
   column?: Column<TData, TValue>;

@@ -3,23 +3,25 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
+import { Button } from '@/components/ui/button';
 import {
-  Button,
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
+} from '@/components/ui/card';
+import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-  PasswordInput,
-  PhoneInput,
-} from '@/components/ui';
+} from '@/components/ui/form';
+import { PasswordInput } from '@/components/ui/password-input';
+import { PhoneInput } from '@/components/ui/phone-input';
 import { useLogin } from '@/hooks/use-auth';
 import {
   LoginWithPhoneSchema,

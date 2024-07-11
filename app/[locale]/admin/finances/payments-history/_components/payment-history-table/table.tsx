@@ -8,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui';
+} from '@/components/ui/table';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { useGetPaymentHistoryQuery } from '@/utils/api/hooks/payment-history';
 

@@ -1,12 +1,12 @@
 import type { FC } from 'react';
 import { HiOutlineStar, HiStar } from 'react-icons/hi2';
 
+import { Button } from '@/components/ui/button';
 import {
-  Button,
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@/components/ui';
+} from '@/components/ui/hover-card';
 import { gradeColorMap } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 

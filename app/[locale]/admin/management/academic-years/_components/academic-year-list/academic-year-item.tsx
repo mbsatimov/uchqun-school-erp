@@ -4,15 +4,15 @@ import { Edit } from 'lucide-react';
 import React from 'react';
 
 import { AcademicYearForm } from '@/app/[locale]/admin/management/academic-years/_components/academic-year-form';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+} from '@/components/ui/dialog';
 
 interface AcademicYearItemProps {
   academicYear: AcademicYear;

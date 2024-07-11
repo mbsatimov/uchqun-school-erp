@@ -3,8 +3,8 @@ import { MessageCircleMore } from 'lucide-react';
 import type { FC } from 'react';
 import { useState } from 'react';
 
+import { Button } from '@/components/ui/button';
 import {
-  Button,
   Dialog,
   DialogClose,
   DialogContent,
@@ -12,8 +12,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  Textarea,
-} from '@/components/ui';
+} from '@/components/ui/dialog';
+import { Textarea } from '@/components/ui/textarea';
 
 import type { Attendances } from './student-list';
 

@@ -3,8 +3,9 @@ import { Check } from 'lucide-react';
 import type { FC } from 'react';
 import React from 'react';
 
-import { Command, CommandEmpty, ScrollArea, Skeleton } from '@/components/ui';
-import { CommandItem } from '@/components/ui/command';
+import { Command, CommandEmpty, CommandItem } from '@/components/ui/command';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Skeleton } from '@/components/ui/skeleton';
 import { useSearch } from '@/hooks/use-search';
 import {
   useGetAllStudents,

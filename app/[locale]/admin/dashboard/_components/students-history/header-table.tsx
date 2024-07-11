@@ -6,14 +6,14 @@ import {
   EyeOff,
 } from 'lucide-react';
 
+import { Button } from '@/components/ui/button';
 import {
-  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui';
+} from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 
 interface TableColumnHeaderProps<TData, TValue>

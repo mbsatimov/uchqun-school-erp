@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Card } from '@/components/ui';
+import { Card } from '@/components/ui/card';
 
 import { AttStatusPicker } from './att-status-picker';
 import { CommentDialog } from './comment-dialog';

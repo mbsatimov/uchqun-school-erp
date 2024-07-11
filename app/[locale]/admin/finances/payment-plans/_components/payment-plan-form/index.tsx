@@ -5,7 +5,8 @@ import { useQueryClient } from '@tanstack/react-query';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Button, DialogFooter } from '@/components/ui';
+import { Button } from '@/components/ui/button';
+import { DialogFooter } from '@/components/ui/dialog';
 import {
   Form,
   FormControl,

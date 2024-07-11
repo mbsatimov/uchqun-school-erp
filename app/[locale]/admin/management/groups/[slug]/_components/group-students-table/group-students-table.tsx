@@ -19,7 +19,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui';
+} from '@/components/ui/table';
 
 import { columns } from './columns';
 import { GroupStudentsTableToolbar } from './group-students-table-tooltip';

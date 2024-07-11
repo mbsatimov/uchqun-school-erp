@@ -3,19 +3,19 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
+import { Button } from '@/components/ui/button';
+import { DialogFooter } from '@/components/ui/dialog';
 import {
-  Button,
-  DialogFooter,
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-  Input,
-  PasswordInput,
-  PhoneInput,
-} from '@/components/ui';
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { PasswordInput } from '@/components/ui/password-input';
+import { PhoneInput } from '@/components/ui/phone-input';
 import type { TCreateUserSchema } from '@/lib/validators';
 import { CreateUserSchema } from '@/lib/validators/admin';
 import { usePostUsersMutation, usePutUsersIdMutation } from '@/utils/api';

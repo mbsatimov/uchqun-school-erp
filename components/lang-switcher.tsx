@@ -9,7 +9,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-} from '@/components/ui';
+} from '@/components/ui/select';
 import { localeMap, locales } from '@/i18n/config';
 
 export const LangSwitcher: FC = () => {

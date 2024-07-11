@@ -6,18 +6,20 @@ import { FC } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
 import { StudentFinancesSchema } from '@/app/[locale]/admin/finances/students-finance/_components/student-finance-form/utils/validation-schema';
+import { Button } from '@/components/ui/button';
 import {
-  Button,
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-  FormControl,
+} from '@/components/ui/command';
+import { FormControl } from '@/components/ui/form';
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui';
+} from '@/components/ui/popover';
 import { useSearch } from '@/hooks/use-search';
 import { useGetAllStudents } from '@/hooks/use-student';
 import { cn } from '@/lib/utils';

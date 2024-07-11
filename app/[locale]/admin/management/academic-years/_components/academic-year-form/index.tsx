@@ -6,21 +6,23 @@ import { CalendarIcon } from 'lucide-react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
+import { DialogFooter } from '@/components/ui/dialog';
 import {
-  Button,
-  Calendar,
-  DialogFooter,
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-  Input,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui';
+} from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import {
   GET_ACADEMIC_YEARS_QUERY_KEY,

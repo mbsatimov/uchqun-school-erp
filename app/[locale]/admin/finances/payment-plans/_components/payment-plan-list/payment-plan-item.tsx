@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Card, CardContent, CardTitle } from '@/components/ui';
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
 
 type Props = {
   data: PaymentPlan;

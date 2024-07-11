@@ -2,15 +2,15 @@ import { DialogTrigger } from '@radix-ui/react-dialog';
 import { MessageCircleMore } from 'lucide-react';
 import { FC } from 'react';
 
+import { Button } from '@/components/ui/button';
 import {
-  Button,
   Dialog,
   DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui';
+} from '@/components/ui/dialog';
 
 interface CommentDialogProps {
   comment: string;

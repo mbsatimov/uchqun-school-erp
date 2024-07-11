@@ -1,6 +1,6 @@
 'use client';
 
-import { Skeleton } from '@/components/ui';
+import { Skeleton } from '@/components/ui/skeleton';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { useGetPaymentPlansQuery } from '@/utils/api/hooks/payment-plans';
 

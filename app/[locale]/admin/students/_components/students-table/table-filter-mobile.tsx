@@ -3,15 +3,15 @@ import { ListFilter } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import { FC } from 'react';
 
+import { Button } from '@/components/ui/button';
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui';
+} from '@/components/ui/dialog';
 
 import { statuses } from './data';
 import { TableCalendar } from './table-calendar';

@@ -2,14 +2,10 @@
 import { useEffect, useState } from 'react';
 import { HiOutlineStar, HiStar } from 'react-icons/hi2';
 
-import {
-  Badge,
-  Card,
-  CardFooter,
-  CardHeader,
-  Separator,
-  Skeleton,
-} from '@/components/ui';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardFooter, CardHeader } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { Skeleton } from '@/components/ui/skeleton';
 import { useGetStudentTodayLessonsStatistics } from '@/hooks/use-attendance';
 import { getCurrentUser } from '@/lib/auth.helper';
 import { gradeColorMap } from '@/lib/constants';

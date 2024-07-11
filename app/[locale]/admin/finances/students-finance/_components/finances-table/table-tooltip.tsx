@@ -1,4 +1,4 @@
-import { Input } from '@/components/ui';
+import { Input } from '@/components/ui/input';
 
 export function TableToolbar() {
   return (

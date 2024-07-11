@@ -5,16 +5,16 @@ import { useQueryClient } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
 
+import { Button } from '@/components/ui/button';
+import { DialogFooter } from '@/components/ui/dialog';
 import {
-  Button,
-  DialogFooter,
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  Input,
-} from '@/components/ui';
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import {
   GET_STUDENT_FIANCES_QUERY_KEY,
   usePostStudentFinancesMutation,

@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import type { FC } from 'react';
 
 import { EditDailySchedule } from '@/components/schedule-calendar/edit-schedule/edit-daily-schedule-modal';
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui/button';
 import { LessonStatusColorsMap } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
 

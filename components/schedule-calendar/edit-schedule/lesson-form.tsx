@@ -4,20 +4,22 @@ import { format } from 'date-fns';
 import React from 'react';
 
 import Loading from '@/app/[locale]/loading';
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
+} from '@/components/ui/form';
+import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-  Switch,
-} from '@/components/ui';
-import { Button } from '@/components/ui/button';
+} from '@/components/ui/select';
+import { Switch } from '@/components/ui/switch';
 import { TimePicker } from '@/components/ui/time-picker/time-picker';
 
 import { useLessonForm } from './hooks/useLessonForm';

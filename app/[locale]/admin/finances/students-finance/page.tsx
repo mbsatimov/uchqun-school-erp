@@ -2,7 +2,7 @@
 
 import { Plus } from 'lucide-react';
 
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui/button';
 
 import { FinancesTable } from './_components/finances-table/table';
 import { StudentFinanceDialog } from './_components/student-finance-dialog';
