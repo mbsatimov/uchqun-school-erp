@@ -33,6 +33,7 @@ const ROUTES = {
   ADMIN_GROUP_TIMETABLE: (groupId: number | string) =>
     `${ADMIN_M}/groups/${groupId}/timetable`,
   ADMIN_COURSES: `${ADMIN_M}/courses`,
+  ADMIN_ACADEMIC_YEARS: `${ADMIN_M}/academic-years`,
   ADMIN_SEMESTERS: `${ADMIN_M}/semesters`,
   ADMIN_USERS: `${ADMIN_M}/users`,
 

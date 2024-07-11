@@ -15,6 +15,10 @@ const tabs_data = [
     href: R.ADMIN_COURSES,
   },
   {
+    label: 'Academic years',
+    href: R.ADMIN_ACADEMIC_YEARS,
+  },
+  {
     label: 'Semesters',
     href: R.ADMIN_SEMESTERS,
   },

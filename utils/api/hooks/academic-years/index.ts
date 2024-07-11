@@ -3,8 +3,13 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import type {
   GetAcademicYearsRequest,
   PostAcademicYearsRequest,
+  PutAcademicYearsIdRequest,
 } from '@/utils/api';
-import { getAcademicYears, postAcademicYears } from '@/utils/api';
+import {
+  getAcademicYears,
+  postAcademicYears,
+  putAcademicYearsId,
+} from '@/utils/api';
 
 export const GET_ACADEMIC_YEARS_QUERY_KEY = 'getAcademicYears';
 
@@ -28,5 +33,19 @@ export const usePostAcademicYearsMutation = (
   useMutation({
     mutationKey: [POST_ACADEMIC_YEARS_MUTATION_KEY],
     mutationFn: postAcademicYears,
+    ...settings?.options,
+  });
+
+export const PUT_ACADEMIC_YEARS_ID_MUTATION_KEY = 'putAcademicYearsId';
+
+export const usePutAcademicYearsIdMutation = (
+  settings?: MutationSettings<
+    PutAcademicYearsIdRequest,
+    typeof putAcademicYearsId
+  >
+) =>
+  useMutation({
+    mutationKey: [PUT_ACADEMIC_YEARS_ID_MUTATION_KEY],
+    mutationFn: putAcademicYearsId,
     ...settings?.options,
   });

@@ -1,7 +1,7 @@
 interface AcademicYear {
   id: number;
   name: string;
-  statDate: string;
+  startDate: string;
   endDate: string;
   createdAt: string;
   academicYearCode: string;
