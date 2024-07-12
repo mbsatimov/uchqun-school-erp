@@ -19,12 +19,12 @@ const AcademicYears = () => {
         <DialogTrigger asChild>
           <Button variant="outline">
             <Plus className="mr-1" size={20} />
-            <span>Create new semester</span>
+            <span>Create new academic year</span>
           </Button>
         </DialogTrigger>
         <DialogContent className="max-h-full overflow-y-auto sm:max-w-[450px]">
           <DialogHeader>
-            <DialogTitle>Create new semester</DialogTitle>
+            <DialogTitle>Create new academic year</DialogTitle>
           </DialogHeader>
           <AcademicYearForm />
         </DialogContent>

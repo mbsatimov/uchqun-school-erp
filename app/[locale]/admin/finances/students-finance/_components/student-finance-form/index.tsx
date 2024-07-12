@@ -3,9 +3,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useQueryClient } from '@tanstack/react-query';
 import { format } from 'date-fns';
+import { CalendarIcon } from 'lucide-react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import { DialogFooter } from '@/components/ui/dialog';
 import {
   Form,
@@ -15,6 +18,12 @@ import {
   FormLabel,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
 import {
   GET_STUDENT_FIANCES_QUERY_KEY,
   usePostStudentFinancesMutation,
@@ -43,14 +52,12 @@ export const StudentFinanceForm = ({ defaultData }: Props) => {
           academicYearId: String(defaultData.academicYear.id),
           contractId: String(defaultData.contractId),
           paymentPlanId: String(defaultData.paymentPlan.id),
-          studentJoinedDate: new Date(),
         }
       : {
           studentId: '',
           academicYearId: '',
           contractId: '',
           paymentPlanId: '',
-          studentJoinedDate: new Date(),
         },
   });
 
@@ -59,9 +66,13 @@ export const StudentFinanceForm = ({ defaultData }: Props) => {
   const postStudentFinancesMutation = usePostStudentFinancesMutation({
     options: {
       onSuccess: () => {
+        toast.success('Student finance added successfully');
         queryClient.invalidateQueries({
           queryKey: [GET_STUDENT_FIANCES_QUERY_KEY],
         });
+      },
+      onError: () => {
+        toast.error('Failed to add student finance');
       },
     },
   });
@@ -69,9 +80,13 @@ export const StudentFinanceForm = ({ defaultData }: Props) => {
   const putStudentFinancesMutation = usePutStudentFinancesIdMutation({
     options: {
       onSuccess: () => {
+        toast.success('Student finance updated successfully');
         queryClient.invalidateQueries({
           queryKey: [GET_STUDENT_FIANCES_QUERY_KEY],
         });
+      },
+      onError: () => {
+        toast.error('Failed to update student finance');
       },
     },
   });
@@ -139,8 +154,46 @@ export const StudentFinanceForm = ({ defaultData }: Props) => {
             <FormItem>
               <FormLabel>Contract Id</FormLabel>
               <FormControl>
-                <Input placeholder="Contract Id" {...field} />
+                <Input type="number" placeholder="Contract Id" {...field} />
               </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="studentJoinedDate"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Student Joined Date</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={'outline'}
+                      className={cn(
+                        'w-full justify-start text-left font-normal',
+                        !field.value && 'text-muted-foreground'
+                      )}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {field.value ? (
+                        format(field.value, 'PPP')
+                      ) : (
+                        <span>Pick a date</span>
+                      )}
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0">
+                  <Calendar
+                    mode="single"
+                    ISOWeek
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
             </FormItem>
           )}
         />

@@ -11,7 +11,7 @@ export const GroupTabs = () => {
 
   const tabs_data = [
     {
-      label: 'Groups',
+      label: 'Students',
       href: R.ADMIN_GROUP(groupId),
     },
     {

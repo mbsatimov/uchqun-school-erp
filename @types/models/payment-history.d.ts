@@ -11,7 +11,6 @@ interface PaymentHistory {
   createdAt: string;
   academicYear: AcademicYear;
   paymentPlan: PaymentPlan;
-  studentFinance: StudentFinance;
 }
 
 type PaymentHistoryResponse = Array<PaymentHistory>;

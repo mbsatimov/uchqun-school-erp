@@ -19,6 +19,7 @@ type StudentFinanceRequest = {
 };
 
 type StudentFinancesResponse = Array<StudentFinance>;
+type StudentFinanceResponse = StudentFinance;
 
 interface MonthlyPayment {
   id: number;

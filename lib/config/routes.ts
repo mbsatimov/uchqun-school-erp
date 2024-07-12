@@ -22,6 +22,8 @@ const ROUTES = {
 
   // ADMIN FINANCES
   ADMIN_STUDENTS_FINANCE: `${ADMIN}/finances/students-finance`,
+  ADMIN_STUDENT_FINANCE: (financeId: number | string) =>
+    `${ADMIN}/finances/students-finance/${financeId}`,
   ADMIN_PAYMENT_PLANS: `${ADMIN}/finances/payment-plans`,
   ADMIN_MONTHLY_PAYMENTS: `${ADMIN}/finances/monthly-payments`,
   ADMIN_PAYMENTS_HISTORY: `${ADMIN}/finances/payments-history`,

@@ -1,7 +1,24 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
-import type { PutStudentFinancesIdRequest } from '@/utils/api';
-import { putStudentFinancesId } from '@/utils/api';
+import type {
+  GetStudentFinancesIdRequest,
+  PutStudentFinancesIdRequest,
+} from '@/utils/api';
+import { getStudentFinancesId, putStudentFinancesId } from '@/utils/api';
+
+export const GET_STUDENT_FIANCES_ID_QUERY_KEY = 'getStudentFinancesId';
+
+export const useGetStudentFinancesIdQuery = (
+  settings: QuerySettings<
+    GetStudentFinancesIdRequest,
+    typeof getStudentFinancesId
+  >
+) =>
+  useQuery({
+    queryKey: [GET_STUDENT_FIANCES_ID_QUERY_KEY],
+    queryFn: () => getStudentFinancesId(settings.request),
+    ...settings?.options,
+  });
 
 export const PUT_STUDENT_FIANCES_ID_MUTATION_KEY = 'putStudentFinancesId';
 

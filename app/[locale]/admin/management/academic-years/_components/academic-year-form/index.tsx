@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import { CalendarIcon } from 'lucide-react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
@@ -62,19 +63,26 @@ export const AcademicYearForm = ({ defaultData }: Props) => {
     options: {
       onSuccess: () => {
         form.reset();
+        toast.success('Academic year created successfully');
         queryClient.invalidateQueries({
           queryKey: [GET_ACADEMIC_YEARS_QUERY_KEY],
         });
+      },
+      onError: () => {
+        toast.error('Failed to create academic year');
       },
     },
   });
   const putAcademicYearsMutation = usePutAcademicYearsIdMutation({
     options: {
       onSuccess: () => {
-        form.reset();
+        toast.success('Academic year updated successfully');
         queryClient.invalidateQueries({
           queryKey: [GET_ACADEMIC_YEARS_QUERY_KEY],
         });
+      },
+      onError: () => {
+        toast.error('Failed to update academic year');
       },
     },
   });

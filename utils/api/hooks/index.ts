@@ -7,5 +7,6 @@ export * from './payment-history';
 export * from './payment-plans';
 export * from './student-finances';
 export * from './student-finances/id';
+export * from './student-finances/id/close';
 export * from './users';
 export * from './users/id';

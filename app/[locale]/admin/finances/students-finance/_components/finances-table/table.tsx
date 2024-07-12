@@ -1,10 +1,9 @@
 'use client';
 
-import { Edit } from 'lucide-react';
+import Link from 'next/link';
 
-import { StudentFinanceDialog } from '@/app/[locale]/admin/finances/students-finance/_components/student-finance-dialog';
 import Loading from '@/app/[locale]/loading';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import {
   Table,
   TableBody,
@@ -13,7 +12,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import R from '@/lib/config/routes';
 import { DefaultError } from '@/lib/exceptions/default-exception';
+import { cn } from '@/lib/utils';
 import { useGetStudentFinancesQuery } from '@/utils/api';
 
 import { TableToolbar } from './table-tooltip';
@@ -65,12 +66,14 @@ export const FinancesTable = () => {
                   <TableCell>{row.paymentPlan.name}</TableCell>
                   <TableCell>{row.academicYear.academicYearCode}</TableCell>
                   <TableCell>
-                    <StudentFinanceDialog defaultData={row}>
-                      <Button variant="outline" className="h-8 w-8 p-0">
-                        <span className="sr-only">Open menu</span>
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                    </StudentFinanceDialog>
+                    <Link
+                      href={R.ADMIN_STUDENT_FINANCE(row.id)}
+                      className={cn(
+                        buttonVariants({ variant: 'outline', size: 'sm' })
+                      )}
+                    >
+                      View
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))
