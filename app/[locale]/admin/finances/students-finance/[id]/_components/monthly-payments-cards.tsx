@@ -21,7 +21,7 @@ const data: Array<MonthlyPayment> = [
 
 export const MonthlyPaymentsCards = () => {
   return (
-    <Card className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-2 p-2">
+    <Card className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 p-2">
       {data.map(item => (
         <Card key={item.id}>
           <CardHeader className="flex-row items-center justify-between p-2">
