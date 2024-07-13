@@ -3,6 +3,7 @@
 import Link from 'next/link';
 
 import Loading from '@/app/[locale]/loading';
+import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
 import {
   Table,
@@ -61,9 +62,15 @@ export const FinancesTable = () => {
                   </TableCell>
                   <TableCell>{row.student.phoneNumber}</TableCell>
                   <TableCell>{row.contractId}</TableCell>
-                  <TableCell>{row.student.status}</TableCell>
-                  <TableCell>{row.contractStatus}</TableCell>
-                  <TableCell>{row.paymentPlan.name}</TableCell>
+                  <TableCell>
+                    <Badge variant={'outline'}>{row.student.status}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant={'outline'}>{row.contractStatus}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge>{row.paymentPlan.name}</Badge>
+                  </TableCell>
                   <TableCell>{row.academicYear.academicYearCode}</TableCell>
                   <TableCell>
                     <Link
