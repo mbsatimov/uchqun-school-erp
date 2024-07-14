@@ -5,28 +5,28 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useSearch } from '@/hooks/use-search';
-import { useGetAllUsers } from '@/hooks/use-user';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { cn } from '@/lib/utils';
+import { useGetUsersQuery } from '@/utils/api';
 
 import { UserModal } from './_components/user-modal';
 import { columns } from './_components/users-table/columns';
 import { UserTable } from './_components/users-table/user-table';
 
 function UsersPage() {
-  const users = useGetAllUsers();
+  const users = useGetUsersQuery();
   const [openStudent, setOpenStudent] = useState(false);
   const [openTeacher, setOpenTeacher] = useState(false);
   const [openAdmin, setOpenAdmin] = useState(false);
 
   const { filteredData, inputValue, setInputValue } = useSearch({
-    data: users.data || [],
+    data: users.data?.data || [],
     searchBy: ['name', 'surname', 'phoneNumber'],
   });
 
   if (users.isError) throw new DefaultError();
 
-  if (users.data?.length === 0)
+  if (users.data?.data.length === 0)
     return <p className="mt-10 text-center text-lg">No users found.</p>;
 
   return (

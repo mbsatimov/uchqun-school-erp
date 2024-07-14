@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import Loading from '@/app/[locale]/loading';
+import { DataTableSkeleton } from '@/components/data-table/data-table-skeleton';
 import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
 import {
@@ -26,7 +26,13 @@ export const FinancesTable = () => {
   if (studentFinance.isLoading)
     return (
       <div>
-        <Loading />
+        <DataTableSkeleton
+          columnCount={9}
+          searchableColumnCount={1}
+          filterableColumnCount={2}
+          showViewOptions={false}
+          withPagination={false}
+        />
       </div>
     );
 
@@ -47,7 +53,7 @@ export const FinancesTable = () => {
               <TableHead>Contract Id</TableHead>
               <TableHead>Student Status</TableHead>
               <TableHead>Contract Status</TableHead>
-              <TableHead>Payment Plan</TableHead>
+              <TableHead>Plan</TableHead>
               <TableHead>Academic Year</TableHead>
               <TableHead>Actions</TableHead>
             </TableRow>

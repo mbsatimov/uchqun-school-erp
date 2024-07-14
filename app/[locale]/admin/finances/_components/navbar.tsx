@@ -14,10 +14,6 @@ const tabs = [
     label: 'Payment plans',
     href: R.ADMIN_PAYMENT_PLANS,
   },
-  {
-    label: 'Payments history',
-    href: R.ADMIN_PAYMENTS_HISTORY,
-  },
 ];
 
 export const Navbar = () => {

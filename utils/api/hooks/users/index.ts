@@ -6,11 +6,11 @@ import { getUsers, postUsers } from '@/utils/api';
 export const GET_USERS_QUERY_KEY = 'getUsers';
 
 export const useGetUsersQuery = (
-  settings: QuerySettings<GetUsersConfig, typeof getUsers>
+  settings?: QuerySettings<GetUsersConfig, typeof getUsers>
 ) =>
   useQuery({
     queryKey: [GET_USERS_QUERY_KEY],
-    queryFn: () => getUsers(settings.request),
+    queryFn: () => getUsers(settings?.request),
     ...settings?.options,
   });
 

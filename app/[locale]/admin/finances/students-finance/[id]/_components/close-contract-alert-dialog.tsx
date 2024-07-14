@@ -62,7 +62,7 @@ export const CloseContractAlertDialog = ({
             disabled={postStudentFinancesIdClose.isPending}
             isLoading={postStudentFinancesIdClose.isPending}
           >
-            Close
+            Close Contract
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>

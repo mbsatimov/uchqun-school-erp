@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { getCurrentUser } from '@/lib/auth.helper';
 import R from '@/lib/config/routes';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { LessonStatusColorsMap } from '@/lib/helpers';
@@ -16,7 +17,10 @@ export const TeacherLessonList = () => {
   const config = useSearchParams();
 
   const lessons = useGetTeacherLessonsQuery({
-    request: { config: { params: { date: config.get('date') || undefined } } },
+    request: {
+      id: getCurrentUser()?.id,
+      config: { params: { date: config.get('date') || undefined } },
+    },
   });
 
   if (lessons.isLoading)
