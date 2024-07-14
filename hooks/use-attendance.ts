@@ -7,31 +7,25 @@ import {
 } from '@/lib/constants/query-keys';
 import { AttendanceService } from '@/services/attendance.service';
 
-export const useGetStudentSemesterAttendanceStatistics = (
-  studentId: number
-) => {
+export const useGetStudentSemesterAttendanceStatistics = () => {
   return useQuery({
-    queryKey: [ATTENDANCES_QUERY_KEY, 'overall', studentId],
+    queryKey: [ATTENDANCES_QUERY_KEY, 'overall'],
     queryFn: async () => {
       const res =
-        await AttendanceService.getStudentSemesterAttendanceStatistics(
-          studentId
-        );
+        await AttendanceService.getStudentSemesterAttendanceStatistics();
       return res.data;
     },
   });
 };
 
 export const useGetStudentSemesterAttendanceStatisticsForEachCourse = (
-  studentId: number,
   semesterId?: number
 ) => {
   return useQuery({
-    queryKey: [ATTENDANCES_QUERY_KEY, 'each-course', studentId],
+    queryKey: [ATTENDANCES_QUERY_KEY, 'each-course'],
     queryFn: async () => {
       const res =
         await AttendanceService.getStudentSemesterAttendanceForEachSubject({
-          studentId,
           semesterId,
         });
       return res.data;
@@ -39,27 +33,21 @@ export const useGetStudentSemesterAttendanceStatisticsForEachCourse = (
   });
 };
 
-export const useGetStudentTodayLessonsStatistics = (studentId: number) => {
+export const useGetStudentTodayLessonsStatistics = () => {
   return useQuery({
-    queryKey: [LESSONS_QUERY_KEY, { studentId }],
+    queryKey: [LESSONS_QUERY_KEY],
     queryFn: async () => {
-      const res =
-        await AttendanceService.getStudentTodayLessonsStatistics(studentId);
+      const res = await AttendanceService.getStudentTodayLessonsStatistics();
       return res.data;
     },
-    enabled: !!studentId,
   });
 };
 
-export const useGetStudentHeatmapStatistics = (
-  studentId: number,
-  semesterId?: number
-) => {
+export const useGetStudentHeatmapStatistics = (semesterId?: number) => {
   return useQuery({
     queryKey: [ATTENDANCES_QUERY_KEY, 'heatmap'],
     queryFn: async () => {
       const res = await AttendanceService.getStudentHeatmapStatistics({
-        studentId,
         semesterId,
       });
       return res.data;

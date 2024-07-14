@@ -3,7 +3,6 @@ import React from 'react';
 
 import Loading from '@/app/[locale]/loading';
 import { useGetStudentHeatmapStatistics } from '@/hooks/use-attendance';
-import { getCurrentUser } from '@/lib/auth.helper';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { getMonths } from '@/lib/helpers';
 
@@ -11,7 +10,7 @@ import type { IAttendanceRecord } from './heatmap.interface';
 import { MonthGrid } from './month-grid';
 
 export const AttendanceHeatmap: React.FC = () => {
-  const heatmapStatistics = useGetStudentHeatmapStatistics(getCurrentUser().id);
+  const heatmapStatistics = useGetStudentHeatmapStatistics();
 
   if (heatmapStatistics.isLoading) return <Loading />;
 

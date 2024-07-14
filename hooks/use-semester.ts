@@ -49,14 +49,13 @@ export const useGetCurrentSemesterByGroupId = (groupId: number) => {
   });
 };
 
-export const useGetStudentCurrentSemester = (studentId: number) => {
+export const useGetStudentCurrentSemester = () => {
   return useQuery({
-    queryKey: [SEMESTERS_QUERY_KEY, { studentId: studentId }],
+    queryKey: [SEMESTERS_QUERY_KEY],
     queryFn: async () => {
-      const res = await SemesterService.getStudentCurrent(studentId);
+      const res = await SemesterService.getStudentCurrent();
       return res.data;
     },
-    enabled: !!studentId,
   });
 };
 

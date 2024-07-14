@@ -1,7 +1,5 @@
-import { Table } from '@tanstack/react-table';
 import { ListFilter } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
-import { FC } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -17,13 +15,7 @@ import { statuses } from './data';
 import { TableCalendar } from './table-calendar';
 import { DataTableFacetedFilter } from './table-filter';
 
-interface TableFilterMobileProps<TData> {
-  table: Table<TData>;
-}
-
-export const TableFilterMobile: FC<TableFilterMobileProps<any>> = ({
-  table,
-}) => {
+export const TableFilterMobile = () => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -47,7 +39,6 @@ export const TableFilterMobile: FC<TableFilterMobileProps<any>> = ({
           <div className="flex items-center justify-between">
             <p>Status</p>
             <DataTableFacetedFilter
-              column={table.getColumn('status')}
               filterKey="status"
               options={statuses}
               title="Status"

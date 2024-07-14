@@ -1,5 +1,4 @@
 'use client';
-import { useEffect, useState } from 'react';
 import { HiOutlineStar, HiStar } from 'react-icons/hi2';
 
 import { Badge } from '@/components/ui/badge';
@@ -7,7 +6,6 @@ import { Card, CardFooter, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useGetStudentTodayLessonsStatistics } from '@/hooks/use-attendance';
-import { getCurrentUser } from '@/lib/auth.helper';
 import { gradeColorMap } from '@/lib/constants';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { AttendanceStatusColorsMap } from '@/lib/helpers';
@@ -16,15 +14,9 @@ import { cn } from '@/lib/utils';
 import { CommentDialog } from './comment-dialog';
 
 export const StudentLessonList = () => {
-  const user = getCurrentUser();
-  const lessons = useGetStudentTodayLessonsStatistics(user.id);
-  const [mounted, setMounted] = useState(false);
+  const lessons = useGetStudentTodayLessonsStatistics();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted || lessons.isLoading)
+  if (lessons.isLoading)
     return (
       <>
         {Array.from({ length: 3 }).map((_, i) => (

@@ -6,7 +6,6 @@ import {
   useGetStudentSemesterAttendanceStatistics,
   useGetStudentSemesterAttendanceStatisticsForEachCourse,
 } from '@/hooks/use-attendance';
-import { getCurrentUser } from '@/lib/auth.helper';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 
 import { CardDailyAttendance } from './daily-attendance/card-daily-attendance';
@@ -23,11 +22,9 @@ const defaultData: CourseAttendanceOverview = {
 };
 
 export const StudentAttendanceBlock = () => {
-  const overallAttendance = useGetStudentSemesterAttendanceStatistics(
-    getCurrentUser().id
-  );
+  const overallAttendance = useGetStudentSemesterAttendanceStatistics();
   const attendanceForEachCourse =
-    useGetStudentSemesterAttendanceStatisticsForEachCourse(getCurrentUser().id);
+    useGetStudentSemesterAttendanceStatisticsForEachCourse();
 
   if (overallAttendance.isError || attendanceForEachCourse.isError)
     throw new DefaultError();

@@ -1,43 +1,35 @@
-import type { AxiosResponse } from 'axios';
-
 import { $api } from '@/utils/api/interceptor';
 
 const SEMESTER_URL = '/semester';
 
 export const SemesterService = {
-  async getAllGlobal(): Promise<AxiosResponse<Array<ISemesterPreview>>> {
+  async getAllGlobal() {
     return $api.get<Array<ISemesterPreview>>(`${SEMESTER_URL}/global`);
   },
 
-  async getByIdGlobal(semesterId: number): Promise<AxiosResponse<ISemester>> {
+  async getByIdGlobal(semesterId: number) {
     return $api.get<ISemester>(`${SEMESTER_URL}/global/${semesterId}`);
   },
 
-  async getAllByGroupId(
-    groupId: number
-  ): Promise<AxiosResponse<Array<ISemesterPreview>>> {
+  async getAllByGroupId(groupId: number) {
     return $api.get<Array<ISemesterPreview>>(
       `${SEMESTER_URL}/${groupId}/group`
     );
   },
 
-  async getCurrent(groupId: number): Promise<AxiosResponse<ISemester>> {
+  async getCurrent(groupId: number) {
     return $api.get<ISemester>(`${SEMESTER_URL}/current/${groupId}`);
   },
 
-  async getStudentCurrent(
-    studentId: number
-  ): Promise<AxiosResponse<ISemester>> {
-    return $api.get<ISemester>(`${SEMESTER_URL}/student-current/${studentId}`);
+  async getStudentCurrent() {
+    return $api.get<ISemester>(`${SEMESTER_URL}/student-current`);
   },
 
-  async getById(semesterId: number): Promise<AxiosResponse<ISemester>> {
+  async getById(semesterId: number) {
     return $api.get<ISemester>(`${SEMESTER_URL}/${semesterId}`);
   },
 
-  async create(
-    data: ICreateSemesterRequest
-  ): Promise<AxiosResponse<ApiErrorResponse>> {
+  async create(data: ICreateSemesterRequest) {
     return $api.post<ApiErrorResponse>(SEMESTER_URL, data);
   },
 
@@ -45,21 +37,18 @@ export const SemesterService = {
     groupId,
     semesterId,
     dailySchedules,
-  }: IGenerateTimeTableRequest): Promise<AxiosResponse<ApiErrorResponse>> {
+  }: IGenerateTimeTableRequest) {
     return $api.post<ApiErrorResponse>(
       `${SEMESTER_URL}/generate/${semesterId}?groupId=${groupId}`,
       dailySchedules
     );
   },
 
-  async update({
-    id,
-    data,
-  }: IUpdateSemesterRequest): Promise<AxiosResponse<ApiErrorResponse>> {
+  async update({ id, data }: IUpdateSemesterRequest) {
     return $api.put<ApiErrorResponse>(`${SEMESTER_URL}/${id}`, data);
   },
 
-  async delete(id: number): Promise<AxiosResponse<ApiErrorResponse>> {
+  async delete(id: number) {
     return $api.delete<ApiErrorResponse>(`${SEMESTER_URL}/${id}`);
   },
 };

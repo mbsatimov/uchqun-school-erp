@@ -1,55 +1,39 @@
-import type { AxiosResponse } from 'axios';
-
 import type { IAttendanceRecord } from '@/components/attendance-heatmap/heatmap.interface';
 import { $api } from '@/utils/api/interceptor';
 
 const ATTENDANCE_URL = '/attendance';
 
 export const AttendanceService = {
-  async getStudentSemesterAttendanceStatistics(
-    studentId: number
-  ): Promise<AxiosResponse<AttendanceOverview>> {
+  async getStudentSemesterAttendanceStatistics() {
     return $api.get<AttendanceOverview>(
-      `${ATTENDANCE_URL}/student/${studentId}/semester-statistics`
+      `${ATTENDANCE_URL}/student/semester-statistics`
     );
   },
 
-  async getStudentTodayLessonsStatistics(
-    studentId: number
-  ): Promise<AxiosResponse<Array<StudentTodayAttendanceWithLesson>>> {
+  async getStudentTodayLessonsStatistics() {
     return $api.get<Array<StudentTodayAttendanceWithLesson>>(
-      `${ATTENDANCE_URL}/student/${studentId}/daily-statistics`
+      `${ATTENDANCE_URL}/student/daily-schedule`
     );
   },
 
-  async update(
-    data: Array<AttendancesRequest>
-  ): Promise<AxiosResponse<ApiErrorResponse>> {
+  async update(data: Array<AttendancesRequest>) {
     return $api.put<ApiErrorResponse>(`${ATTENDANCE_URL}`, data);
   },
 
   async getStudentSemesterAttendanceForEachSubject({
-    studentId,
     semesterId,
   }: {
-    studentId: number;
     semesterId?: number;
-  }): Promise<AxiosResponse<CourseAttendanceOverview>> {
+  }) {
     return $api.get<CourseAttendanceOverview>(
-      `${ATTENDANCE_URL}/student/${studentId}/semester-statistics-from-each-subject`,
+      `${ATTENDANCE_URL}/student/semester-statistics-from-each-subject`,
       { params: { semesterId } }
     );
   },
 
-  async getStudentHeatmapStatistics({
-    studentId,
-    semesterId,
-  }: {
-    studentId: number;
-    semesterId?: number;
-  }): Promise<AxiosResponse<IAttendanceRecord>> {
+  async getStudentHeatmapStatistics({ semesterId }: { semesterId?: number }) {
     return $api.get<IAttendanceRecord>(
-      `${ATTENDANCE_URL}/student/${studentId}/heatmap-statistics`,
+      `${ATTENDANCE_URL}/student/heatmap-statistics`,
       { params: { semesterId } }
     );
   },

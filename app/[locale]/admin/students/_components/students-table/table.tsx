@@ -1,23 +1,7 @@
 'use client';
 
-import type {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-} from '@tanstack/react-table';
-import {
-  flexRender,
-  getCoreRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from '@tanstack/react-table';
-import type { FC } from 'react';
-import React from 'react';
-
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Table,
   TableBody,
@@ -26,102 +10,51 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { attendanceStatusColorsMap } from '@/lib/constants/attendanceStatusColorMap';
+import { phoneFormat } from '@/lib/helpers';
 
-import { DataTablePagination } from './table-pagination';
+import { data } from './data';
 import { TableToolbar } from './table-tooltip';
 
-type StudentsTableProps = {
-  data: Array<StudentAttendance>;
-  columns: Array<ColumnDef<StudentAttendance>>;
-  searchValue: string;
-  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
-};
-
-export const StudentsTable: FC<StudentsTableProps> = ({
-  data,
-  columns,
-  searchValue,
-  setSearchValue,
-}) => {
-  const [rowSelection, setRowSelection] = React.useState({});
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnVisibility, setColumnVisibility] = React.useState({});
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-
-  const table = useReactTable({
-    data,
-    columns,
-    state: {
-      sorting,
-      columnVisibility,
-      rowSelection,
-      columnFilters,
-    },
-    enableRowSelection: true,
-    onRowSelectionChange: setRowSelection,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    onColumnVisibilityChange: setColumnVisibility,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
-  });
-
+export const StudentsTable = () => {
   return (
     <div className="w-full space-y-4">
-      <TableToolbar
-        table={table}
-        inputValue={searchValue}
-        setInputValue={setSearchValue}
-      />
+      <TableToolbar />
       <div className="overflow-auto rounded-md border">
         <Table>
           <TableHeader>
-            {table.getHeaderGroups().map(headerGroup => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map(header => {
-                  return (
-                    <TableHead key={header.id} colSpan={header.colSpan}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
+            <TableRow>
+              <TableHead>Date</TableHead>
+              <TableHead>Full Name</TableHead>
+              <TableHead>Phone Number</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Grade</TableHead>
+              <TableHead className="text-center">Actions</TableHead>
+            </TableRow>
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map(row => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && 'selected'}
-                >
-                  {row.getVisibleCells().map(cell => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
+            {data.length > 0 ? (
+              data.map(row => (
+                <TableRow key={row.id}>
+                  <TableCell>{row.date}</TableCell>
+                  <TableCell>{row.name + ' ' + row.surname}</TableCell>
+                  <TableCell>{phoneFormat(row.phoneNumber)}</TableCell>
+                  <TableCell>
+                    <Badge className={attendanceStatusColorsMap[row.status]}>
+                      {row.status}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>{row.grade}</TableCell>
+                  <TableCell className="flex justify-center">
+                    <Button variant="outline" size="sm">
+                      View
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
+                <TableCell colSpan={7} className="h-24 text-center">
                   No results.
                 </TableCell>
               </TableRow>
@@ -129,7 +62,6 @@ export const StudentsTable: FC<StudentsTableProps> = ({
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} />
     </div>
   );
 };

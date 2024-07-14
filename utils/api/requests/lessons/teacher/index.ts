@@ -7,4 +7,4 @@ type GetLessonsTeacherParams = {
 export type GetLessonsTeacherRequest = ApiRequest<GetLessonsTeacherParams>;
 
 export const getLessonsTeacher = (request?: GetLessonsTeacherRequest) =>
-  $api.get<LessonsResponse>('lesson/teacher', request?.config);
+  $api.get<LessonsResponse>('lesson/teacher-today-lessons', request?.config);

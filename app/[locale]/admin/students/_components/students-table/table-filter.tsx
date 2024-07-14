@@ -1,4 +1,3 @@
-import { Column } from '@tanstack/react-table';
 import { CheckIcon, CirclePlus } from 'lucide-react';
 import * as React from 'react';
 
@@ -22,8 +21,7 @@ import { Separator } from '@/components/ui/separator';
 import { useURLSearchParams } from '@/hooks/use-url-search-params';
 import { cn } from '@/lib/utils';
 
-interface DataTableFacetedFilterProps<TData, TValue> {
-  column?: Column<TData, TValue>;
+interface DataTableFacetedFilterProps {
   title?: string;
   filterKey: string;
   options: Array<{
@@ -33,15 +31,13 @@ interface DataTableFacetedFilterProps<TData, TValue> {
   }>;
 }
 
-export function DataTableFacetedFilter<TData, TValue>({
-  column,
+export function DataTableFacetedFilter({
   title,
   filterKey,
   options,
-}: DataTableFacetedFilterProps<TData, TValue>) {
+}: DataTableFacetedFilterProps) {
   const { getParam, setParam, deleteParam } = useURLSearchParams();
 
-  const facets = column?.getFacetedUniqueValues();
   const selectedValue = getParam(filterKey);
 
   const onSelect = (value: string) => {
@@ -98,9 +94,9 @@ export function DataTableFacetedFilter<TData, TValue>({
                       <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
                     )}
                     <span>{option.label}</span>
-                    {facets?.get(option.value) && (
+                    {1 && (
                       <span className="ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs">
-                        {facets.get(option.value)}
+                        {10}
                       </span>
                     )}
                   </CommandItem>

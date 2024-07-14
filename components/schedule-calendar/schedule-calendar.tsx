@@ -24,7 +24,7 @@ export const ScheduleCalendar: FC<ScheduleCalendarProps> = ({
   setStartDate,
   setLimit,
 }) => {
-  const [currentDate, setCurrentDate] = useState<Date>(new Date('2024-06-08'));
+  const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [viewMode, setViewMode] = useState<'week' | 'month'>(defaultViewMode);
 
   return (
