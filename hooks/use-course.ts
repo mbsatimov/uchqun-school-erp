@@ -32,9 +32,6 @@ export const useCreateCourse = () => {
       queryClient.invalidateQueries({ queryKey: [COURSES_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -45,9 +42,6 @@ export const useUpdateCourse = () => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [COURSES_QUERY_KEY] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };
@@ -60,9 +54,6 @@ export const useDeleteCourse = () => {
       queryClient.invalidateQueries({ queryKey: [COURSES_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -73,9 +64,6 @@ export const useDeleteSomeCourses = () => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [COURSES_QUERY_KEY] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };

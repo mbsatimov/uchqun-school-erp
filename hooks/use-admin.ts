@@ -31,9 +31,6 @@ export const useCreateAdmin = () => {
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -45,9 +42,6 @@ export const useDeleteAdmin = () => {
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -58,9 +52,6 @@ export const useDeleteSomeAdmins = () => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };

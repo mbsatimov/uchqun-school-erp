@@ -32,9 +32,6 @@ const useCreateTeacher = () => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -45,9 +42,6 @@ const useUpdateTeacher = () => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };
@@ -60,9 +54,6 @@ const useDeleteTeacher = () => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -73,9 +64,6 @@ const useDeleteSomeTeachers = () => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };

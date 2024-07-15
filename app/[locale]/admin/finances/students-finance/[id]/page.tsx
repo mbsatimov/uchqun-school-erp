@@ -72,13 +72,13 @@ const StudentFiancePage = ({ params }: { params: { id: string } }) => {
         </Dialog>
       </div>
       <div className="space-y-2">
-        <MonthlyPaymentsCards />
+        <MonthlyPaymentsCards id={params.id} />
       </div>
       <div className="mt-8 space-y-2">
         <h2 className="text-xl font-semibold tracking-tight">
           Payment History
         </h2>
-        <StudentFianceHistoryTable />
+        <StudentFianceHistoryTable id={params.id} />
       </div>
     </div>
   );

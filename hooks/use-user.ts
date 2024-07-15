@@ -43,9 +43,6 @@ export const useCreateUser = (role: Role) => {
       }
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -64,10 +61,6 @@ export const useCreateUserByFile = (role: Role) => {
       }
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.dismiss();
-      toast.error(err.message);
-    },
   });
 };
 
@@ -78,9 +71,6 @@ export const useUpdateUserProfileImage = (id: number) => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [USERS_QUERY_KEY, id] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };
@@ -96,9 +86,6 @@ export const useDeleteSomeUsers = () => {
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -109,9 +96,6 @@ export const useDeleteUserProfileImage = (id: number) => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [USERS_QUERY_KEY, id] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };

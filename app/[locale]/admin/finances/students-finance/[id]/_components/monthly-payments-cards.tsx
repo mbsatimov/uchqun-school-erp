@@ -1,34 +1,40 @@
 import { format } from 'date-fns';
 
+import Loading from '@/app/[locale]/loading';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { DefaultError } from '@/lib/exceptions/default-exception';
 import { cn } from '@/lib/utils';
+import { useGetMonthlyPaymentsIdQuery } from '@/utils/api';
 
-const data: Array<MonthlyPayment> = [
-  {
-    id: 1,
-    amount: 1000,
-    isCompleted: true,
-    paymentMonth: '2024-07-11',
-  },
-  {
-    id: 2,
-    amount: 1000,
-    isCompleted: false,
-    paymentMonth: '2024-07-11',
-  },
-];
+type Props = {
+  id: number | string;
+};
 
-export const MonthlyPaymentsCards = () => {
+export const MonthlyPaymentsCards = ({ id }: Props) => {
+  const getMonthlyPaymentsId = useGetMonthlyPaymentsIdQuery({
+    request: { id },
+  });
+
+  if (getMonthlyPaymentsId.isLoading)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
+
+  if (!getMonthlyPaymentsId.isSuccess) throw new DefaultError();
+
+  const data = getMonthlyPaymentsId.data.data;
   return (
-    <Card className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 p-2">
+    <Card className="grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-4 p-2">
       {data.map(item => (
         <Card key={item.id}>
           <CardHeader className="flex-row items-center justify-between p-2">
             <CardTitle>{format(item.paymentMonth, 'MMMM yyyy')}</CardTitle>
             <Badge
               className={cn(
-                'text-sm',
+                'text-nowrap text-sm',
                 item.isCompleted ? 'bg-green-500' : 'bg-yellow-500'
               )}
             >

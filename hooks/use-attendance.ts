@@ -67,8 +67,5 @@ export const useUpdateAttendance = (lessonId: number) => {
       queryClient.invalidateQueries({ queryKey: [ATTENDANCES_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: () => {
-      toast.error('Something went wrong');
-    },
   });
 };

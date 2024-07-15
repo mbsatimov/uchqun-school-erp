@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { DialogFooter } from '@/components/ui/dialog';
@@ -16,7 +17,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import {
-  GET_PAYMENT_HISTORY_QUERY_KEY,
+  GET_MONTHLY_PAYMENTS_ID_QUERY_KEY,
+  GET_PAYMENT_HISTORY_ID_QUERY_KEY,
   usePostPaymentHistoryMutation,
 } from '@/utils/api';
 
@@ -43,8 +45,12 @@ export const PaymentForm = ({ studentFinanceId }: Props) => {
     options: {
       onSuccess: () => {
         form.reset();
+        toast.success('Payment added');
         queryClient.invalidateQueries({
-          queryKey: [GET_PAYMENT_HISTORY_QUERY_KEY],
+          queryKey: [GET_MONTHLY_PAYMENTS_ID_QUERY_KEY],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [GET_PAYMENT_HISTORY_ID_QUERY_KEY],
         });
       },
     },
@@ -55,7 +61,7 @@ export const PaymentForm = ({ studentFinanceId }: Props) => {
       data: {
         studentFinanceId: studentFinanceId,
         amount: Number(data.amount),
-        comment: data.comment,
+        comment: data.comment || undefined,
         payedFrom: data.payedFrom,
       },
     });

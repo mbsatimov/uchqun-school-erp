@@ -59,10 +59,6 @@ const useCreateStudentByFile = () => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.dismiss();
-      toast.error(err.message);
-    },
   });
 };
 
@@ -79,10 +75,6 @@ const useUpdateStudent = (id: number, student: IUpdateStudentRequest) => {
       toast.dismiss();
       toast.success(res.data.message);
     },
-    onError: err => {
-      toast.dismiss();
-      toast.error(err.message);
-    },
   });
 };
 
@@ -97,9 +89,6 @@ const useUpdateStudentGroup = (groupId: number) => {
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -112,9 +101,6 @@ export const useUpdateSomeStudentsGroup = (groupId: number) => {
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY, groupId] });
       toast.success('Students have been added to this group');
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -125,9 +111,6 @@ const useUpdateStudentProfileImage = (id: number) => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY, id] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };
@@ -142,10 +125,6 @@ const useDeleteStudent = (groupId: number) => {
       toast.dismiss();
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.dismiss();
-      toast.error(err.message);
-    },
   });
 };
 
@@ -156,9 +135,6 @@ const useDeleteSomeStudents = () => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };
@@ -172,9 +148,6 @@ const useRemoveStudentFromGroup = (groupId: number) => {
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY, groupId] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -186,9 +159,6 @@ export const useRemoveSomeStudentsFromGroup = (groupId: number) => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY, groupId] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };

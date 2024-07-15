@@ -71,9 +71,6 @@ export const StudentFinanceForm = ({ defaultData }: Props) => {
           queryKey: [GET_STUDENT_FIANCES_QUERY_KEY],
         });
       },
-      onError: () => {
-        toast.error('Failed to add student finance');
-      },
     },
   });
 
@@ -84,9 +81,6 @@ export const StudentFinanceForm = ({ defaultData }: Props) => {
         queryClient.invalidateQueries({
           queryKey: [GET_STUDENT_FIANCES_QUERY_KEY],
         });
-      },
-      onError: () => {
-        toast.error('Failed to update student finance');
       },
     },
   });

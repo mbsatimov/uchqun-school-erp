@@ -29,9 +29,6 @@ export const CloseContractAlertDialog = ({
       onSuccess: () => {
         toast.success('Contract closed');
       },
-      onError: () => {
-        toast.error('Failed to close contract');
-      },
     },
   });
 

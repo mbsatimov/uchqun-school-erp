@@ -68,9 +68,6 @@ export const AcademicYearForm = ({ defaultData }: Props) => {
           queryKey: [GET_ACADEMIC_YEARS_QUERY_KEY],
         });
       },
-      onError: () => {
-        toast.error('Failed to create academic year');
-      },
     },
   });
   const putAcademicYearsMutation = usePutAcademicYearsIdMutation({
@@ -80,9 +77,6 @@ export const AcademicYearForm = ({ defaultData }: Props) => {
         queryClient.invalidateQueries({
           queryKey: [GET_ACADEMIC_YEARS_QUERY_KEY],
         });
-      },
-      onError: () => {
-        toast.error('Failed to update academic year');
       },
     },
   });

@@ -21,13 +21,6 @@ type StudentFinanceRequest = {
 type StudentFinancesResponse = Array<StudentFinance>;
 type StudentFinanceResponse = StudentFinance;
 
-interface MonthlyPayment {
-  id: number;
-  paymentMonth: string;
-  isCompleted: boolean;
-  amount: number;
-}
-
 type FinanceRequest = {
   studentId: number;
   paymentPlanId: number;

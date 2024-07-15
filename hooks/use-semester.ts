@@ -78,9 +78,6 @@ export const useCreateSemester = () => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -91,9 +88,6 @@ export const useGenerateTimeTable = () => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };
@@ -106,9 +100,6 @@ export const useUpdateSemester = () => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -119,9 +110,6 @@ export const useDeleteSemester = () => {
     onSuccess: res => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };

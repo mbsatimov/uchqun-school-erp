@@ -57,9 +57,6 @@ export const useLessonForm = ({
         queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
         toast.success(res.data.data.message);
       },
-      onError: err => {
-        toast.error(err.data.message);
-      },
     },
   });
 
@@ -73,9 +70,6 @@ export const useLessonForm = ({
         });
         queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
         toast.success(res.data.data.message);
-      },
-      onError: err => {
-        toast.error(err.data.message);
       },
     },
   });

@@ -16,9 +16,6 @@ export const useLogin = () => {
 
       router.push(`/${userRole}/profile`);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 

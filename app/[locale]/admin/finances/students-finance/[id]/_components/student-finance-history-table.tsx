@@ -10,10 +10,16 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { DefaultError } from '@/lib/exceptions/default-exception';
-import { useGetPaymentHistoryQuery } from '@/utils/api/hooks/payment-history';
+import { useGetPaymentHistoryIdQuery } from '@/utils/api';
 
-export const StudentFianceHistoryTable = () => {
-  const paymentHistory = useGetPaymentHistoryQuery();
+type Props = {
+  id: number | string;
+};
+
+export const StudentFianceHistoryTable = ({ id }: Props) => {
+  const paymentHistory = useGetPaymentHistoryIdQuery({
+    request: { id },
+  });
 
   if (paymentHistory.isLoading)
     return (

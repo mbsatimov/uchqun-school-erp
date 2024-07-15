@@ -35,9 +35,6 @@ const useCreateGroup = () => {
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY] });
       toast.success('Group has been created');
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -48,9 +45,6 @@ const useUpdateGroup = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY] });
       toast.success('Group has been updated');
-    },
-    onError: () => {
-      toast.error('Oops, something went wrong! Please try again');
     },
   });
 };
@@ -63,9 +57,6 @@ const useDeleteGroup = () => {
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY] });
       toast.success('Group has been deleted');
     },
-    onError: () => {
-      toast.error('Oops, something went wrong! Please try again');
-    },
   });
 };
 
@@ -77,9 +68,6 @@ const useDeleteGroupWithStudents = () => {
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       toast.success('Group has been deleted with its students');
-    },
-    onError: () => {
-      toast.error('Oops, something went wrong! Please try again');
     },
   });
 };

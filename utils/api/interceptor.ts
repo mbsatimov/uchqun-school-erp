@@ -1,5 +1,6 @@
 import type { CreateAxiosDefaults } from 'axios';
 import axios from 'axios';
+import { toast } from 'sonner';
 
 import { getAccessToken } from '@/lib/auth.helper';
 import { AuthService } from '@/services/auth.service';
@@ -45,6 +46,7 @@ $api.interceptors.response.use(
         }
       }
     }
+    toast.error('Something went wrong! Please, try again later!');
     throw error;
   }
 );

@@ -52,9 +52,6 @@ export const useCreateLesson = (dailyScheduleId: number) => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
       toast.success(res.data.data.message);
     },
-    onError: err => {
-      toast.error(err.message);
-    },
   });
 };
 
@@ -68,9 +65,6 @@ export const useDeleteLesson = (dailyScheduleId: number) => {
       });
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
       toast.success(res.data.data.message);
-    },
-    onError: err => {
-      toast.error(err.message);
     },
   });
 };
