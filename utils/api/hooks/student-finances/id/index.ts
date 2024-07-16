@@ -15,7 +15,7 @@ export const useGetStudentFinancesIdQuery = (
   >
 ) =>
   useQuery({
-    queryKey: [GET_STUDENT_FIANCES_ID_QUERY_KEY],
+    queryKey: [GET_STUDENT_FIANCES_ID_QUERY_KEY, settings.request.id],
     queryFn: () => getStudentFinancesId(settings.request),
     ...settings?.options,
   });

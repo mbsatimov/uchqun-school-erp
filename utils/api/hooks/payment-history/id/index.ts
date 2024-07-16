@@ -12,7 +12,7 @@ export const useGetPaymentHistoryIdQuery = (
   >
 ) =>
   useQuery({
-    queryKey: [GET_PAYMENT_HISTORY_ID_QUERY_KEY],
+    queryKey: [GET_PAYMENT_HISTORY_ID_QUERY_KEY, settings.request.id],
     queryFn: () => getPaymentHistoryId(settings.request),
     ...settings?.options,
   });

@@ -13,7 +13,7 @@ export const useGetUsersIdQuery = (
   settings: QuerySettings<GetUserIdConfig, typeof getUsersId>
 ) =>
   useQuery({
-    queryKey: [GET_USERS_ID_QUERY_KEY],
+    queryKey: [GET_USERS_ID_QUERY_KEY, settings.request.id],
     queryFn: () => getUsersId(settings.request),
     ...settings.options,
   });

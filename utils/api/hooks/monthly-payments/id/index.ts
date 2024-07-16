@@ -12,7 +12,7 @@ export const useGetMonthlyPaymentsIdQuery = (
   >
 ) =>
   useQuery({
-    queryKey: [GET_MONTHLY_PAYMENTS_ID_QUERY_KEY],
+    queryKey: [GET_MONTHLY_PAYMENTS_ID_QUERY_KEY, settings.request.id],
     queryFn: () => getMonthlyPaymentsId(settings.request),
     ...settings?.options,
   });
