@@ -28,24 +28,30 @@ export const MonthlyPaymentsCards = ({ id }: Props) => {
   const data = getMonthlyPaymentsId.data.data;
   return (
     <Card className="grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-4 p-2">
-      {data.map(item => (
-        <Card key={item.id}>
-          <CardHeader className="flex-row items-center justify-between p-2">
-            <CardTitle>{format(item.paymentMonth, 'MMMM yyyy')}</CardTitle>
-            <Badge
-              className={cn(
-                'text-nowrap text-sm',
-                item.isCompleted ? 'bg-green-500' : 'bg-yellow-500'
-              )}
-            >
-              {item.isCompleted ? 'Completed' : 'In debt'}
-            </Badge>
-          </CardHeader>
-          <CardContent className="flex items-center justify-between px-2 pb-2">
-            <p>{item.amount}som</p>
-          </CardContent>
-        </Card>
-      ))}
+      {data
+        .sort(
+          (a, b) =>
+            new Date(a.paymentMonth).getTime() -
+            new Date(b.paymentMonth).getTime()
+        )
+        .map(item => (
+          <Card key={item.id}>
+            <CardHeader className="flex-row items-center justify-between p-2">
+              <CardTitle>{format(item.paymentMonth, 'MMMM yyyy')}</CardTitle>
+              <Badge
+                className={cn(
+                  'text-nowrap text-sm',
+                  item.isCompleted ? 'bg-green-500' : 'bg-yellow-500'
+                )}
+              >
+                {item.isCompleted ? 'Completed' : 'In debt'}
+              </Badge>
+            </CardHeader>
+            <CardContent className="flex items-center justify-between px-2 pb-2">
+              <p>{item.amount}som</p>
+            </CardContent>
+          </Card>
+        ))}
     </Card>
   );
 };

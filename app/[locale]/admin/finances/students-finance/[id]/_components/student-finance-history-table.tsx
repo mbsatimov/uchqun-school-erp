@@ -1,6 +1,9 @@
 'use client';
 
+import { format } from 'date-fns';
+
 import Loading from '@/app/[locale]/loading';
+import { Badge } from '@/components/ui/badge';
 import {
   Table,
   TableBody,
@@ -43,7 +46,7 @@ export const StudentFianceHistoryTable = ({ id }: Props) => {
               <TableHead>Added by</TableHead>
               <TableHead>Payed from</TableHead>
               <TableHead>Payment plan</TableHead>
-              <TableHead>Amount</TableHead>
+              <TableHead>Amount (UZS)</TableHead>
               <TableHead>Status</TableHead>
             </TableRow>
           </TableHeader>
@@ -52,10 +55,12 @@ export const StudentFianceHistoryTable = ({ id }: Props) => {
               data.map(row => (
                 <TableRow key={row.id}>
                   <TableCell>{row.id}</TableCell>
-                  <TableCell>{row.date}</TableCell>
+                  <TableCell>{format(row.date, 'dd MMM, yyyy')}</TableCell>
                   <TableCell>{row.addedBy}</TableCell>
                   <TableCell>{row.payedFrom}</TableCell>
-                  <TableCell>{row.studentFinance.paymentPlan.name}</TableCell>
+                  <TableCell>
+                    <Badge>{row.studentFinance.paymentPlan.name}</Badge>
+                  </TableCell>
                   <TableCell>{row.amount}</TableCell>
                   <TableCell>{row.studentFinance.contractStatus}</TableCell>
                 </TableRow>
