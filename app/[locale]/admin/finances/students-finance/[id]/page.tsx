@@ -55,22 +55,24 @@ const StudentFiancePage = ({ params }: { params: { id: string } }) => {
           />
         </div>
       </div>
-      <div className="mb-4">
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline">
-              <Plus className="mr-1" size={20} />
-              Add payment
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="max-h-full overflow-y-auto sm:max-w-[450px]">
-            <DialogHeader>
-              <DialogTitle>Add payment</DialogTitle>
-            </DialogHeader>
-            <PaymentForm studentFinanceId={Number(params.id)} />
-          </DialogContent>
-        </Dialog>
-      </div>
+      {getStudentFinancesId.data.data.contractStatus === 'ACTIVE' && (
+        <div className="mb-4">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline">
+                <Plus className="mr-1" size={20} />
+                Add payment
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-h-full overflow-y-auto sm:max-w-[450px]">
+              <DialogHeader>
+                <DialogTitle>Add payment</DialogTitle>
+              </DialogHeader>
+              <PaymentForm studentFinanceId={Number(params.id)} />
+            </DialogContent>
+          </Dialog>
+        </div>
+      )}
       <div className="space-y-2">
         <MonthlyPaymentsCards id={params.id} />
       </div>

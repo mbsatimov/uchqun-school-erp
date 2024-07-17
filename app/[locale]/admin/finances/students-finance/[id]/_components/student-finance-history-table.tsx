@@ -1,9 +1,10 @@
 'use client';
 
 import { format } from 'date-fns';
+import { MessageCircleMore } from 'lucide-react';
 
 import Loading from '@/app/[locale]/loading';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Table,
   TableBody,
@@ -12,6 +13,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { DefaultError } from '@/lib/exceptions/default-exception';
 import { useGetPaymentHistoryIdQuery } from '@/utils/api';
 
@@ -45,9 +51,8 @@ export const StudentFianceHistoryTable = ({ id }: Props) => {
               <TableHead>Date</TableHead>
               <TableHead>Added by</TableHead>
               <TableHead>Payed from</TableHead>
-              <TableHead>Payment plan</TableHead>
               <TableHead>Amount (UZS)</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead className="text-center">Message</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -58,11 +63,23 @@ export const StudentFianceHistoryTable = ({ id }: Props) => {
                   <TableCell>{format(row.date, 'dd MMM, yyyy')}</TableCell>
                   <TableCell>{row.addedBy}</TableCell>
                   <TableCell>{row.payedFrom}</TableCell>
-                  <TableCell>
-                    <Badge>{row.studentFinance.paymentPlan.name}</Badge>
-                  </TableCell>
                   <TableCell>{row.amount}</TableCell>
-                  <TableCell>{row.studentFinance.contractStatus}</TableCell>
+                  <TableCell className="flex justify-center">
+                    {row.comment ? (
+                      <Tooltip delayDuration={100}>
+                        <TooltipTrigger asChild>
+                          <Button size="icon-sm" variant={'outline'}>
+                            <MessageCircleMore />
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent side="left">
+                          <p>{row.comment}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    ) : (
+                      '-'
+                    )}
+                  </TableCell>
                 </TableRow>
               ))
             ) : (
