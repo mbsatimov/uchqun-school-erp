@@ -4,6 +4,16 @@ import { format } from 'date-fns';
 import { MessageCircleMore } from 'lucide-react';
 
 import Loading from '@/app/[locale]/loading';
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import {
   Table,
@@ -13,12 +23,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import { DefaultError } from '@/lib/exceptions/default-exception';
+import { numberFormat } from '@/lib/utils';
 import { useGetPaymentHistoryIdQuery } from '@/utils/api';
 
 type Props = {
@@ -60,22 +66,32 @@ export const StudentFianceHistoryTable = ({ id }: Props) => {
               data.map(row => (
                 <TableRow key={row.id}>
                   <TableCell>{row.id}</TableCell>
-                  <TableCell>{format(row.date, 'dd MMM, yyyy')}</TableCell>
+                  <TableCell className="text-nowrap">
+                    {format(row.date, 'dd MMM, yyyy')}
+                  </TableCell>
                   <TableCell>{row.addedBy}</TableCell>
                   <TableCell>{row.payedFrom}</TableCell>
-                  <TableCell>{row.amount}</TableCell>
+                  <TableCell>{numberFormat(row.amount)}</TableCell>
                   <TableCell className="flex justify-center">
                     {row.comment ? (
-                      <Tooltip delayDuration={100}>
-                        <TooltipTrigger asChild>
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
                           <Button size="icon-sm" variant={'outline'}>
                             <MessageCircleMore />
                           </Button>
-                        </TooltipTrigger>
-                        <TooltipContent side="left">
-                          <p>{row.comment}</p>
-                        </TooltipContent>
-                      </Tooltip>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Comment</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              {row.comment}
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Close</AlertDialogCancel>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
                     ) : (
                       '-'
                     )}

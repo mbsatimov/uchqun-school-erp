@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/table';
 import R from '@/lib/config/routes';
 import { DefaultError } from '@/lib/exceptions/default-exception';
+import { phoneFormat } from '@/lib/helpers';
 import { cn } from '@/lib/utils';
 import { useGetStudentFinancesQuery } from '@/utils/api';
 
@@ -66,7 +67,7 @@ export const FinancesTable = () => {
                   <TableCell>
                     {row.student.name + ' ' + row.student.surname}
                   </TableCell>
-                  <TableCell>{row.student.phoneNumber}</TableCell>
+                  <TableCell>{phoneFormat(row.student.phoneNumber)}</TableCell>
                   <TableCell>{row.contractId}</TableCell>
                   <TableCell>
                     <Badge variant={'outline'}>{row.student.status}</Badge>

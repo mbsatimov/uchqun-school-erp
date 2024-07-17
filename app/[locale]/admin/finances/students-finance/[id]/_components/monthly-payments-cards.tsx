@@ -4,7 +4,7 @@ import Loading from '@/app/[locale]/loading';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { DefaultError } from '@/lib/exceptions/default-exception';
-import { cn } from '@/lib/utils';
+import { cn, numberFormat } from '@/lib/utils';
 import { useGetMonthlyPaymentsIdQuery } from '@/utils/api';
 
 type Props = {
@@ -27,7 +27,7 @@ export const MonthlyPaymentsCards = ({ id }: Props) => {
 
   const data = getMonthlyPaymentsId.data.data;
   return (
-    <Card className="grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-4 p-2">
+    <Card className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4 p-2">
       {data
         .sort(
           (a, b) =>
@@ -36,7 +36,7 @@ export const MonthlyPaymentsCards = ({ id }: Props) => {
         )
         .map(item => (
           <Card key={item.id}>
-            <CardHeader className="flex-row items-center justify-between p-2">
+            <CardHeader className="flex-row items-center justify-between gap-2 p-2">
               <CardTitle>{format(item.paymentMonth, 'MMMM yyyy')}</CardTitle>
               <Badge
                 className={cn(
@@ -48,7 +48,7 @@ export const MonthlyPaymentsCards = ({ id }: Props) => {
               </Badge>
             </CardHeader>
             <CardContent className="flex items-center justify-between px-2 pb-2">
-              <p>{item.amount}som</p>
+              <p>{numberFormat(item.amount)}</p>
             </CardContent>
           </Card>
         ))}
