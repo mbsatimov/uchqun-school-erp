@@ -55,9 +55,9 @@ export const StudentFianceHistoryTable = ({ id }: Props) => {
                   <TableCell>{row.date}</TableCell>
                   <TableCell>{row.addedBy}</TableCell>
                   <TableCell>{row.payedFrom}</TableCell>
-                  <TableCell>{row.paymentPlan.name}</TableCell>
+                  <TableCell>{row.studentFinance.paymentPlan.name}</TableCell>
                   <TableCell>{row.amount}</TableCell>
-                  <TableCell>{row.contractStatus}</TableCell>
+                  <TableCell>{row.studentFinance.contractStatus}</TableCell>
                 </TableRow>
               ))
             ) : (
