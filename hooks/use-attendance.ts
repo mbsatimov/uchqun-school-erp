@@ -1,5 +1,4 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
 
 import {
   ATTENDANCES_QUERY_KEY,
@@ -59,13 +58,12 @@ export const useUpdateAttendance = (lessonId: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: AttendanceService.update,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [LESSONS_QUERY_KEY, lessonId],
       });
       queryClient.invalidateQueries({ queryKey: [LESSONS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [ATTENDANCES_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };

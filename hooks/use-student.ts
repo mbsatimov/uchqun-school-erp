@@ -55,9 +55,8 @@ const useCreateStudentByFile = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: StudentService.createByFile,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -70,10 +69,9 @@ const useUpdateStudent = (id: number, student: IUpdateStudentRequest) => {
       const res = await StudentService.update(id, student);
       return res.data;
     },
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       toast.dismiss();
-      toast.success(res.data.message);
     },
   });
 };
@@ -82,12 +80,11 @@ const useUpdateStudentGroup = (groupId: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: StudentService.updateGroup,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [STUDENTS_QUERY_KEY, { groupId }],
       });
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -108,9 +105,8 @@ const useUpdateStudentProfileImage = (id: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: StudentService.updateImage,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY, id] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -119,11 +115,10 @@ const useDeleteStudent = (groupId: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: StudentService.deleteById,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY, groupId] });
       toast.dismiss();
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -132,9 +127,8 @@ const useDeleteSomeStudents = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: StudentService.deleteSomeById,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -143,10 +137,9 @@ const useRemoveStudentFromGroup = (groupId: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: StudentService.removeFromGroup,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY, groupId] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -155,10 +148,9 @@ export const useRemoveSomeStudentsFromGroup = (groupId: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: StudentService.removeSomeFromGroup,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [GROUPS_QUERY_KEY, groupId] });
-      toast.success(res.data.data.message);
     },
   });
 };

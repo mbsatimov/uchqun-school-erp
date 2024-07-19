@@ -1,6 +1,5 @@
 'use client';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
 
 import { SEMESTERS_QUERY_KEY } from '@/lib/constants/query-keys';
 import { SemesterService } from '@/services/semester.service';
@@ -74,9 +73,8 @@ export const useCreateSemester = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: SemesterService.create,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -85,9 +83,8 @@ export const useGenerateTimeTable = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: SemesterService.generateTimeTable,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -96,9 +93,8 @@ export const useUpdateSemester = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: SemesterService.update,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -107,9 +103,8 @@ export const useDeleteSemester = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: SemesterService.delete,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };

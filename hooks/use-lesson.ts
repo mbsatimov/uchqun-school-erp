@@ -1,6 +1,5 @@
 'use client';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
 
 import {
   LESSONS_QUERY_KEY,
@@ -45,12 +44,11 @@ export const useCreateLesson = (dailyScheduleId: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: LessonService.create,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [LESSONS_QUERY_KEY, { dailyScheduleId }],
       });
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -59,12 +57,11 @@ export const useDeleteLesson = (dailyScheduleId: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: LessonService.delete,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [LESSONS_QUERY_KEY, { dailyScheduleId }],
       });
       queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };

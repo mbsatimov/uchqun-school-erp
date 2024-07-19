@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import type { ReactCropperElement } from 'react-cropper';
 import { Cropper } from 'react-cropper';
 
@@ -40,18 +40,17 @@ export const ProfileImageUploader: FC<UploadProfileImageProps> = ({
       const blob = await result.blob();
       const formData = new FormData();
       formData.append('image', blob);
-      uploadProfileImage.mutate({ id: userId, data: formData, role });
-    }
-  };
-
-  useEffect(() => {
-    if (uploadProfileImage.isSuccess) {
+      await uploadProfileImage.mutateAsync({
+        id: userId,
+        data: formData,
+        role,
+      });
       setDialogOpen(false);
       setFile(null);
     }
-  }, [setDialogOpen, uploadProfileImage.isSuccess, setFile]);
+  };
 
-  if (uploadProfileImage.isError) throw new DefaultError();
+  if (!uploadProfileImage.isSuccess) throw new DefaultError();
 
   return (
     <div className="space-y-4">

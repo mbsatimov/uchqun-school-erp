@@ -1,5 +1,4 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
 
 import { ADMINS_QUERY_KEY } from '@/lib/constants/query-keys';
 import { AdminService } from '@/services/admin.service';
@@ -27,9 +26,8 @@ export const useCreateAdmin = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: AdminService.create,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -38,9 +36,8 @@ export const useDeleteAdmin = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: AdminService.deleteById,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -49,9 +46,8 @@ export const useDeleteSomeAdmins = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: AdminService.deleteSomeById,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };

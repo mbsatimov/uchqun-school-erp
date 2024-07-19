@@ -2,7 +2,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
 
 import { useGetAllCourses } from '@/hooks/use-course';
 import { useGetAllTeachers } from '@/hooks/use-teacher';
@@ -49,27 +48,25 @@ export const useLessonForm = ({
 
   const postLesson = usePostLessonsMutation({
     options: {
-      onSuccess: res => {
+      onSuccess: () => {
         form.reset();
         queryClient.invalidateQueries({
           queryKey: ['getLessons', { dailyScheduleId }],
         });
         queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-        toast.success(res.data.data.message);
       },
     },
   });
 
   const putLesson = usePutLessonsIdMutation({
     options: {
-      onSuccess: res => {
+      onSuccess: () => {
         form.reset();
         setLesson?.(undefined);
         queryClient.invalidateQueries({
           queryKey: ['getLessons', { dailyScheduleId }],
         });
         queryClient.invalidateQueries({ queryKey: [SEMESTERS_QUERY_KEY] });
-        toast.success(res.data.data.message);
       },
     },
   });

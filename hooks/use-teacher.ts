@@ -1,6 +1,5 @@
 'use client';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
 
 import { TEACHERS_QUERY_KEY } from '@/lib/constants/query-keys';
 import { TeacherService } from '@/services/teacher.service';
@@ -28,9 +27,8 @@ const useCreateTeacher = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: TeacherService.create,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -39,9 +37,8 @@ const useUpdateTeacher = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: TeacherService.update,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -50,9 +47,8 @@ const useDeleteTeacher = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: TeacherService.deleteById,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -61,9 +57,8 @@ const useDeleteSomeTeachers = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: TeacherService.deleteSomeById,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };

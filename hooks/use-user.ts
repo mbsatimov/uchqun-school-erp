@@ -1,5 +1,4 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
 
 import {
   ADMINS_QUERY_KEY,
@@ -32,7 +31,7 @@ export const useCreateUser = (role: Role) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: UserService.create,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [USERS_QUERY_KEY] });
       if (role === 'STUDENT') {
         queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
@@ -41,7 +40,6 @@ export const useCreateUser = (role: Role) => {
       } else if (role === 'ADMIN') {
         queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
       }
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -50,7 +48,7 @@ export const useCreateUserByFile = (role: Role) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: UserService.createByFile,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [USERS_QUERY_KEY] });
       if (role === 'STUDENT') {
         queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
@@ -59,7 +57,6 @@ export const useCreateUserByFile = (role: Role) => {
       } else if (role === 'ADMIN') {
         queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
       }
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -68,9 +65,8 @@ export const useUpdateUserProfileImage = (id: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: UserService.updateProfileImage,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [USERS_QUERY_KEY, id] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -79,12 +75,11 @@ export const useDeleteSomeUsers = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: UserService.deleteSomeById,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [USERS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [STUDENTS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [TEACHERS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [ADMINS_QUERY_KEY] });
-      toast.success(res.data.data.message);
     },
   });
 };
@@ -93,9 +88,8 @@ export const useDeleteUserProfileImage = (id: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: UserService.deleteProfileImage,
-    onSuccess: res => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [USERS_QUERY_KEY, id] });
-      toast.success(res.data.data.message);
     },
   });
 };
