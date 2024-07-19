@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import {
-  GET_STUDENT_FIANCES_ID_QUERY_KEY,
+  GET_STUDENT_FIANCES_QUERY_KEY,
   usePostStudentFinancesIdCloseMutation,
 } from '@/utils/api';
 
@@ -38,7 +38,7 @@ export const CloseContractAlertDialog = ({
       onSuccess: () => {
         toast.success('Contract closed');
         queryClient.invalidateQueries({
-          queryKey: [GET_STUDENT_FIANCES_ID_QUERY_KEY],
+          queryKey: [GET_STUDENT_FIANCES_QUERY_KEY],
         });
       },
     },

@@ -4,7 +4,11 @@ import type {
   GetStudentFinancesIdRequest,
   PutStudentFinancesIdRequest,
 } from '@/utils/api';
-import { getStudentFinancesId, putStudentFinancesId } from '@/utils/api';
+import {
+  GET_STUDENT_FIANCES_QUERY_KEY,
+  getStudentFinancesId,
+  putStudentFinancesId,
+} from '@/utils/api';
 
 export const GET_STUDENT_FIANCES_ID_QUERY_KEY = 'getStudentFinancesId';
 
@@ -15,7 +19,11 @@ export const useGetStudentFinancesIdQuery = (
   >
 ) =>
   useQuery({
-    queryKey: [GET_STUDENT_FIANCES_ID_QUERY_KEY, settings.request.id],
+    queryKey: [
+      GET_STUDENT_FIANCES_QUERY_KEY,
+      GET_STUDENT_FIANCES_ID_QUERY_KEY,
+      settings.request.id,
+    ],
     queryFn: () => getStudentFinancesId(settings.request),
     ...settings?.options,
   });
